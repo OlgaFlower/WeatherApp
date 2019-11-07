@@ -17,6 +17,7 @@ class GeneralTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.loadForecastData { (forecast) in
+            print(forecast)
             DispatchQueue.main.async {
                 self.generalTableView.reloadData()
             }

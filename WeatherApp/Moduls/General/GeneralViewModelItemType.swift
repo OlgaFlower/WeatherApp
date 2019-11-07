@@ -10,7 +10,7 @@ import Foundation
 
 enum GeneralViewModelItemType {
     case cityNameAndTemperature
-    case horizontal24HoursForecast
+    case horizontalHoursForecast
     case weekForecast
     case sunMoomTime
 }
