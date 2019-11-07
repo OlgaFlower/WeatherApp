@@ -9,6 +9,7 @@
 import UIKit
 class GeneralPresenter {
     
+    var number = GeneralRowsAndSections()
     let data = OneDayForecastData()
     var forecast = OneDay()
     
@@ -19,7 +20,19 @@ class GeneralPresenter {
         }
     }
     
+    func numberOfSections() -> Int {
+        return number.sectionsAndRows.count
+    }
+    
+    func numberOfRows(_ section: Int) -> Int {
+        return number.arrOfSectionsAndRows()[section].rows
+        
+    }
 
     
+    
+    
+    
 }
+
 

@@ -20,6 +20,7 @@ class GeneralTableViewController: UITableViewController {
             print(forecast)
             DispatchQueue.main.async {
                 self.generalTableView.reloadData()
+                self.generalTableView.reloadInputViews()
             }
         }
     }
@@ -27,21 +28,18 @@ class GeneralTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return presenter.numberOfSections()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        generalTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        return presenter.numberOfRows(section)
     }
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = presenter.forecast.headLine.text
         return cell
     }
  
