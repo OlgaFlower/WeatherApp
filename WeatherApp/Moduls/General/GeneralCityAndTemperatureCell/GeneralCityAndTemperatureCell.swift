@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GeneralTableViewCell: UITableViewCell {
+class GeneralCityAndTemperatureCell: UITableViewCell {
 
     @IBOutlet weak var backgroundImg: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!

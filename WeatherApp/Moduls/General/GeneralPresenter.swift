@@ -14,7 +14,7 @@ class GeneralPresenter {
     var number = GeneralRowsAndSections()
     let data = OneDayForecastData()
     var forecast = OneDay()
-    var generalCell = GeneralTableViewCell()
+    var generalCell = GeneralCityAndTemperatureCell()
     
     //-----------
     var name = "Vinnytsia"

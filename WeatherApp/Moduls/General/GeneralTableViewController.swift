@@ -11,7 +11,7 @@ import UIKit
 class GeneralTableViewController: UITableViewController {
     
     @IBOutlet weak var generalTableView: UITableView!
-    var dataCell: GeneralTableViewCell?
+    var dataCell: GeneralCityAndTemperatureCell?
     var presenter = GeneralPresenter()
 
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ class GeneralTableViewController: UITableViewController {
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as! GeneralTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as! GeneralCityAndTemperatureCell
         dataCell?.backgroundImg.image =  UIImage(named: "rain4.png")
         dataCell?.cityNameLabel.text = presenter.name
         dataCell?.weatherForecastLabel.text = presenter.forecast.headLine.text
