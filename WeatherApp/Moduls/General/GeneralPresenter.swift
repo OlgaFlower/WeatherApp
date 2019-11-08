@@ -9,9 +9,21 @@
 import UIKit
 class GeneralPresenter {
     
+    //MARK: - General Controller
+    
     var number = GeneralRowsAndSections()
     let data = OneDayForecastData()
     var forecast = OneDay()
+    var generalCell = GeneralTableViewCell()
+    
+    //-----------
+    var name = "Vinnytsia"
+    var weatherForecast = "Everything will be fine!"
+    var tem = "42°"
+    var img = UIImage(named: "rain.jpg")
+    //-------------
+    
+    
     
     func loadForecastData(completion: @escaping (OneDay) -> ()) {
         data.getForecastData { [weak self](forecast) in
@@ -20,6 +32,8 @@ class GeneralPresenter {
         }
     }
     
+    
+    //MARK: - Set tableView
     func numberOfSections() -> Int {
         return number.sectionsAndRows.count
     }
@@ -31,8 +45,5 @@ class GeneralPresenter {
 
     
     
-    
-    
 }
-
 

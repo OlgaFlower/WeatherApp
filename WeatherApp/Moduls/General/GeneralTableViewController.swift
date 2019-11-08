@@ -11,11 +11,15 @@ import UIKit
 class GeneralTableViewController: UITableViewController {
     
     @IBOutlet weak var generalTableView: UITableView!
-    
+    var dataCell: GeneralTableViewCell?
     var presenter = GeneralPresenter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nib = UINib(nibName: "GeneralTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "CityCell")
+        
         presenter.loadForecastData { (forecast) in
             print(forecast)
             DispatchQueue.main.async {
@@ -23,9 +27,11 @@ class GeneralTableViewController: UITableViewController {
                 self.generalTableView.reloadInputViews()
             }
         }
+        
     }
 
     // MARK: - Table view data source
+ 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return presenter.numberOfSections()
@@ -38,8 +44,11 @@ class GeneralTableViewController: UITableViewController {
 
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = presenter.forecast.headLine.text
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell", for: indexPath) as! GeneralTableViewCell
+        dataCell?.backgroundImg.image =  UIImage(named: "rain4.png")
+        dataCell?.cityNameLabel.text = presenter.name
+        dataCell?.weatherForecastLabel.text = presenter.forecast.headLine.text
+        dataCell?.temperatLabel.text = presenter.forecast.headLine.text
         return cell
     }
  
