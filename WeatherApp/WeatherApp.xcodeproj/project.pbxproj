@@ -12,6 +12,7 @@
 		843DD6E623774E9C00525AF2 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6E523774E9C00525AF2 /* MainTableViewCell.swift */; };
 		843DD6E823774EF800525AF2 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6E723774EF800525AF2 /* MainPresenter.swift */; };
 		843DD6EA2377586800525AF2 /* SetMainCityAndTemperatureViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6E92377586800525AF2 /* SetMainCityAndTemperatureViewProtocol.swift */; };
+		843DD6EC23775E2900525AF2 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6EB23775E2900525AF2 /* MainInteractor.swift */; };
 		843DD6EE237802EF00525AF2 /* BackgroundImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6ED237802EF00525AF2 /* BackgroundImages.swift */; };
 		843F76B9237452B600D4A785 /* GeneralRowsAndSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F76B8237452B600D4A785 /* GeneralRowsAndSections.swift */; };
 		843F76BC237483CD00D4A785 /* GeneralCityAndTemperatureCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F76BB237483CD00D4A785 /* GeneralCityAndTemperatureCellView.swift */; };
@@ -49,6 +50,7 @@
 		843DD6E523774E9C00525AF2 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		843DD6E723774EF800525AF2 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		843DD6E92377586800525AF2 /* SetMainCityAndTemperatureViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetMainCityAndTemperatureViewProtocol.swift; sourceTree = "<group>"; };
+		843DD6EB23775E2900525AF2 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		843DD6ED237802EF00525AF2 /* BackgroundImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImages.swift; sourceTree = "<group>"; };
 		843F76B8237452B600D4A785 /* GeneralRowsAndSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralRowsAndSections.swift; sourceTree = "<group>"; };
 		843F76BB237483CD00D4A785 /* GeneralCityAndTemperatureCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCityAndTemperatureCellView.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				843DD6E123774B5700525AF2 /* MainViewController.swift */,
 				843DD6E723774EF800525AF2 /* MainPresenter.swift */,
+				843DD6EB23775E2900525AF2 /* MainInteractor.swift */,
 				843DD6E323774E1D00525AF2 /* MainHourForecastCollectionViewCell.swift */,
 				843DD6E523774E9C00525AF2 /* MainTableViewCell.swift */,
 				843DD6E92377586800525AF2 /* SetMainCityAndTemperatureViewProtocol.swift */,
@@ -116,12 +119,21 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		848980002372F45900482831 /* Networking */ = {
+		848980002372F45900482831 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				848980032372F59200482831 /* Delegates */,
+				848980012372F52800482831 /* Data */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		848980012372F52800482831 /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				84897FFB2372E8AA00482831 /* OneDayForecastData.swift */,
 			);
-			path = Networking;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		848980022372F57600482831 /* Models */ = {
@@ -172,11 +184,10 @@
 		84F8C0642371EE3C00BC13E6 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				848980032372F59200482831 /* Delegates */,
 				848980122373EE9F00482831 /* Moduls */,
+				848980002372F45900482831 /* Services */,
 				843F76BA2374804F00D4A785 /* ViewModel */,
 				848980022372F57600482831 /* Models */,
-				848980002372F45900482831 /* Networking */,
 				84F8C06B2371EE3D00BC13E6 /* Main.storyboard */,
 				84F8C06E2371EE4100BC13E6 /* Assets.xcassets */,
 				84F8C0702371EE4100BC13E6 /* LaunchScreen.storyboard */,
@@ -346,6 +357,7 @@
 				843F76BC237483CD00D4A785 /* GeneralCityAndTemperatureCellView.swift in Sources */,
 				84F8C0682371EE3D00BC13E6 /* SceneDelegate.swift in Sources */,
 				843DD6E223774B5700525AF2 /* MainViewController.swift in Sources */,
+				843DD6EC23775E2900525AF2 /* MainInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
