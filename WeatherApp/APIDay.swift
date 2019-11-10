@@ -1,24 +1,19 @@
 //
-//  OneDayForecast.swift
+//  APIDay.swift
 //  WeatherApp
 //
-//  Created by Admin on 06.11.2019.
+//  Created by Admin on 10.11.2019.
 //  Copyright © 2019 Flower. All rights reserved.
 //
 
-
-//apiKey Алексея - DD88l3LYERLRIDfPjaSGXsMlcG0yWtoK
-//my apikey - im5mEf1fvS5AJnGsG2gnAaBACBa93XAl
-//location key of Vinnitsa - 326175
-
-
-
 import Foundation
 
-class OneDayForecastData {
+class APIDay {
+    var APIKey = "im5mEf1fvS5AJnGsG2gnAaBACBa93XAl"
+    var locationID = "326175"
 
-    func getForecastData(completion: @escaping (OneDay)->()) {
-        let urlString = "https://dataservice.accuweather.com/forecasts/v1/daily/1day/326175?apikey=im5mEf1fvS5AJnGsG2gnAaBACBa93XAl"
+    func getForecastData(completion: @escaping (DayForecast)->()) {
+        let urlString = "https://dataservice.accuweather.com/forecasts/v1/daily/1day/\(locationID)?apikey=\(APIKey)"
         guard let url = URL(string: urlString) else { return }
 
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -32,10 +27,10 @@ class OneDayForecastData {
             }
 
             do {
-                let newForecast = try JSONDecoder().decode(OneDay.self, from: data)
+                let newForecast = try JSONDecoder().decode(DayForecast.self, from: data)
                 completion(newForecast)
                 } catch {
-                    print("Ona Day Forecast decoding error!")
+                    print("One Day Forecast decoding error!")
                 }
             }.resume()
     }

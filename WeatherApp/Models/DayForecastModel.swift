@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct OneDay: Codable {
+struct DayForecast: Codable {
     var headLine = HeadInfo()
     var dailyForecast = [Forecast]()
     

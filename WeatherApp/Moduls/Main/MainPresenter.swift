@@ -14,10 +14,13 @@ class MainPresenter: SetMainCurrentTemperatureProtocol {
     //MARK: - Main View Controller properties
     weak var mainView: MainViewController?
     weak var collection: MainHourForecastCollectionViewCell?
+    let data = APIDay()
+    let tableRows = MainRowsAndSections()
     
     let degree = "°"
     var images = Images(spring: "spring.jpg", summer: "summer.jpg", autumn: "autumn.jpg", winter: "winter")
     var icons = Icons(rain: "rain.png", snow: "snow.png", cloud: "sunAndCloud.png")
+    var dayForecast = DayForecast()
     
     //MARK: - Set current temperature view (first view)
     func setCurrentTemperatureView(_ background: UIImageView, _ city: UILabel, _ temperature: UILabel, _ forecast: UILabel) {
@@ -27,11 +30,21 @@ class MainPresenter: SetMainCurrentTemperatureProtocol {
         forecast.text = "qwertyui"
     }
     
+    //MARK: - Set table view rows (third view)
+    func numberOfRowsInTable(_ section: Int) -> Int {
+        return tableRows.arrOfSectionsAndRows()[section].rows
+    }
     
-
-    
-    //MARK: - Set main table view (third view)
-    
+    //MARK: - Recieve data from API DayForecast
+    func loadDayData(completion: @escaping (DayForecast) -> ()) {
+        data.getForecastData { [weak self] (data) in
+            self?.dayForecast = data
+            completion(data)
+        }
+    }
     
     
 }
+
+
+

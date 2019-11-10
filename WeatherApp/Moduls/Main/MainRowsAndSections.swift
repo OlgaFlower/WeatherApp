@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GeneralRowsAndSections {
+class MainRowsAndSections {
     
     //dictionary with amount of sections and rows/section
     let sectionsAndRows = [
