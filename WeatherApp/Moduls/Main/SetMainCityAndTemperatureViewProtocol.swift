@@ -8,11 +8,11 @@
 
 import UIKit
 
-protocol SetMainCityViewProtocol {
-    func setImage(_ background :UIImageView)
-    func setCityName(_ cityLabel: UILabel)
-    func setCurrentTemperature(_ temperatLabel: UILabel)
-    func setCurrentForecast(_ forecastLabel: UILabel)
+protocol SetMainCurrentTemperatureProtocol {
+    func setCurrentTemperatureView(_ background :UIImageView, _ city: UILabel, _ temperature: UILabel, _ forecast: UILabel)
 }
 
 
+protocol SetMainCollectionCellProtocol {
+    func setCollectionCell(_ time: UILabel, _ icon :UIImageView, _ temperat: UILabel)
+}

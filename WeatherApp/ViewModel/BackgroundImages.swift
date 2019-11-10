@@ -17,3 +17,8 @@ struct Images {
 }
     
 
+struct Icons {
+    let rain: String
+    let snow: String
+    let cloud: String
+}

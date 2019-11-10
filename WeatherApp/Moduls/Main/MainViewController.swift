@@ -8,10 +8,9 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     
-
     //MARK: - City name and temperature view
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
@@ -25,22 +24,33 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mainTableView: UITableView!
     
     
-    var presenter = MainPresenter()
+    private let presenter = MainPresenter()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setCurrentForecastView()
         
+        mainCollectionView.register(MainHourForecastCollectionViewCell.self, forCellWithReuseIdentifier: "HourCollectionCell")
+        
+        presenter.setCurrentTemperatureView(backgroundImage, cityNameLabel, temperatureLabel, forecastLabel)
     }
     
-    //MARK: - First View
-    func setCurrentForecastView() {
-        presenter.setImage(backgroundImage)
-        presenter.setCityName(cityNameLabel)
-        presenter.setCurrentTemperature(temperatureLabel)
-        presenter.setCurrentForecast(forecastLabel)
+
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 15
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
+            "HourCollectionCell", for: indexPath) as? MainHourForecastCollectionViewCell
+        let image = UIImage(named: "rain.png")
+        cell?.displayContent(image!, "16", "23°")
+        return cell!
     }
 
 
 }
+
+

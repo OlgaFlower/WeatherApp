@@ -9,35 +9,30 @@
 import UIKit
 
 
-class MainPresenter: SetMainCityViewProtocol {
- 
-
+class MainPresenter: SetMainCurrentTemperatureProtocol, SetMainCollectionCellProtocol {
+   
+    //MARK: - Main View Controller properties
     weak var mainView: MainViewController?
-    weak var interactor: MainInteractor?
     
     let degree = "°"
     var images = Images(spring: "spring.jpg", summer: "summer.jpg", autumn: "autumn.jpg", winter: "winter")
+    var icons = Icons(rain: "rain.png", snow: "snow.png", cloud: "sunAndCloud.png")
     
-    //MARK: - Set main city name and temperature view (first view)
-    func setImage(_ background: UIImageView) {
+    //MARK: - Set current temperature view (first view)
+    func setCurrentTemperatureView(_ background: UIImageView, _ city: UILabel, _ temperature: UILabel, _ forecast: UILabel) {
         background.image = UIImage(named: images.autumn)
+        city.text = "Uzhorod"
+        temperature.text = "17" + degree
+        forecast.text = "qwertyui"
     }
-
-    func setCityName(_ cityLabel: UILabel) {
-        cityLabel.text = "Volyn"
-     }
-     
-    func setCurrentTemperature(_ temperatLabel: UILabel) {
-        temperatLabel.text = "19" + degree
-     }
-     
-    func setCurrentForecast(_ forecastLabel: UILabel) {
-        forecastLabel.text = "qwertyuiop"
-     }
     
     
     //MARK: - Set main collection view (second view)
-    
+    func setCollectionCell(_ time: UILabel, _ icon: UIImageView, _ temperat: UILabel) {
+        time.text = "11"
+        icon.image = UIImage(named: icons.snow)
+        temperat.text = "19" + degree
+       }
     
     //MARK: - Set main table view (third view)
     
