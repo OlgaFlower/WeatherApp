@@ -12,8 +12,6 @@ class GeneralRowsAndSections {
     
     //dictionary with amount of sections and rows/section
     let sectionsAndRows = [
-        "CityNameAndTemperature": 1,
-        "HourlyForecast": 1,
         "WeeklyForecast": 7,
         "SunAndMoon": 1
         ]

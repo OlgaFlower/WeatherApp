@@ -16,11 +16,11 @@
 import Foundation
 
 class OneDayForecastData {
-        
+
     func getForecastData(completion: @escaping (OneDay)->()) {
         let urlString = "https://dataservice.accuweather.com/forecasts/v1/daily/1day/326175?apikey=im5mEf1fvS5AJnGsG2gnAaBACBa93XAl"
         guard let url = URL(string: urlString) else { return }
-            
+
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
                 print(error!.localizedDescription)
@@ -30,7 +30,7 @@ class OneDayForecastData {
                 print("Ona Day Forecast URL isn't downloaded!")
                 return
             }
-                
+
             do {
                 let newForecast = try JSONDecoder().decode(OneDay.self, from: data)
                 completion(newForecast)
@@ -39,5 +39,5 @@ class OneDayForecastData {
                 }
             }.resume()
     }
-    
+
 }
