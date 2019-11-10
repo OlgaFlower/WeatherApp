@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class MainViewController: UIViewController {
     
     
     //MARK: - City name and temperature view
@@ -25,20 +25,27 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     
     private let presenter = MainPresenter()
-    
+    var arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //MARK: - Main view delegates
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
 
         presenter.setCurrentTemperatureView(backgroundImage, cityNameLabel, temperatureLabel, forecastLabel)
     }
     
+}
 
+
+
+//MARK: - Main collection view
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arr.count
     }
@@ -50,8 +57,26 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         return cell
     }
-
-
 }
 
+
+
+//MARK: - Main table view
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WeekCell", for: indexPath) as! MainWeekCell
+        return cell
+    }
+    
+    
+}
 

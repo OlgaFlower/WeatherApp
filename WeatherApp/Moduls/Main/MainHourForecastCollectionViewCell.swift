@@ -14,5 +14,4 @@ class MainHourForecastCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var temperatLabel: UILabel!
     
-
 }

@@ -12,7 +12,3 @@ protocol SetMainCurrentTemperatureProtocol {
     func setCurrentTemperatureView(_ background :UIImageView, _ city: UILabel, _ temperature: UILabel, _ forecast: UILabel)
 }
 
-
-protocol SetMainCollectionCellProtocol {
-    func setCollectionCell(_ time: UILabel, _ icon :UIImageView, _ temperat: UILabel)
-}
