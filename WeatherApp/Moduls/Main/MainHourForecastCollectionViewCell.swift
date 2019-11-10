@@ -14,10 +14,5 @@ class MainHourForecastCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var temperatLabel: UILabel!
     
-    func displayContent(_ icon: UIImage, _ time: String, _ temperature: String) {
-        iconImage.image = icon
-        timeLabel.text = time
-        temperatLabel.text = temperature
-    }
-    
+
 }

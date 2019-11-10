@@ -30,24 +30,25 @@ class MainViewController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainCollectionView.register(MainHourForecastCollectionViewCell.self, forCellWithReuseIdentifier: "HourCollectionCell")
-        
+        mainCollectionView.dataSource = self
+        mainCollectionView.delegate = self
+
         presenter.setCurrentTemperatureView(backgroundImage, cityNameLabel, temperatureLabel, forecastLabel)
     }
     
 
     
-    
+    var arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 15
+        return arr.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
-            "HourCollectionCell", for: indexPath) as? MainHourForecastCollectionViewCell
-        let image = UIImage(named: "rain.png")
-        cell?.displayContent(image!, "16", "23°")
-        return cell!
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! MainHourForecastCollectionViewCell
+        cell.timeLabel.text = String(arr[indexPath.row])
+        cell.iconImage.image = UIImage(named: "muchSnow.png")
+        
+        return cell
     }
 
 

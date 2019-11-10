@@ -9,10 +9,11 @@
 import UIKit
 
 
-class MainPresenter: SetMainCurrentTemperatureProtocol, SetMainCollectionCellProtocol {
+class MainPresenter: SetMainCurrentTemperatureProtocol {
    
     //MARK: - Main View Controller properties
     weak var mainView: MainViewController?
+    weak var collection: MainHourForecastCollectionViewCell?
     
     let degree = "°"
     var images = Images(spring: "spring.jpg", summer: "summer.jpg", autumn: "autumn.jpg", winter: "winter")
@@ -27,12 +28,7 @@ class MainPresenter: SetMainCurrentTemperatureProtocol, SetMainCollectionCellPro
     }
     
     
-    //MARK: - Set main collection view (second view)
-    func setCollectionCell(_ time: UILabel, _ icon: UIImageView, _ temperat: UILabel) {
-        time.text = "11"
-        icon.image = UIImage(named: icons.snow)
-        temperat.text = "19" + degree
-       }
+
     
     //MARK: - Set main table view (third view)
     
