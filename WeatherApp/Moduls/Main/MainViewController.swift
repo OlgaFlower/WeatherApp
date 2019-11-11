@@ -37,12 +37,12 @@ class MainViewController: UIViewController {
 
         presenter.setCurrentTemperatureView(backgroundImage, cityNameLabel, temperatureLabel, forecastLabel)
         
-        presenter.loadDayData { (data) in
-            print(data)
-            DispatchQueue.main.async {
-                self.mainTableView.reloadData()
-            }
-        }
+//        presenter.loadDayData { (data) in
+//            print(data)
+//            DispatchQueue.main.async {
+//                self.mainTableView.reloadData()
+//            }
+//        }
     }
     
 }
