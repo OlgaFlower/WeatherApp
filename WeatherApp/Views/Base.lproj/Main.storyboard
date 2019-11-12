@@ -241,11 +241,22 @@
                         <outlet property="mainCollectionView" destination="vYk-ry-soN" id="knD-ff-mvJ"/>
                         <outlet property="mainTableView" destination="u9H-JX-dic" id="Gy0-9m-sxz"/>
                         <outlet property="temperatureLabel" destination="Ste-Il-lF4" id="ok7-81-v9G"/>
+                        <segue destination="VU8-zH-hZC" kind="showDetail" identifier="showList" id="u0L-j5-ayA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ay-Z7-fJ3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="866.66666666666674" y="-6.0267857142857144"/>
+        </scene>
+        <!--List-->
+        <scene sceneID="UXC-5m-pLg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="List" id="VU8-zH-hZC" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="RMU-gW-wM4"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fMN-DA-2Io" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1443" y="-6"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zju-OX-hBU">

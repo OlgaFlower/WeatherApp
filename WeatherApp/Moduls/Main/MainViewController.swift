@@ -43,6 +43,12 @@ class MainViewController: UIViewController {
 //                self.mainTableView.reloadData()
 //            }
 //        }
+        
+        
+        presenter.loadLocationKey { (data) in
+            print(data)
+        }
+        
     }
     
 }

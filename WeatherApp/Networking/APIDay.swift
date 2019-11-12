@@ -9,11 +9,11 @@
 import Foundation
 
 class APIDay {
-    var APIKey = "im5mEf1fvS5AJnGsG2gnAaBACBa93XAl"
+    var apiKey = DevAPIKey()
     var locationID = "326175"
 
     func getForecastData(completion: @escaping (DayForecast)->()) {
-        let urlString = "https://dataservice.accuweather.com/forecasts/v1/daily/1day/\(locationID)?apikey=\(APIKey)"
+        let urlString = "https://dataservice.accuweather.com/forecasts/v1/daily/1day/\(locationID)?apikey=\(apiKey)"
         guard let url = URL(string: urlString) else { return }
 
         URLSession.shared.dataTask(with: url) { data, response, error in
@@ -22,7 +22,7 @@ class APIDay {
                 print("One Day Forecast URLSession error oquared!!!")
             }
             guard let data = data else {
-                print("Ona Day Forecast URL isn't downloaded!")
+                print("One Day Forecast URL isn't downloaded!")
                 return
             }
 

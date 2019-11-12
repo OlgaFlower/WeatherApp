@@ -32,3 +32,9 @@ class MainRowsAndSections {
     }
 
 }
+//Якщо не вдаватись в більш глибші правки, то ось цього достатньо, щоб працювало
+////converting dictionary into array
+//    func arrOfSectionsAndRows() -> [GeneralPage] {
+//        return [GeneralPage(sections: "WeeklyForecast", rows: sectionsAndRows["WeeklyForecast"]),
+//                GeneralPage(sections: "SunAndMoon", rows: sectionsAndRows["SunAndMoon"])]
+//    }
