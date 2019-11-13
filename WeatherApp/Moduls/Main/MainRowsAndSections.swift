@@ -24,17 +24,8 @@ class MainRowsAndSections {
     
     //converting dictionary into array
     func arrOfSectionsAndRows() -> [GeneralPage] {
-        var pageStruct = [GeneralPage]()
-        for (key, value) in sectionsAndRows {
-            pageStruct.append(GeneralPage(sections: key, rows: value))
-        }
-        return pageStruct
+        return [GeneralPage(sections: "WeeklyForecast", rows: sectionsAndRows["WeeklyForecast"]),
+                GeneralPage(sections: "SunAndMoon", rows: sectionsAndRows["SunAndMoon"])]
     }
 
 }
-//Якщо не вдаватись в більш глибші правки, то ось цього достатньо, щоб працювало
-////converting dictionary into array
-//    func arrOfSectionsAndRows() -> [GeneralPage] {
-//        return [GeneralPage(sections: "WeeklyForecast", rows: sectionsAndRows["WeeklyForecast"]),
-//                GeneralPage(sections: "SunAndMoon", rows: sectionsAndRows["SunAndMoon"])]
-//    }

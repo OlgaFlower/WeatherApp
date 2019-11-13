@@ -25,6 +25,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case 0: let cell = tableView.dequeueReusableCell(withIdentifier: "WeekCell", for: indexPath) as! MainWeekCell
                 return cell
         case 1: let cell = tableView.dequeueReusableCell(withIdentifier: "SunMoonCell", for: indexPath) as! MainSunCell
+                cell.sunIconImage.image = UIImage(named: "sun2.png")
+                cell.moonIconImage.image = UIImage(named: "moon.png")
                 return cell
         default: break
         }
