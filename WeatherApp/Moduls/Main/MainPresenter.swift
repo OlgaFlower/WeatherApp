@@ -15,6 +15,7 @@ class MainPresenter: SetMainCurrentTemperatureProtocol {
     weak var mainView: MainViewController?
     weak var collection: MainHourForecastCollectionViewCell?
     let tableRows = MainRowsAndSections()
+    //MARK: - Data
     let dataDayForecast = APIDay()
     var datalocationKey = APILocationKey()
     
@@ -23,7 +24,7 @@ class MainPresenter: SetMainCurrentTemperatureProtocol {
     var images = Images(spring: "spring.jpg", summer: "summer.jpg", autumn: "autumn.jpg", winter: "winter")
     var icons = Icons(rain: "rain.png", snow: "snow.png", cloud: "sunAndCloud.png")
     var getdayForecast = DayForecast()
-    var getLocationKey = LocationKey()
+    var getLocationKey = [LocationKey]()
     
     
     //MARK: - Set current temperature view (first view)
@@ -47,13 +48,13 @@ class MainPresenter: SetMainCurrentTemperatureProtocol {
         }
     }
     
-//    //MARK: - Networking: Recieve local key
-//    func loadLocationKey(completion: @escaping (LocationKey) -> ()) {
-//        datalocationKey.getLocationKey { [weak self] (data) in
-//            self?.getLocationKey = data
-//            completion(data)
-//        }
-//    }
+    //MARK: - Networking: Recieve local key
+    func loadLocationKey(completion: @escaping ([LocationKey]) -> ()) {
+        datalocationKey.getLocationKey { [weak self] (data) in
+            self?.getLocationKey = data
+            completion(data)
+        }
+    }
     
 }
 
