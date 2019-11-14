@@ -17,7 +17,9 @@ class Helper {
     
     
     static let degree = "°"
-//    public var cityKey = "326175"
+    
+    static let dateFormatTime = "hh:mm:ss"
+    static let dateFormatDate = "yyyy-MM-dd"
  
     
 }

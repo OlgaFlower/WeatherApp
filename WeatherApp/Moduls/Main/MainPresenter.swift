@@ -35,6 +35,8 @@ class MainPresenter {
         return tableRows.arrOfSectionsAndRows()[section].rows
     }
     
+    
+    
     //MARK: - Networking
     
     //Recieve one hour forecast
