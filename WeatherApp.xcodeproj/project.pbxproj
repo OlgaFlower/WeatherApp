@@ -22,7 +22,7 @@
 		843DD6FE2379959300525AF2 /* DevAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6FD2379959300525AF2 /* DevAPIKey.swift */; };
 		843DD702237AC13B00525AF2 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843DD701237AC13B00525AF2 /* List.storyboard */; };
 		843DD704237AC19B00525AF2 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD703237AC19B00525AF2 /* ListTableViewController.swift */; };
-		843DD70B237C4DA800525AF2 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843DD70A237C4DA800525AF2 /* TabBar.storyboard */; };
+		843DD749237D45B900525AF2 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD748237D45B900525AF2 /* ListPresenter.swift */; };
 		843F76B9237452B600D4A785 /* MainRowsAndSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F76B8237452B600D4A785 /* MainRowsAndSections.swift */; };
 		843F76BC237483CD00D4A785 /* CityTempData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F76BB237483CD00D4A785 /* CityTempData.swift */; };
 		84897FFE2372E8CB00482831 /* DayForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84897FFD2372E8CB00482831 /* DayForecastModel.swift */; };
@@ -68,7 +68,7 @@
 		843DD6FD2379959300525AF2 /* DevAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevAPIKey.swift; sourceTree = "<group>"; };
 		843DD701237AC13B00525AF2 /* List.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
 		843DD703237AC19B00525AF2 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
-		843DD70A237C4DA800525AF2 /* TabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TabBar.storyboard; sourceTree = "<group>"; };
+		843DD748237D45B900525AF2 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		843F76B8237452B600D4A785 /* MainRowsAndSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRowsAndSections.swift; sourceTree = "<group>"; };
 		843F76BB237483CD00D4A785 /* CityTempData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTempData.swift; sourceTree = "<group>"; };
 		84897FFD2372E8CB00482831 /* DayForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecastModel.swift; sourceTree = "<group>"; };
@@ -126,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				843DD703237AC19B00525AF2 /* ListTableViewController.swift */,
+				843DD748237D45B900525AF2 /* ListPresenter.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -133,7 +134,6 @@
 		843DD700237AC0FE00525AF2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				843DD70A237C4DA800525AF2 /* TabBar.storyboard */,
 				84F8C06B2371EE3D00BC13E6 /* Main.storyboard */,
 				843DD701237AC13B00525AF2 /* List.storyboard */,
 				84F8C0702371EE4100BC13E6 /* LaunchScreen.storyboard */,
@@ -350,7 +350,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				843DD70B237C4DA800525AF2 /* TabBar.storyboard in Resources */,
 				84F8C0722371EE4100BC13E6 /* LaunchScreen.storyboard in Resources */,
 				84F8C06F2371EE4100BC13E6 /* Assets.xcassets in Resources */,
 				843DD702237AC13B00525AF2 /* List.storyboard in Resources */,
@@ -389,6 +388,7 @@
 				843DD6E823774EF800525AF2 /* MainPresenter.swift in Sources */,
 				843DD6EA2377586800525AF2 /* SetMainCityAndTemperatureViewProtocol.swift in Sources */,
 				843DD6F12378628700525AF2 /* MainSunCell.swift in Sources */,
+				843DD749237D45B900525AF2 /* ListPresenter.swift in Sources */,
 				84897FFE2372E8CB00482831 /* DayForecastModel.swift in Sources */,
 				843DD6F52378728700525AF2 /* MainExtensionWithTable.swift in Sources */,
 				843DD6FA23797A0E00525AF2 /* APILocationKey.swift in Sources */,

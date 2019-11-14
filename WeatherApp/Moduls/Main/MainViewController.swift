@@ -52,6 +52,17 @@ class MainViewController: UIViewController {
         
     }
     
+    @IBAction func openLinkButton(_ sender: UIButton) {
+    }
+    
+    
+    @IBAction func openListButton(_ sender: UIButton) {
+    }
+    
+    
+    
+    
+    
 }
 
 

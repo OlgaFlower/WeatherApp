@@ -9,16 +9,25 @@
 import UIKit
 
 class ListTableViewController: UITableViewController {
-
+ 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
 
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func addButton(_ sender: Any) {
+    }
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
