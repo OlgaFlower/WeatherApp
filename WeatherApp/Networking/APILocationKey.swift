@@ -11,9 +11,9 @@
 import Foundation
 
 class APILocationKey {
-
-    func fetchLocationKey(completion: @escaping ([LocationKey]) -> ()) {
-        let urlString = "\(Helper.urlString)/locations/v1/cities/search?q=Lviv&apikey=\(Helper.apiKey)"
+    var request = "Vinnytsia"
+    func LocationKeyData(completion: @escaping ([LocationKey]) -> ()) {
+        let urlString = "\(Helper.urlString)/locations/v1/cities/search?q=\(request)&apikey=\(Helper.apiKey)"
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {

@@ -17,7 +17,7 @@ class Helper {
     
     
     static let degree = "°"
-    
+//    public var cityKey = "326175"
  
     
 }

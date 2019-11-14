@@ -43,6 +43,7 @@ class MainViewController: UIViewController {
 //            print(data)
 //        }
         
+        //Set current temperature view
         presenter.loadOneHourForecast { (data) in
             DispatchQueue.main.async {
                 self.mainView.reloadInputViews()
@@ -50,9 +51,13 @@ class MainViewController: UIViewController {
                 self.forecastLabel.text = data.first?.iconPhrase
             }
         }
-        
         backgroundImage.image = UIImage(named: "autumn.jpg")
         cityNameLabel.text = "Some City"
+        
+        //Set collection view
+        presenter.loadTwelveHoursForecast { (data) in
+            
+        }
         
         
     }

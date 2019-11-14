@@ -29,6 +29,8 @@
 		8456BB84237D65ED00234876 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB83237D65ED00234876 /* Helper.swift */; };
 		8456BB86237D7D3000234876 /* OneHourForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB85237D7D3000234876 /* OneHourForecast.swift */; };
 		8456BB88237D816B00234876 /* APIOneHourForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB87237D816B00234876 /* APIOneHourForecast.swift */; };
+		8456BB8D237DAA3300234876 /* TwelveHoursForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB8C237DAA3300234876 /* TwelveHoursForecast.swift */; };
+		8456BB8F237DAA7900234876 /* APITwelveHoursForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB8E237DAA7900234876 /* APITwelveHoursForecast.swift */; };
 		84F8C0662371EE3D00BC13E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C0652371EE3D00BC13E6 /* AppDelegate.swift */; };
 		84F8C0682371EE3D00BC13E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C0672371EE3D00BC13E6 /* SceneDelegate.swift */; };
 		84F8C06D2371EE3D00BC13E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C06B2371EE3D00BC13E6 /* Main.storyboard */; };
@@ -78,6 +80,8 @@
 		8456BB83237D65ED00234876 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		8456BB85237D7D3000234876 /* OneHourForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneHourForecast.swift; sourceTree = "<group>"; };
 		8456BB87237D816B00234876 /* APIOneHourForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOneHourForecast.swift; sourceTree = "<group>"; };
+		8456BB8C237DAA3300234876 /* TwelveHoursForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwelveHoursForecast.swift; sourceTree = "<group>"; };
+		8456BB8E237DAA7900234876 /* APITwelveHoursForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITwelveHoursForecast.swift; sourceTree = "<group>"; };
 		84F8C0622371EE3C00BC13E6 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F8C0652371EE3D00BC13E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F8C0672371EE3D00BC13E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 			children = (
 				843DD6F923797A0E00525AF2 /* APILocationKey.swift */,
 				8456BB87237D816B00234876 /* APIOneHourForecast.swift */,
+				8456BB8E237DAA7900234876 /* APITwelveHoursForecast.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 			children = (
 				843DD6FB237987F400525AF2 /* LocationKeyModel.swift */,
 				8456BB85237D7D3000234876 /* OneHourForecast.swift */,
+				8456BB8C237DAA3300234876 /* TwelveHoursForecast.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -420,6 +426,7 @@
 				843DD6E623774E9C00525AF2 /* MainWeekCell.swift in Sources */,
 				843F76B9237452B600D4A785 /* MainRowsAndSections.swift in Sources */,
 				843DD6E423774E1D00525AF2 /* MainHourForecastCollectionViewCell.swift in Sources */,
+				8456BB8F237DAA7900234876 /* APITwelveHoursForecast.swift in Sources */,
 				8456BB7E237D573700234876 /* ExtensionOpenSafari.swift in Sources */,
 				843DD6E823774EF800525AF2 /* MainPresenter.swift in Sources */,
 				843DD6F12378628700525AF2 /* MainSunCell.swift in Sources */,
@@ -433,6 +440,7 @@
 				843DD704237AC19B00525AF2 /* ListTableViewController.swift in Sources */,
 				843DD6E223774B5700525AF2 /* MainViewController.swift in Sources */,
 				8456BB84237D65ED00234876 /* Helper.swift in Sources */,
+				8456BB8D237DAA3300234876 /* TwelveHoursForecast.swift in Sources */,
 				8456BB86237D7D3000234876 /* OneHourForecast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

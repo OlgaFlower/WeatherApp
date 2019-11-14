@@ -13,14 +13,18 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arr.count
+        return presenter.fetchTwelveHourForecast.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! MainHourForecastCollectionViewCell
-        cell.timeLabel.text = String(arr[indexPath.row])
+        if indexPath.row == 0 {
+            cell.timeLabel.text = "Now"
+        } else {
+            cell.timeLabel.text = presenter.fetchTwelveHourForecast[indexPath.row].time
+        }
         cell.iconImage.image = UIImage(named: "muchSnow.png")
-        
+        cell.temperatLabel.text = "\(presenter.fetchTwelveHourForecast[indexPath.row].temperat.temperatValue)" + Helper.degree
         return cell
     }
 }
