@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class MainViewController: UIViewController {
     
@@ -53,8 +54,10 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func openLinkButton(_ sender: UIButton) {
+        self.openSafari(for: presenter.safariLink)
     }
     
+
     
     @IBAction func openListButton(_ sender: UIButton) {
     }

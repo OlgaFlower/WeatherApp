@@ -223,7 +223,7 @@
                                         </state>
                                         <connections>
                                             <action selector="openListButton:" destination="9ss-XI-BfI" eventType="touchUpInside" id="SSk-S7-OEM"/>
-                                            <segue destination="T4u-76-yZQ" kind="showDetail" id="Gt9-YB-Zkg"/>
+                                            <segue destination="T4u-76-yZQ" kind="show" identifier="List" id="Gt9-YB-Zkg"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PlA-DL-VD3">
@@ -265,7 +265,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pcY-L6-tjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2434" y="-6"/>
+            <point key="canvasLocation" x="2330" y="-6"/>
         </scene>
     </scenes>
 </document>

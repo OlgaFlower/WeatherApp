@@ -1,61 +1,42 @@
 //
-//  ListTableViewController.swift
+//  SearchController.swift
 //  WeatherApp
 //
-//  Created by Admin on 12.11.2019.
+//  Created by Admin on 14.11.2019.
 //  Copyright © 2019 Flower. All rights reserved.
 //
 
 import UIKit
 
-class ListTableViewController: UITableViewController {
- 
+class SearchTableViewController: UITableViewController {
+
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
     }
 
-    @IBAction func backButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func addButton(_ sender: Any) {
-        let searchVC = storyboard?.instantiateViewController(withIdentifier: "search") as! SearchTableViewController
-        self.present(searchVC, animated: true, completion: nil)
-    }
-    
-    
-    
-    
-    
-    
-    
-//    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//
-//    let secondViewController = storyBoard.instantiateViewControllerWithIdentifier("SecondViewController") as SecondViewController
-//    self.presentViewController(secondViewController, animated:true, completion:nil)
-    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+        
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 0
+        return 10
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

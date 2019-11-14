@@ -27,6 +27,13 @@ class MainPresenter: SetMainCurrentTemperatureProtocol {
     var getLocationKey = [LocationKey]()
     
     
+    //MARK: - Open Safari Link
+    var safariLink: String {
+        get {
+            return getdayForecast.headLine.mobileLink ?? "https://developer.accuweather.com"
+        }
+    }
+    
     //MARK: - Set current temperature view (first view)
     func setCurrentTemperatureView(_ background: UIImageView, _ city: UILabel, _ temperature: UILabel, _ forecast: UILabel) {
         background.image = UIImage(named: images.autumn)
@@ -55,6 +62,8 @@ class MainPresenter: SetMainCurrentTemperatureProtocol {
             completion(data)
         }
     }
+    
+
     
 }
 
