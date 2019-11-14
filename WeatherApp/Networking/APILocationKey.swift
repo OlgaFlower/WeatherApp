@@ -11,29 +11,24 @@
 import Foundation
 
 class APILocationKey {
-    var apiKey = DevAPIKey()
 
-    func getLocationKey(completion: @escaping ([LocationKey]) -> ()) {
-            let urlString = "https://dataservice.accuweather.com/locations/v1/cities/search?q=Lviv&apikey=im5mEf1fvS5AJnGsG2gnAaBACBa93XAl"
-            guard let url = URL(string: urlString) else { return }
-
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                if error != nil {
-                    print(error!.localizedDescription)
-                    print("Location Key URLSession error oquared!!!")
+    func fetchLocationKey(completion: @escaping ([LocationKey]) -> ()) {
+        let urlString = "\(Helper.urlString)/locations/v1/cities/search?q=Lviv&apikey=\(Helper.apiKey)"
+        guard let url = URL(string: urlString) else { return }
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if error != nil {
+                print("Error: \(error!.localizedDescription)")
                 }
                 guard let data = data else {
-                    print("Location Key URL isn't downloaded!")
+                    print("Error: \(error!.localizedDescription)")
                     return
                 }
-
                 do {
                     let locationKey = try JSONDecoder().decode([LocationKey].self, from: data)
-//                    let locationKey = try JSONSerialization.jsonObject(with: data) as! [[String : String]]
                     completion(locationKey)
                     } catch {
-                        print("Location Key decoding error!")
+                        print("Error: \(error.localizedDescription)")
                     }
-                }.resume()
+            }.resume()
         }
 }

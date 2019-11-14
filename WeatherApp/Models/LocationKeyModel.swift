@@ -13,19 +13,20 @@ struct LocationKey: Codable {
     var engCityName: String?
     var country = Country()
     
-    private enum CodingKeys: String, CodingKey {
-        case key = "Key"
-        case engCityName = "EnglishName"
-        case country = "Country"
-    }
+                    private enum CodingKeys: String, CodingKey {
+                        case key = "Key"
+                        case engCityName = "EnglishName"
+                        case country = "Country"
+                    }
 }
+
 
 struct Country: Codable {
     var id: String?
     var engCountryName: String?
     
-    private enum CodingKeys: String, CodingKey {
-        case id = "ID"
-        case engCountryName = "EnglishName"
-    }
+                    private enum CodingKeys: String, CodingKey {
+                        case id = "ID"
+                        case engCountryName = "EnglishName"
+                    }
 }
