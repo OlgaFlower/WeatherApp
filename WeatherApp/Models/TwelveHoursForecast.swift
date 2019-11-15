@@ -14,9 +14,9 @@ struct TwelveHoursForecast: Codable {
     var temperat: Temperature
     
                             private enum CodingKeys: String, CodingKey {
-                                case time = "DateTime"
+                                case time         = "DateTime"
                                 case weatherIcon  = "WeatherIcon"
-                                case temperat = "Temperature"
+                                case temperat     = "Temperature"
                             }
 }
 

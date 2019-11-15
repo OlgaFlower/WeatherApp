@@ -59,6 +59,13 @@ class MainViewController: UIViewController {
             }
         }
         
+        //set table view
+        presenter.loadFiveDaysForecast { (data) in
+            DispatchQueue.main.async {
+                self.mainTableView.reloadData()
+            }
+        }
+        
         
         
     }

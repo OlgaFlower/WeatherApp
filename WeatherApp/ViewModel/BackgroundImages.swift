@@ -7,18 +7,18 @@
 //
 
 import Foundation
-
-    
-struct Images {
-    let spring: String
-    let summer: String
-    let autumn: String
-    let winter: String
-}
-    
-
-struct Icons {
-    let rain: String
-    let snow: String
-    let cloud: String
-}
+//
+//
+//struct Images {
+//    let spring: String
+//    let summer: String
+//    let autumn: String
+//    let winter: String
+//}
+//
+//
+//struct Icons {
+//    let rain: String
+//    let snow: String
+//    let cloud: String
+//}

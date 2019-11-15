@@ -14,46 +14,62 @@ class MainPresenter {
     //MARK: - Main View Controller properties
     weak var mainView: MainViewController?
     weak var collection: MainHourForecastCollectionViewCell?
-    let tableRows = MainRowsAndSections()
+//    let tableRows = MainRowsAndSections()
     
     //MARK: - Data
     let datalocationKey = APILocationKey()
-    let dataHourForecast = APIOneHourForecast()
-    let dataTwelveHoursForecast = APITwelveHoursForecast()
-    
-    
-    var images = Images(spring: "spring.jpg", summer: "summer.jpg", autumn: "autumn.jpg", winter: "winter")
-    var icons = Icons(rain: "rain.png", snow: "snow.png", cloud: "sunAndCloud.png")
+    let dataHour = APIOneHourForecast()
+    let dataTwelveHours = APITwelveHoursForecast()
+    let dataFiveDays = APIFiveDaysForecast()
+
     
     var fetchLocationKey = [LocationKey]()
     var fetchOneHourForecast = [OneHourForecast]()
     var fetchTwelveHourForecast = [TwelveHoursForecast]()
+    var fetchFiveDaysForecast = FiveDaysForecast()
     
     
     //MARK: - Set table view rows (third view)
-    func numberOfRowsInTable(_ section: Int) -> Int {
-        return tableRows.arrOfSectionsAndRows()[section].rows
-    }
+//    func numberOfRowsInTable(_ section: Int) -> Int {
+//        return tableRows.arrOfSectionsAndRows()[section].rows
+//    }
     
+    func rowsNumberInTable(_ section: Int) -> Int {
+        var row = 0
+        if section == 0 {
+            row = 5
+//            row = (fetchFiveDaysForecast?.dailyForecast.count)!
+        } else if section == 1 {
+            row = 1
+        }
+        return row
+    }
     
     
     //MARK: - Networking
     
     //Recieve one hour forecast
     func loadOneHourForecast(completion: @escaping ([OneHourForecast]) -> Void) {
-        dataHourForecast.OneHourData { [weak self] (data) in
+        dataHour.OneHourData { [weak self] (data) in
             self?.fetchOneHourForecast = data
             completion(data)
         }
     }
     
     func loadTwelveHoursForecast(completion: @escaping ([TwelveHoursForecast]) -> Void) {
-        dataTwelveHoursForecast.TwelveHoursData { [weak self] (data) in
+        dataTwelveHours.TwelveHoursData { [weak self] (data) in
             self?.fetchTwelveHourForecast = data
             completion(data)
         }
     }
     
+    //Recieve five days forecast
+    func loadFiveDaysForecast(completion: @escaping (FiveDaysForecast) -> Void) {
+        dataFiveDays.FiveDaysData { [weak self] (data) in
+            self?.fetchFiveDaysForecast = data
+            completion(data)
+        }
+    }
     
     //Recieve local key
     func loadLocationKey(completion: @escaping ([LocationKey]) -> Void) {

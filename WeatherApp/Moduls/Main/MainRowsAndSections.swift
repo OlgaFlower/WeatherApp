@@ -8,24 +8,25 @@
 
 import Foundation
 
-class MainRowsAndSections {
-    
-    //dictionary with amount of sections and rows/section
-    let sectionsAndRows = [
-        "WeeklyForecast": 7,
-        "SunAndMoon": 1
-        ]
-    
-    //structure-helper
-    struct GeneralPage {
-        var sections: String!
-        var rows: Int!
-    }
-    
-    //converting dictionary into array
-    func arrOfSectionsAndRows() -> [GeneralPage] {
-        return [GeneralPage(sections: "WeeklyForecast", rows: sectionsAndRows["WeeklyForecast"]),
-                GeneralPage(sections: "SunAndMoon", rows: sectionsAndRows["SunAndMoon"])]
-    }
-
-}
+//class MainRowsAndSections {
+//    var mainPresenter = MainPresenter()
+//    
+//    //dictionary with amount of sections and rows/section
+//    var sectionsAndRows = [
+//        "WeeklyForecast": 5,
+//        "SunAndMoon": 1
+//        ]
+//    
+//    //structure-helper
+//    struct GeneralPage {
+//        var sections: String!
+//        var rows: Int!
+//    }
+//    
+//    //converting dictionary into array
+//    func arrOfSectionsAndRows() -> [GeneralPage] {
+//        return [GeneralPage(sections: "WeeklyForecast", rows: sectionsAndRows["WeeklyForecast"]),
+//                GeneralPage(sections: "SunAndMoon", rows: sectionsAndRows["SunAndMoon"])]
+//    }
+//
+//}

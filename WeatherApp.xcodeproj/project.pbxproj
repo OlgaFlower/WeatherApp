@@ -16,7 +16,7 @@
 		843DD6F32378723700525AF2 /* MainExtensionWithCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6F22378723700525AF2 /* MainExtensionWithCollection.swift */; };
 		843DD6F52378728700525AF2 /* MainExtensionWithTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6F42378728700525AF2 /* MainExtensionWithTable.swift */; };
 		843DD6FA23797A0E00525AF2 /* APILocationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6F923797A0E00525AF2 /* APILocationKey.swift */; };
-		843DD6FC237987F400525AF2 /* LocationKeyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6FB237987F400525AF2 /* LocationKeyModel.swift */; };
+		843DD6FC237987F400525AF2 /* LocationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6FB237987F400525AF2 /* LocationKey.swift */; };
 		843DD702237AC13B00525AF2 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843DD701237AC13B00525AF2 /* List.storyboard */; };
 		843DD704237AC19B00525AF2 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD703237AC19B00525AF2 /* ListTableViewController.swift */; };
 		843DD749237D45B900525AF2 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD748237D45B900525AF2 /* ListPresenter.swift */; };
@@ -32,6 +32,8 @@
 		8456BB8D237DAA3300234876 /* TwelveHoursForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB8C237DAA3300234876 /* TwelveHoursForecast.swift */; };
 		8456BB8F237DAA7900234876 /* APITwelveHoursForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB8E237DAA7900234876 /* APITwelveHoursForecast.swift */; };
 		8456BB91237DBA8300234876 /* ExtensionToDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB90237DBA8300234876 /* ExtensionToDateFormat.swift */; };
+		8456BB93237E7CEE00234876 /* APIFiveDaysForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB92237E7CEE00234876 /* APIFiveDaysForecast.swift */; };
+		8456BB95237E7D1700234876 /* FiveDaysForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB94237E7D1600234876 /* FiveDaysForecast.swift */; };
 		84F8C0662371EE3D00BC13E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C0652371EE3D00BC13E6 /* AppDelegate.swift */; };
 		84F8C0682371EE3D00BC13E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C0672371EE3D00BC13E6 /* SceneDelegate.swift */; };
 		84F8C06D2371EE3D00BC13E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C06B2371EE3D00BC13E6 /* Main.storyboard */; };
@@ -68,7 +70,7 @@
 		843DD6F22378723700525AF2 /* MainExtensionWithCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainExtensionWithCollection.swift; sourceTree = "<group>"; };
 		843DD6F42378728700525AF2 /* MainExtensionWithTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainExtensionWithTable.swift; sourceTree = "<group>"; };
 		843DD6F923797A0E00525AF2 /* APILocationKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILocationKey.swift; sourceTree = "<group>"; };
-		843DD6FB237987F400525AF2 /* LocationKeyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationKeyModel.swift; sourceTree = "<group>"; };
+		843DD6FB237987F400525AF2 /* LocationKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationKey.swift; sourceTree = "<group>"; };
 		843DD701237AC13B00525AF2 /* List.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
 		843DD703237AC19B00525AF2 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		843DD748237D45B900525AF2 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
@@ -84,6 +86,8 @@
 		8456BB8C237DAA3300234876 /* TwelveHoursForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwelveHoursForecast.swift; sourceTree = "<group>"; };
 		8456BB8E237DAA7900234876 /* APITwelveHoursForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITwelveHoursForecast.swift; sourceTree = "<group>"; };
 		8456BB90237DBA8300234876 /* ExtensionToDateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionToDateFormat.swift; sourceTree = "<group>"; };
+		8456BB92237E7CEE00234876 /* APIFiveDaysForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFiveDaysForecast.swift; sourceTree = "<group>"; };
+		8456BB94237E7D1600234876 /* FiveDaysForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDaysForecast.swift; sourceTree = "<group>"; };
 		84F8C0622371EE3C00BC13E6 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F8C0652371EE3D00BC13E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F8C0672371EE3D00BC13E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 				843DD6F923797A0E00525AF2 /* APILocationKey.swift */,
 				8456BB87237D816B00234876 /* APIOneHourForecast.swift */,
 				8456BB8E237DAA7900234876 /* APITwelveHoursForecast.swift */,
+				8456BB92237E7CEE00234876 /* APIFiveDaysForecast.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -208,9 +213,10 @@
 		848980022372F57600482831 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				843DD6FB237987F400525AF2 /* LocationKeyModel.swift */,
+				843DD6FB237987F400525AF2 /* LocationKey.swift */,
 				8456BB85237D7D3000234876 /* OneHourForecast.swift */,
 				8456BB8C237DAA3300234876 /* TwelveHoursForecast.swift */,
+				8456BB94237E7D1600234876 /* FiveDaysForecast.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -424,12 +430,14 @@
 				8456BB88237D816B00234876 /* APIOneHourForecast.swift in Sources */,
 				843DD6EE237802EF00525AF2 /* BackgroundImages.swift in Sources */,
 				84F8C0662371EE3D00BC13E6 /* AppDelegate.swift in Sources */,
-				843DD6FC237987F400525AF2 /* LocationKeyModel.swift in Sources */,
+				843DD6FC237987F400525AF2 /* LocationKey.swift in Sources */,
+				8456BB93237E7CEE00234876 /* APIFiveDaysForecast.swift in Sources */,
 				8456BB91237DBA8300234876 /* ExtensionToDateFormat.swift in Sources */,
 				843DD6F32378723700525AF2 /* MainExtensionWithCollection.swift in Sources */,
 				843DD6E623774E9C00525AF2 /* MainWeekCell.swift in Sources */,
 				843F76B9237452B600D4A785 /* MainRowsAndSections.swift in Sources */,
 				843DD6E423774E1D00525AF2 /* MainHourForecastCollectionViewCell.swift in Sources */,
+				8456BB95237E7D1700234876 /* FiveDaysForecast.swift in Sources */,
 				8456BB8F237DAA7900234876 /* APITwelveHoursForecast.swift in Sources */,
 				8456BB7E237D573700234876 /* MainExtensionWithSafari.swift in Sources */,
 				843DD6E823774EF800525AF2 /* MainPresenter.swift in Sources */,
