@@ -50,32 +50,32 @@ class MainPresenter {
     
     //Recieve one hour forecast
     func loadOneHourForecast(completion: @escaping ([OneHourForecast]) -> Void) {
-        hourService.OneHourData { [weak self] (data) in
-            self?.oneHourForecasts = data
-            completion(data)
+        hourService.OneHourData { [weak self] (oneHour) in
+            self?.oneHourForecasts = oneHour
+            completion(oneHour)
         }
     }
     
     func loadTwelveHoursForecast(completion: @escaping ([TwelveHoursForecast]) -> Void) {
-        twelveHoursService.TwelveHoursData { [weak self] (data) in
-            self?.twelveHourForecasts = data
-            completion(data)
+        twelveHoursService.TwelveHoursData { [weak self] (twelveHours) in
+            self?.twelveHourForecasts = twelveHours
+            completion(twelveHours)
         }
     }
     
     //Recieve five days forecast
     func loadFiveDaysForecast(completion: @escaping (FiveDaysForecast) -> Void) {
-        fiveDaysService.FiveDaysData { [weak self] (data) in
-            self?.fiveDaysForecast = data
-            completion(data)
+        fiveDaysService.FiveDaysData { [weak self] (fiveDays) in
+            self?.fiveDaysForecast = fiveDays
+            completion(fiveDays)
         }
     }
     
     //Recieve local key
     func loadLocationKey(completion: @escaping ([LocationKey]) -> Void) {
-        locationKeyService.LocationKeyData { [weak self] (data) in
-            self?.locationKeys = data
-            completion(data)
+        locationKeyService.LocationKeyData { [weak self] (locationKey) in
+            self?.locationKeys = locationKey
+            completion(locationKey)
         }
     }
     

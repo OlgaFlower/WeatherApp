@@ -24,8 +24,8 @@ class APIFiveDaysForecast {
                 return
             }
             do {
-                let forecast = try JSONDecoder().decode(FiveDaysForecast.self, from: data)
-                completion(forecast)
+                let fiveDaysForecast = try JSONDecoder().decode(FiveDaysForecast.self, from: data)
+                completion(fiveDaysForecast)
                 } catch {
                     print("Error: \(error.localizedDescription)")
                 }

@@ -42,25 +42,24 @@ class MainViewController: UIViewController {
 //        }
         
         //Set current temperature view
-        presenter.loadOneHourForecast { (data) in
+        presenter.loadOneHourForecast { (oneHour) in
             DispatchQueue.main.async {
-                self.mainView.reloadInputViews()
-                self.temperatureLabel.text = "\(data.first!.temperat.temperatValue)" + "\(Helper.degree)"
-                self.forecastLabel.text = data.first?.iconPhrase
+                self.temperatureLabel.text = "\(oneHour.first!.temperat.temperatValue)" + "\(Helper.degree)"
+                self.forecastLabel.text = oneHour.first?.iconPhrase
             }
         }
         backgroundImage.image = UIImage(named: "autumn.jpg")
         cityNameLabel.text = "Some City"
         
         //Set collection view
-        presenter.loadTwelveHoursForecast { (data) in
+        presenter.loadTwelveHoursForecast { (twelveHours) in
             DispatchQueue.main.async {
                 self.mainCollectionView.reloadData()
             }
         }
         
         //set table view
-        presenter.loadFiveDaysForecast { (data) in
+        presenter.loadFiveDaysForecast { (fiveDays) in
             DispatchQueue.main.async {
                 self.mainTableView.reloadData()
             }
