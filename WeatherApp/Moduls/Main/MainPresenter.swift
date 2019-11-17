@@ -26,7 +26,7 @@ class MainPresenter {
     var fetchLocationKey = [LocationKey]()
     var fetchOneHourForecast = [OneHourForecast]()
     var fetchTwelveHourForecast = [TwelveHoursForecast]()
-    var fetchFiveDaysForecast = FiveDaysForecast()
+    var fetchFiveDaysForecast: FiveDaysForecast?
     
     
     //MARK: - Set table view rows (third view)

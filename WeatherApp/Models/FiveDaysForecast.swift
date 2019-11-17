@@ -11,10 +11,6 @@ import Foundation
 struct FiveDaysForecast: Codable {
     var dailyForecast: [Forecast]
     
-//    init(dailyForecast: [Forecast]) {
-//        self.dailyForecast = dailyForecast
-//    }
-    
                             private enum CodingKeys: String, CodingKey {
                                 case dailyForecast = "DailyForecasts"
                             }
@@ -27,10 +23,6 @@ struct Forecast: Codable {
     var sun: Sun
     var temperat: DayTemperature
     var dayIcon: DayIcon
-    
-//    init(date: String, sun: Sun, temperat: DayTemperature, dayIcon: DayIcon) {
-//        self.date = da
-    }
     
                         private enum CodingKeys: String, CodingKey {
                             case date     = "Date"
