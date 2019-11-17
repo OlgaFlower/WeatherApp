@@ -54,7 +54,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="goJ-4U-vS5" kind="show" id="MM4-So-z33"/>
+                        <segue destination="goJ-4U-vS5" kind="show" identifier="ShowSearch" id="MM4-So-z33"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RfE-WM-k7b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
