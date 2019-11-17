@@ -17,10 +17,10 @@ class MainPresenter {
 //    let tableRows = MainRowsAndSections()
     
     //MARK: - Data
-    let locationKeyService = APILocationKey()
-    let hourService = APIOneHourForecast()
-    let twelveHoursService = APITwelveHoursForecast()
-    let fiveDaysService = APIFiveDaysForecast()
+    let locationKeyService = APILocationKeyService()
+    let hourService = APIOneHourService()
+    let twelveHoursService = APITwelveHoursService()
+    let fiveDaysService = APIFiveDaysService()
 
     //structs
     var locationKeys = [LocationKey]()
@@ -50,14 +50,14 @@ class MainPresenter {
     
     //Recieve one hour forecast
     func loadOneHourForecast(completion: @escaping ([OneHourForecast]) -> Void) {
-        hourService.OneHourData { [weak self] (oneHour) in
+        hourService.fetchOneHour { [weak self] (oneHour) in
             self?.oneHourForecasts = oneHour
             completion(oneHour)
         }
     }
     
     func loadTwelveHoursForecast(completion: @escaping ([TwelveHoursForecast]) -> Void) {
-        twelveHoursService.TwelveHoursData { [weak self] (twelveHours) in
+        twelveHoursService.fetchTwelveHours { [weak self] (twelveHours) in
             self?.twelveHourForecasts = twelveHours
             completion(twelveHours)
         }
@@ -65,7 +65,7 @@ class MainPresenter {
     
     //Recieve five days forecast
     func loadFiveDaysForecast(completion: @escaping (FiveDaysForecast) -> Void) {
-        fiveDaysService.FiveDaysData { [weak self] (fiveDays) in
+        fiveDaysService.fetchFiveDays { [weak self] (fiveDays) in
             self?.fiveDaysForecast = fiveDays
             completion(fiveDays)
         }
@@ -73,7 +73,7 @@ class MainPresenter {
     
     //Recieve local key
     func loadLocationKey(completion: @escaping ([LocationKey]) -> Void) {
-        locationKeyService.LocationKeyData { [weak self] (locationKey) in
+        locationKeyService.fetchLocationKey { [weak self] (locationKey) in
             self?.locationKeys = locationKey
             completion(locationKey)
         }

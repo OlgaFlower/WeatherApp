@@ -1,19 +1,18 @@
 //
-//  APIFiveDaysForecast.swift
+//  APIOneHourForecast.swift
 //  WeatherApp
 //
-//  Created by Admin on 15.11.2019.
+//  Created by Admin on 14.11.2019.
 //  Copyright © 2019 Flower. All rights reserved.
-//http://dataservice.accuweather.com/forecasts/v1/daily/5day/326175?apikey=DD88l3LYERLRIDfPjaSGXsMlcG0yWtoK&details=true&metric=true
+//http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/326175?apikey=1iyjSw7peRCAQDQnRv9zqhWjCbRGydNv&details=true&metric=true
 
 import Foundation
 
-class APIFiveDaysForecast {
-    
+class APIOneHourService {
     var cityKey = "326175"
     
-    func FiveDaysData(completion: @escaping (FiveDaysForecast) -> ()) {
-        let urlString = "\(Helper.urlString)/forecasts/v1/daily/5day/\(cityKey)?apikey=\(Helper.apiKey)&details=true&metric=true"
+    func fetchOneHour(completion: @escaping ([OneHourForecast]) -> ()) {
+        let urlString = "\(Helper.urlString)/forecasts/v1/hourly/1hour/\(cityKey)?apikey=\(Helper.apiKey)&details=true&metric=true"
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
@@ -24,12 +23,12 @@ class APIFiveDaysForecast {
                 return
             }
             do {
-                let fiveDaysForecast = try JSONDecoder().decode(FiveDaysForecast.self, from: data)
-                completion(fiveDaysForecast)
+                let oneHourforecast = try JSONDecoder().decode([OneHourForecast].self, from: data)
+                completion(oneHourforecast)
                 } catch {
                     print("Error: \(error.localizedDescription)")
                 }
         }.resume()
     }
-    
 }
+    
