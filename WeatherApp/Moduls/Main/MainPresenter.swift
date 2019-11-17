@@ -22,11 +22,11 @@ class MainPresenter {
     let dataTwelveHours = APITwelveHoursForecast()
     let dataFiveDays = APIFiveDaysForecast()
 
-    
-    var fetchLocationKey = [LocationKey]()
-    var fetchOneHourForecast = [OneHourForecast]()
-    var fetchTwelveHourForecast = [TwelveHoursForecast]()
-    var fetchFiveDaysForecast: FiveDaysForecast?
+    //structs
+    var locationKeys: [LocationKey]?
+    var oneHourForecasts: [OneHourForecast]?
+    var twelveHourForecasts: [TwelveHoursForecast]?
+    var fiveDaysForecast: FiveDaysForecast?
     
     
     //MARK: - Set table view rows (third view)
@@ -51,14 +51,14 @@ class MainPresenter {
     //Recieve one hour forecast
     func loadOneHourForecast(completion: @escaping ([OneHourForecast]) -> Void) {
         dataHour.OneHourData { [weak self] (data) in
-            self?.fetchOneHourForecast = data
+            self?.oneHourForecasts = data
             completion(data)
         }
     }
     
     func loadTwelveHoursForecast(completion: @escaping ([TwelveHoursForecast]) -> Void) {
         dataTwelveHours.TwelveHoursData { [weak self] (data) in
-            self?.fetchTwelveHourForecast = data
+            self?.twelveHourForecasts = data
             completion(data)
         }
     }
@@ -66,7 +66,7 @@ class MainPresenter {
     //Recieve five days forecast
     func loadFiveDaysForecast(completion: @escaping (FiveDaysForecast) -> Void) {
         dataFiveDays.FiveDaysData { [weak self] (data) in
-            self?.fetchFiveDaysForecast = data
+            self?.fiveDaysForecast = data
             completion(data)
         }
     }
@@ -74,7 +74,7 @@ class MainPresenter {
     //Recieve local key
     func loadLocationKey(completion: @escaping ([LocationKey]) -> Void) {
         datalocationKey.LocationKeyData { [weak self] (data) in
-            self?.fetchLocationKey = data
+            self?.locationKeys = data
             completion(data)
         }
     }
@@ -83,7 +83,7 @@ class MainPresenter {
     //Safari Link
     var safariLink: String {
         get {
-            return fetchOneHourForecast.first?.mobLink ?? "https://developer.accuweather.com"
+            return oneHourForecasts?.first?.mobLink ?? "https://developer.accuweather.com"
         }
     }
     

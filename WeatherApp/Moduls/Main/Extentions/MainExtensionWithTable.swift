@@ -23,9 +23,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0: let cell = tableView.dequeueReusableCell(withIdentifier: "WeekCell", for: indexPath) as! MainWeekCell
-                cell.dayLabel.text = presenter.fetchFiveDaysForecast?.dailyForecast[indexPath.row].date
-                cell.maxLabel.text = "\(presenter.fetchFiveDaysForecast!.dailyForecast[indexPath.row].temperat.max))"
-                cell.minLabel.text = "\(presenter.fetchFiveDaysForecast!.dailyForecast[indexPath.row].temperat.min))"
+                cell.dayLabel.text = presenter.fiveDaysForecast?.dailyForecast[indexPath.row].date
+                cell.maxLabel.text = "\(presenter.fiveDaysForecast!.dailyForecast[indexPath.row].temperat.max))"
+                cell.minLabel.text = "\(presenter.fiveDaysForecast!.dailyForecast[indexPath.row].temperat.min))"
                 return cell
         case 1: let cell = tableView.dequeueReusableCell(withIdentifier: "SunMoonCell", for: indexPath) as! MainSunCell
                 cell.sunIconImage.image = UIImage(named: "sun2.png")
