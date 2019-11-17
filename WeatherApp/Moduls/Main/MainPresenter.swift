@@ -10,6 +10,11 @@ import UIKit
 
 
 class MainPresenter {
+    
+//    init() {
+//        oneHourForecasts
+//        twelveHourForecasts
+//    }
    
     //MARK: - Main View Controller properties
     weak var mainView: MainViewController?
@@ -24,8 +29,8 @@ class MainPresenter {
 
     //structs
     var locationKeys = [LocationKey]()
-    var oneHourForecasts: [OneHourForecast]?
-    var twelveHourForecasts: [TwelveHoursForecast]?
+    var oneHourForecasts = [OneHourForecast]()
+    var twelveHourForecasts = [TwelveHoursForecast]()
     var fiveDaysForecast: FiveDaysForecast?
     
     
@@ -83,7 +88,7 @@ class MainPresenter {
     //Safari Link
     var safariLink: String {
         get {
-            return oneHourForecasts?.first?.mobLink ?? "https://developer.accuweather.com"
+            return oneHourForecasts.first?.mobLink ?? "https://developer.accuweather.com"
         }
     }
     

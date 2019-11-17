@@ -9,7 +9,7 @@
         <!--List Table View Controller-->
         <scene sceneID="N2c-Xf-n13">
             <objects>
-                <tableViewController id="yIw-pU-rlS" customClass="ListTableViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ListTableViewController" id="yIw-pU-rlS" customClass="ListTableViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jFf-re-K9U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,7 +54,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="goJ-4U-vS5" kind="custom" id="MM4-So-z33"/>
+                        <segue destination="goJ-4U-vS5" kind="show" id="MM4-So-z33"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RfE-WM-k7b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -64,7 +64,9 @@
         <!--Search-->
         <scene sceneID="0aa-CA-qpI">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="search" storyboardName="Search" id="goJ-4U-vS5" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="search" storyboardName="Search" id="goJ-4U-vS5" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Cbk-aL-g3z"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n6f-9s-0SD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3256" y="90"/>

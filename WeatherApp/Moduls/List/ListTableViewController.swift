@@ -21,7 +21,7 @@ class ListTableViewController: UITableViewController {
     }
     
     @IBAction func addButton(_ sender: Any) {
-        let searchVC = storyboard?.instantiateViewController(withIdentifier: "search") as! SearchTableViewController
+        let searchVC = storyboard?.instantiateViewController(withIdentifier: "search") as! SearchViewController
         self.present(searchVC, animated: true, completion: nil)
     }
     

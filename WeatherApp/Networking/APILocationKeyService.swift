@@ -17,17 +17,17 @@ class APILocationKeyService {
         guard let url = URL(string: urlString) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
-                print("Error: \(error!.localizedDescription)")
+                print(error!.localizedDescription)
                 }
-                guard let data = data else {
-                    print("Error: \(error!.localizedDescription)")
+                guard let data = try? data else {
+                    print(ParsingError.download)
                     return
                 }
                 do {
                     let locationKey = try JSONDecoder().decode([LocationKey].self, from: data)
                     completion(locationKey)
                     } catch {
-                        print("Error: \(error.localizedDescription)")
+                        print(ParsingError.decode)
                     }
             }.resume()
         }

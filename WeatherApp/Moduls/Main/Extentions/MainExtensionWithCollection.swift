@@ -13,7 +13,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.twelveHourForecasts?.count ?? 1
+        return presenter.twelveHourForecasts.count ?? 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -21,10 +21,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if indexPath.row == 0 {
             cell.timeLabel.text = "Now"
         } else {
-            cell.timeLabel.text = presenter.twelveHourForecasts?[indexPath.row].time
+            cell.timeLabel.text = presenter.twelveHourForecasts[indexPath.row].time
         }
         cell.iconImage.image = UIImage(named: "muchSnow.png")
-        cell.temperatLabel.text = "\(presenter.twelveHourForecasts?[indexPath.row].temperat.temperatValue)" + Helper.degree
+        cell.temperatLabel.text = "\(presenter.twelveHourForecasts[indexPath.row].temperat.temperatValue)" + Helper.degree
         return cell
     }
 }
