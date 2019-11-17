@@ -17,13 +17,13 @@ class MainPresenter {
 //    let tableRows = MainRowsAndSections()
     
     //MARK: - Data
-    let datalocationKey = APILocationKey()
-    let dataHour = APIOneHourForecast()
-    let dataTwelveHours = APITwelveHoursForecast()
-    let dataFiveDays = APIFiveDaysForecast()
+    let locationKeyService = APILocationKey()
+    let hourService = APIOneHourForecast()
+    let twelveHoursService = APITwelveHoursForecast()
+    let fiveDaysService = APIFiveDaysForecast()
 
     //structs
-    var locationKeys: [LocationKey]?
+    var locationKeys = [LocationKey]()
     var oneHourForecasts: [OneHourForecast]?
     var twelveHourForecasts: [TwelveHoursForecast]?
     var fiveDaysForecast: FiveDaysForecast?
@@ -50,14 +50,14 @@ class MainPresenter {
     
     //Recieve one hour forecast
     func loadOneHourForecast(completion: @escaping ([OneHourForecast]) -> Void) {
-        dataHour.OneHourData { [weak self] (data) in
+        hourService.OneHourData { [weak self] (data) in
             self?.oneHourForecasts = data
             completion(data)
         }
     }
     
     func loadTwelveHoursForecast(completion: @escaping ([TwelveHoursForecast]) -> Void) {
-        dataTwelveHours.TwelveHoursData { [weak self] (data) in
+        twelveHoursService.TwelveHoursData { [weak self] (data) in
             self?.twelveHourForecasts = data
             completion(data)
         }
@@ -65,7 +65,7 @@ class MainPresenter {
     
     //Recieve five days forecast
     func loadFiveDaysForecast(completion: @escaping (FiveDaysForecast) -> Void) {
-        dataFiveDays.FiveDaysData { [weak self] (data) in
+        fiveDaysService.FiveDaysData { [weak self] (data) in
             self?.fiveDaysForecast = data
             completion(data)
         }
@@ -73,7 +73,7 @@ class MainPresenter {
     
     //Recieve local key
     func loadLocationKey(completion: @escaping ([LocationKey]) -> Void) {
-        datalocationKey.LocationKeyData { [weak self] (data) in
+        locationKeyService.LocationKeyData { [weak self] (data) in
             self?.locationKeys = data
             completion(data)
         }
