@@ -37,6 +37,7 @@ class MainViewController: UIViewController {
         mainTableView.delegate = self
         mainTableView.dataSource = self
  
+
 //        presenter.loadLocationKey { (data) in
 //            print(data)
 //        }
@@ -44,7 +45,7 @@ class MainViewController: UIViewController {
         //Set current temperature view
         presenter.loadOneHourForecast { (oneHour) in
             DispatchQueue.main.async {
-                self.temperatureLabel.text = "\(oneHour.first!.temperat.temperatValue)" + "\(Helper.degree)"
+                self.temperatureLabel.text = "\(Int(oneHour.first!.temperat.temperatValue))" + "\(Helper.degree)"
                 self.forecastLabel.text = oneHour.first?.iconPhrase
             }
         }
@@ -66,7 +67,6 @@ class MainViewController: UIViewController {
         }
         
         
-        
     }
     
     @IBAction func openLinkButton(_ sender: UIButton) {
@@ -77,5 +77,107 @@ class MainViewController: UIViewController {
     
 }
 
+//"2019-11-16T07:00:00+02:00"
+
+//let dateString = "Thu, 22 Oct 2015 07:45:17 +0000"
+//let dateFormatter = DateFormatter()
+//dateFormatter.dateFormat = "EEE, dd MMM yyyy hh:mm:ss +zzzz"
+//dateFormatter.locale = Locale.init(identifier: "en_GB")
+//
+//let dateObj = dateFormatter.date(from: dateString)
+//
+//dateFormatter.dateFormat = "MM-dd-yyyy"
+//print("Dateobj: \(dateFormatter.string(from: dateObj!))")
+
+func xdate (dateString: String) -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-mm-ddxhh:mm:ss+zz:zz"
+    dateFormatter.locale = Locale.init(identifier: "ua_UA")
+    
+    let formatedDate = dateFormatter.date(from: dateString)
+    
+    dateFormatter.dateFormat = "dd-mm-yyyy"
+    let newDate = (dateFormatter.string(from: formatedDate!))
+    return newDate
+}
 
 
+//MARK: - Main Collection ext.
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return presenter.twelveHourForecasts?.count ?? 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! MainHourForecastCollectionViewCell
+        if indexPath.row == 0 {
+            cell.timeLabel.text = "Now"
+        } else {
+            cell.timeLabel.text = presenter.twelveHourForecasts?[indexPath.row].time
+        }
+        cell.iconImage.image = UIImage(named: "muchSnow.png")
+        cell.temperatLabel.text = "\(String(describing: presenter.twelveHourForecasts?[indexPath.row].temperat.temperatValue))" + Helper.degree
+        return cell
+    }
+}
+
+
+//MARK: - Main tableView ext.
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        return presenter.rowsNumberInTable(section)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 55
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.section {
+        case 0: let cell = tableView.dequeueReusableCell(withIdentifier: "WeekCell", for: indexPath) as! MainWeekCell
+                //unwrap values in table view cells
+                guard let fiveDayForecast = presenter.fiveDaysForecast else { return cell }
+        
+                cell.dayLabel.text = fiveDayForecast.dailyForecast[indexPath.row].date
+                cell.maxLabel.text = "\(Int(fiveDayForecast.dailyForecast[indexPath.row].temperat.max.value))" + Helper.degree
+                cell.minLabel.text = "\(Int(fiveDayForecast.dailyForecast[indexPath.row].temperat.min.value))" + Helper.degree
+                cell.iconImage.image = UIImage(named: "sunAndCloud.png")
+                return cell
+        
+        case 1: let cell = tableView.dequeueReusableCell(withIdentifier: "SunMoonCell", for: indexPath) as! MainSunCell
+                //unwrap values in table view cells
+                guard let fiveDayForecast = presenter.fiveDaysForecast else { return cell}
+        
+                cell.sunIconImage.image = UIImage(named: "sun2.png")
+                cell.sunriseLabel.text = "Sunrise"
+                cell.sunriseTimeLabel.text = fiveDayForecast.dailyForecast.first?.sun.sunriseTime
+                cell.sunsetLabel.text = "Sunset"
+                cell.sunsetTimeLabel.text = fiveDayForecast.dailyForecast.first?.sun.sunsetTime
+                cell.moonIconImage.image = UIImage(named: "moon.png")
+                return cell
+        default: break
+        }
+        return UITableViewCell()
+    }
+    
+}
+
+
+//MARK: - open browser ext.
+extension MainViewController {
+    func openSafari(for url: String) {
+        guard let url = URL(string: url) else {
+            return
+        }
+        let safariVC = SFSafariViewController(url: url)
+        present(safariVC, animated: true)
+    }
+}

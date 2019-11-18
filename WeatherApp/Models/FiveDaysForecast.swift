@@ -19,7 +19,7 @@ struct FiveDaysForecast: Codable {
 
 
 struct Forecast: Codable {
-    var date: String?
+    var date: String
     var sun: Sun
     var temperat: DayTemperature
     var dayIcon: DayIcon
@@ -34,8 +34,8 @@ struct Forecast: Codable {
 
 
 struct Sun: Codable {
-    var sunriseTime: String?
-    var sunsetTime: String?
+    var sunriseTime: String
+    var sunsetTime: String
     
                         private enum CodingKeys: String, CodingKey {
                             case sunriseTime = "Rise"
@@ -56,7 +56,7 @@ struct DayTemperature: Codable {
 
 
 struct DayIcon: Codable {
-    var icon: Int?
+    var icon: Int
     
                         private enum CodingKeys: String, CodingKey {
                             case icon = "Icon"
@@ -65,8 +65,8 @@ struct DayIcon: Codable {
 
 
 struct MinTemperat: Codable {
-    var value: Double? //in C
-    
+    var value: Double //in C
+
                         private enum CodingKeys: String, CodingKey {
                             case value = "Value"
                         }
@@ -74,10 +74,14 @@ struct MinTemperat: Codable {
 
 
 struct MaxTemperat: Codable {
-    var value: Double? //in C
+    var value: Double //in C
     
+    func intoString(value: Double) -> String {
+        return String(value)
+    }
                         private enum CodingKeys: String, CodingKey {
                             case value = "Value"
                         }
 }
+
 

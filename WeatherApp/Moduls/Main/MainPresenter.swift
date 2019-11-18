@@ -19,7 +19,6 @@ class MainPresenter {
     //MARK: - Main View Controller properties
     weak var mainView: MainViewController?
     weak var collection: MainHourForecastCollectionViewCell?
-//    let tableRows = MainRowsAndSections()
     
     //MARK: - Data
     let locationKeyService = APILocationKeyService()
@@ -29,16 +28,12 @@ class MainPresenter {
 
     //structs
     var locationKeys = [LocationKey]()
-    var oneHourForecasts = [OneHourForecast]()
-    var twelveHourForecasts = [TwelveHoursForecast]()
+    var oneHourForecasts: [OneHourForecast]?
+    var twelveHourForecasts: [TwelveHoursForecast]?
     var fiveDaysForecast: FiveDaysForecast?
     
     
     //MARK: - Set table view rows (third view)
-//    func numberOfRowsInTable(_ section: Int) -> Int {
-//        return tableRows.arrOfSectionsAndRows()[section].rows
-//    }
-    
     func rowsNumberInTable(_ section: Int) -> Int {
         var row = 0
         if section == 0 {
@@ -88,7 +83,7 @@ class MainPresenter {
     //Safari Link
     var safariLink: String {
         get {
-            return oneHourForecasts.first?.mobLink ?? "https://developer.accuweather.com"
+            return oneHourForecasts?.first?.mobLink ?? "https://developer.accuweather.com"
         }
     }
     
