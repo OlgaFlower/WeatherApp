@@ -31,7 +31,33 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kfJ-Nf-4hS" id="spz-k9-qum">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rkg-75-yXB">
+                                                    <rect key="frame" x="16" y="12" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="highlightedColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUg-Xp-7ip">
+                                                    <rect key="frame" x="70" y="12" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Rkg-75-yXB" firstAttribute="leading" secondItem="spz-k9-qum" secondAttribute="leadingMargin" id="DrH-ZX-d7o"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="cUg-Xp-7ip" secondAttribute="bottom" id="EVi-ER-jNN"/>
+                                                <constraint firstItem="cUg-Xp-7ip" firstAttribute="top" secondItem="spz-k9-qum" secondAttribute="topMargin" constant="1" id="ZVJ-ck-v39"/>
+                                                <constraint firstItem="Rkg-75-yXB" firstAttribute="top" secondItem="spz-k9-qum" secondAttribute="topMargin" constant="1" id="pva-q4-i5h"/>
+                                                <constraint firstItem="Rkg-75-yXB" firstAttribute="bottom" secondItem="spz-k9-qum" secondAttribute="bottomMargin" id="rXN-hO-Bqw"/>
+                                                <constraint firstItem="cUg-Xp-7ip" firstAttribute="leading" secondItem="Rkg-75-yXB" secondAttribute="trailing" constant="12" id="tWD-2N-8Js"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cityLabel" destination="cUg-Xp-7ip" id="gJD-FA-G4q"/>
+                                            <outlet property="countryLabel" destination="Rkg-75-yXB" id="yGG-jH-1nd"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
