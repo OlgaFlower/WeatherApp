@@ -13,6 +13,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
   
     @IBOutlet weak var tableView: UITableView!
+    let service = APISearchCityService()
     
     let presenter = SearchPresenter()
     var resultOfRequest = [SearchResult]() {
@@ -22,24 +23,21 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
     }
-    let searchController = UISearchController(searchResultsController: nil)
+    let searchCity = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self //as? UITableViewDataSource
         tableView.delegate = self //as? UITableViewDelegate
       
-        searchController.searchResultsUpdater = self
+        searchCity.searchResultsUpdater = self
         definesPresentationContext = true
-        tableView.tableHeaderView = searchController.searchBar
-        searchController.searchBar.tintColor = UIColor.white
-        searchController.searchBar.barTintColor = UIColor.green
+        tableView.tableHeaderView = searchCity.searchBar
+        searchCity.searchBar.tintColor = UIColor.white
+        searchCity.searchBar.barTintColor = UIColor.green
         
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return resultOfRequest.count
@@ -58,14 +56,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
-        print(searchController.searchBar.text)
-      }
-    func searchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchBar.text else { return }
-        let request = SearchRequest(cityName: searchText)
-        request.fetchSearchResult { [weak self] result in
-            self?.resultOfRequest = result
+        guard let text = searchController.searchBar.text else {return}
+        if text.count >= 3 {
+            presenter.searchService.fetchSearchResult(text) { resultOfRequest in
+            self.resultOfRequest = resultOfRequest
+            }
+        } else {
+            self.resultOfRequest.removeAll()
         }
     }
 }
-

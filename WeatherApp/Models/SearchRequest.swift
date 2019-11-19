@@ -8,12 +8,20 @@
 
 import Foundation
 
+class CitySearchService {
+    
+let APIKey = "1iyjSw7peRCAQDQnRv9zqhWjCbRGydNv"
+    
+    
+    
+}
+//TOFIX: - move to services
 struct SearchRequest {
     let resourseURL: URL
     let APIKey = "1iyjSw7peRCAQDQnRv9zqhWjCbRGydNv"
     
     init(cityName: String) {
-        let resourseString = "http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=\(APIKey)&q=\(cityName)"
+        var resourseString = "http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=\(APIKey)&q=\(cityName)"
         
         guard let resourseURL = URL(string: resourseString) else { fatalError()}
         self.resourseURL = resourseURL
