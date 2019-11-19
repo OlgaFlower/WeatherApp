@@ -27,7 +27,7 @@ class MainPresenter {
     let fiveDaysService = APIFiveDaysService()
 
     //structs
-    var locationKeys = [LocationKey]()
+//    var locationKeys = [LocationKey]()
     var oneHourForecasts: [OneHourForecast]?
     var twelveHourForecasts: [TwelveHoursForecast]?
     var fiveDaysForecast: FiveDaysForecast?
@@ -71,13 +71,13 @@ class MainPresenter {
         }
     }
     
-    //Recieve local key
-    func loadLocationKey(completion: @escaping ([LocationKey]) -> Void) {
-        locationKeyService.fetchLocationKey { [weak self] (locationKey) in
-            self?.locationKeys = locationKey
-            completion(locationKey)
-        }
-    }
+//    //Recieve local key
+//    func loadLocationKey(completion: @escaping ([LocationKey]) -> Void) {
+//        locationKeyService.fetchLocationKey { [weak self] (locationKey) in
+//            self?.locationKeys = locationKey
+//            completion(locationKey)
+//        }
+//    }
     
 
     //Safari Link

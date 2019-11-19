@@ -13,7 +13,7 @@ class Helper {
     
     static let apiKey = "1iyjSw7peRCAQDQnRv9zqhWjCbRGydNv"
     static let apiKey2 = "DD88l3LYERLRIDfPjaSGXsMlcG0yWtoK"
-    static let urlString = "https://dataservice.accuweather.com"
+    static let urlString = "https://dataservice.accuweather.com" //rename to baseURL
     
     
     static let degree = "°"

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AutocompleteSearch: Codable {
+struct SearchResult: Codable {
     var key: String
     var cityName: String
     var country: CountryName
