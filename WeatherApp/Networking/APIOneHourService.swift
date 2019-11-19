@@ -9,11 +9,9 @@
 import Foundation
 
 class APIOneHourService {
-    var cityKey = "326175"
     
     func fetchOneHour(completion: @escaping ([OneHourForecast]) -> ()) {
-        let urlString = "\(Helper.urlString)/forecasts/v1/hourly/1hour/\(cityKey)?apikey=\(Helper.apiKey)&details=true&metric=true"
-        guard let url = URL(string: urlString) else { return }
+        guard let url = URL(string: Helper.oneHourResource) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
                 print("Error: \(error!.localizedDescription)")

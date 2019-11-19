@@ -29,8 +29,6 @@ struct SearchRequest {
     
     
     func fetchSearchResult(completion: @escaping ([SearchResult]) -> ()) {
-//        let urlString = "\(Helper.urlString)/locations/v1/cities/autocomplete?apikey=\(Helper.apiKey)&q=\(query)"
-//        guard let url = URL(string: resourseURL) else { return }
         
         URLSession.shared.dataTask(with: resourseURL) { data, response, error in
             if error != nil {

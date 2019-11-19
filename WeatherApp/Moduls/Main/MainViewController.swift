@@ -115,7 +115,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if indexPath.row == 0 {
             cell.timeLabel.text = "Now"
         } else {
-            cell.timeLabel.text = presenter.twelveHourForecasts?[indexPath.row].time
+            // FIXME: descriptioklv
+            cell.timeLabel.text = presenter.twelveHourForecasts?[indexPath.row].time.description
         }
         cell.iconImage.image = UIImage(named: "muchSnow.png")
         cell.temperatLabel.text = "\(String(describing: presenter.twelveHourForecasts?[indexPath.row].temperat.temperatValue))" + Helper.degree

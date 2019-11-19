@@ -10,11 +10,8 @@ import Foundation
 
 class APITwelveHoursService {
     
-    var cityKey = "326175"
-    
     func fetchTwelveHours(completion: @escaping ([TwelveHoursForecast]) -> ()) {
-        let urlString = "\(Helper.urlString)/forecasts/v1/hourly/12hour/\(cityKey)?apikey=\(Helper.apiKey)&details=true&metric=true"
-        guard let url = URL(string: urlString) else { return }
+        guard let url = URL(string: Helper.twelveHoursResource) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
                 print("Error: \(error!.localizedDescription)")
@@ -23,8 +20,12 @@ class APITwelveHoursService {
                 print("Error: \(error!.localizedDescription)")
                 return
             }
+            
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            
             do {
-                let twelveHoursForecast = try JSONDecoder().decode([TwelveHoursForecast].self, from: data)
+                let twelveHoursForecast = try decoder.decode([TwelveHoursForecast].self, from: data)
                 completion(twelveHoursForecast)
                 } catch {
                     print("Error: \(error.localizedDescription)")

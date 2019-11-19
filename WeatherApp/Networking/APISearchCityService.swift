@@ -11,8 +11,7 @@ import Foundation
 class APISearchCityService {
 
     func fetchSearchResult(_ query: String, completion: @escaping ([SearchResult]) -> ()) {
-        let urlString = "\(Helper.urlString)/locations/v1/cities/autocomplete?apikey=\(Helper.apiKey)&q=\(query)"
-        guard let url = URL(string: urlString) else { return }
+        guard let url = URL(string: Helper.searchResource + query) else { return }
 
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
