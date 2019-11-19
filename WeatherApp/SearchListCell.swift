@@ -10,8 +10,5 @@ import UIKit
 
 class SearchListCell: UITableViewCell {
     
-    @IBOutlet weak var countryLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
-    
     
 }
