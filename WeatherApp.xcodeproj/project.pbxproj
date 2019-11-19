@@ -12,8 +12,6 @@
 		843DD6E623774E9C00525AF2 /* MainWeekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6E523774E9C00525AF2 /* MainWeekCell.swift */; };
 		843DD6E823774EF800525AF2 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6E723774EF800525AF2 /* MainPresenter.swift */; };
 		843DD6F12378628700525AF2 /* MainSunCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6F02378628700525AF2 /* MainSunCell.swift */; };
-		843DD6FA23797A0E00525AF2 /* APILocationKeyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6F923797A0E00525AF2 /* APILocationKeyService.swift */; };
-		843DD6FC237987F400525AF2 /* LocationKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6FB237987F400525AF2 /* LocationKey.swift */; };
 		843DD702237AC13B00525AF2 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843DD701237AC13B00525AF2 /* List.storyboard */; };
 		843DD704237AC19B00525AF2 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD703237AC19B00525AF2 /* ListTableViewController.swift */; };
 		843DD749237D45B900525AF2 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD748237D45B900525AF2 /* ListPresenter.swift */; };
@@ -33,7 +31,6 @@
 		8484C3D62382F7A500A4BD36 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3D52382F7A500A4BD36 /* SearchResult.swift */; };
 		8484C3D82384115F00A4BD36 /* APISearchCityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3D72384115F00A4BD36 /* APISearchCityService.swift */; };
 		8484C3DA2384127F00A4BD36 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3D92384127F00A4BD36 /* SearchPresenter.swift */; };
-		8484C3DC2384277A00A4BD36 /* SearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3DB2384277A00A4BD36 /* SearchRequest.swift */; };
 		84F8C0662371EE3D00BC13E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C0652371EE3D00BC13E6 /* AppDelegate.swift */; };
 		84F8C0682371EE3D00BC13E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C0672371EE3D00BC13E6 /* SceneDelegate.swift */; };
 		84F8C06D2371EE3D00BC13E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C06B2371EE3D00BC13E6 /* Main.storyboard */; };
@@ -66,8 +63,6 @@
 		843DD6E523774E9C00525AF2 /* MainWeekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeekCell.swift; sourceTree = "<group>"; };
 		843DD6E723774EF800525AF2 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		843DD6F02378628700525AF2 /* MainSunCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSunCell.swift; sourceTree = "<group>"; };
-		843DD6F923797A0E00525AF2 /* APILocationKeyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APILocationKeyService.swift; sourceTree = "<group>"; };
-		843DD6FB237987F400525AF2 /* LocationKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationKey.swift; sourceTree = "<group>"; };
 		843DD701237AC13B00525AF2 /* List.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
 		843DD703237AC19B00525AF2 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		843DD748237D45B900525AF2 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
@@ -87,7 +82,6 @@
 		8484C3D52382F7A500A4BD36 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		8484C3D72384115F00A4BD36 /* APISearchCityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISearchCityService.swift; sourceTree = "<group>"; };
 		8484C3D92384127F00A4BD36 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchPresenter.swift; path = WeatherApp/Networking/SearchPresenter.swift; sourceTree = SOURCE_ROOT; };
-		8484C3DB2384277A00A4BD36 /* SearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequest.swift; sourceTree = "<group>"; };
 		84F8C0622371EE3C00BC13E6 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F8C0652371EE3D00BC13E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F8C0672371EE3D00BC13E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,7 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				8484C3C823818F5800A4BD36 /* Errors.swift */,
-				843DD6F923797A0E00525AF2 /* APILocationKeyService.swift */,
 				8456BB87237D816B00234876 /* APIOneHourService.swift */,
 				8456BB8E237DAA7900234876 /* APITwelveHoursService.swift */,
 				8456BB92237E7CEE00234876 /* APIFiveDaysService.swift */,
@@ -196,11 +189,9 @@
 		848980022372F57600482831 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				843DD6FB237987F400525AF2 /* LocationKey.swift */,
 				8456BB85237D7D3000234876 /* OneHourForecast.swift */,
 				8456BB8C237DAA3300234876 /* TwelveHoursForecast.swift */,
 				8456BB94237E7D1600234876 /* FiveDaysForecast.swift */,
-				8484C3DB2384277A00A4BD36 /* SearchRequest.swift */,
 				8484C3D52382F7A500A4BD36 /* SearchResult.swift */,
 			);
 			path = Models;
@@ -413,11 +404,9 @@
 			files = (
 				8456BB88237D816B00234876 /* APIOneHourService.swift in Sources */,
 				84F8C0662371EE3D00BC13E6 /* AppDelegate.swift in Sources */,
-				843DD6FC237987F400525AF2 /* LocationKey.swift in Sources */,
 				8456BB93237E7CEE00234876 /* APIFiveDaysService.swift in Sources */,
 				8484C3CD2381A3FD00A4BD36 /* SearchListCell.swift in Sources */,
 				8484C3DA2384127F00A4BD36 /* SearchPresenter.swift in Sources */,
-				8484C3DC2384277A00A4BD36 /* SearchRequest.swift in Sources */,
 				8456BB91237DBA8300234876 /* ExtensionToDateFormat.swift in Sources */,
 				843DD6E623774E9C00525AF2 /* MainWeekCell.swift in Sources */,
 				843F76B9237452B600D4A785 /* MainRowsAndSections.swift in Sources */,
@@ -428,7 +417,6 @@
 				843DD6E823774EF800525AF2 /* MainPresenter.swift in Sources */,
 				843DD6F12378628700525AF2 /* MainSunCell.swift in Sources */,
 				843DD749237D45B900525AF2 /* ListPresenter.swift in Sources */,
-				843DD6FA23797A0E00525AF2 /* APILocationKeyService.swift in Sources */,
 				84F8C0682371EE3D00BC13E6 /* SceneDelegate.swift in Sources */,
 				843DD704237AC19B00525AF2 /* ListTableViewController.swift in Sources */,
 				843DD6E223774B5700525AF2 /* MainViewController.swift in Sources */,

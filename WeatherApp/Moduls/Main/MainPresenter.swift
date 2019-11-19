@@ -21,7 +21,6 @@ class MainPresenter {
     weak var collection: MainHourForecastCollectionViewCell?
     
     //MARK: - Data
-    let locationKeyService = APILocationKeyService()
     let hourService = APIOneHourService()
     let twelveHoursService = APITwelveHoursService()
     let fiveDaysService = APIFiveDaysService()
