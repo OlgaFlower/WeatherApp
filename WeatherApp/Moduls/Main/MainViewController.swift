@@ -91,10 +91,11 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             // FIXME: descriptioklv
             // cell.timeLabel.text = presenter.twelveHourForecasts?[indexPath.row].time.description
             
-            cell.timeLabel.text = Helper.dateConverter((presenter.twelveHourForecasts?[indexPath.row].time)!, Helper.hourFormat)
+            cell.timeLabel.text = Helper.dateConverter(((presenter.twelveHourForecasts?[indexPath.row].time)!), Helper.hourFormat)
         }
         cell.iconImage.image = UIImage(named: "muchSnow.png")
-        cell.temperatLabel.text = "\(String(describing: presenter.twelveHourForecasts?[indexPath.row].temperat.temperatValue))" + Helper.degree
+        guard let twelveHours = presenter.twelveHourForecasts else { return cell }
+        cell.temperatLabel.text = "\(String(Int(twelveHours[indexPath.row].temperat.temperatValue)))" + Helper.degree
         return cell
     }
 }
