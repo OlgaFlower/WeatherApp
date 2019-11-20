@@ -42,7 +42,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.98502451179999995" green="0.95287185910000005" blue="0.9524495006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="362" id="3ss-yh-LRZ"/>
                                     <constraint firstItem="Ste-Il-lF4" firstAttribute="top" secondItem="ymB-xR-MMW" secondAttribute="bottom" constant="42" id="9Aw-dr-D8H"/>
@@ -58,7 +57,6 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vYk-ry-soN">
                                 <rect key="frame" x="0.0" y="359" width="414" height="100"/>
-                                <color key="backgroundColor" red="0.98502451179999995" green="0.95287185910000005" blue="0.9524495006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="MvQ-GE-TVZ"/>
                                 </constraints>
@@ -129,7 +127,6 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="361"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <color key="sectionIndexBackgroundColor" red="0.98502451179999995" green="0.95287185910000005" blue="0.9524495006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WeekCell" id="WNv-hw-19L" customClass="MainWeekCell" customModule="WeatherApp" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="414" height="45.5"/>
@@ -166,7 +163,6 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.98502451179999995" green="0.95287185910000005" blue="0.9524495006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstItem="zWE-uL-Jri" firstAttribute="top" secondItem="vN4-96-kfG" secondAttribute="top" constant="7" id="0jg-KC-Cro"/>
                                                         <constraint firstAttribute="trailing" secondItem="8hv-6N-RBh" secondAttribute="trailing" constant="20" id="0jp-5B-SaA"/>
@@ -241,7 +237,6 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="0.98502451179999995" green="0.95287185910000005" blue="0.9524495006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="2ei-3Z-KUC" secondAttribute="bottom" constant="8" id="0Ij-ia-6kJ"/>
                                                         <constraint firstItem="woD-AQ-LCy" firstAttribute="top" secondItem="OmZ-oO-cmX" secondAttribute="top" constant="7" id="Fr7-hz-YSj"/>
@@ -271,7 +266,6 @@
                                         </prototypes>
                                     </tableView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.98502451179999995" green="0.95287185910000005" blue="0.9524495006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJd-Wo-2P1" userLabel="ButtonsContainer">
                                 <rect key="frame" x="0.0" y="816" width="414" height="80"/>
@@ -298,13 +292,11 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.98502451179999995" green="0.95287185910000005" blue="0.9524495006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="WZT-kK-Ocb"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.98502451179999995" green="0.95287185910000005" blue="0.9524495006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="7GA-ut-vte" firstAttribute="leading" secondItem="YLk-EE-gkQ" secondAttribute="leading" id="3B1-tW-2fJ"/>
                             <constraint firstItem="vYk-ry-soN" firstAttribute="leading" secondItem="YLk-EE-gkQ" secondAttribute="leading" id="IT0-bB-Lg5"/>
