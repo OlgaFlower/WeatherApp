@@ -67,18 +67,8 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func openListButton(_ sender: UIButton) { }
+
     
-    func xdate (dateString: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-ddxhh:mm:ss+zz:zz"
-        dateFormatter.locale = Locale.init(identifier: "ua_UA")
-        
-        let formatedDate = dateFormatter.date(from: dateString)
-        
-        dateFormatter.dateFormat = "dd-mm-yyyy"
-        let newDate = (dateFormatter.string(from: formatedDate!))
-        return newDate
-    }
     
 }
 
@@ -99,7 +89,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.timeLabel.text = "Now"
         } else {
             // FIXME: descriptioklv
-            cell.timeLabel.text = presenter.twelveHourForecasts?[indexPath.row].time.description
+            // cell.timeLabel.text = presenter.twelveHourForecasts?[indexPath.row].time.description
+            
+            cell.timeLabel.text = Helper.dateConverter((presenter.twelveHourForecasts?[indexPath.row].time)!, Helper.hourFormat)
         }
         cell.iconImage.image = UIImage(named: "muchSnow.png")
         cell.temperatLabel.text = "\(String(describing: presenter.twelveHourForecasts?[indexPath.row].temperat.temperatValue))" + Helper.degree
@@ -130,7 +122,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 //unwrap values in table view cells
                 guard let fiveDayForecast = presenter.fiveDaysForecast else { return cell }
         
-                cell.dayLabel.text = fiveDayForecast.dailyForecast[indexPath.row].date
+                cell.dayLabel.text = Helper.dateConverter(fiveDayForecast.dailyForecast[indexPath.row].date, Helper.weekDayFormat)
                 cell.maxLabel.text = "\(Int(fiveDayForecast.dailyForecast[indexPath.row].temperat.max.value))" + Helper.degree
                 cell.minLabel.text = "\(Int(fiveDayForecast.dailyForecast[indexPath.row].temperat.min.value))" + Helper.degree
                 cell.iconImage.image = UIImage(named: "sunAndCloud.png")
@@ -142,10 +134,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
                 cell.sunIconImage.image = UIImage(named: "sun2.png")
                 cell.sunriseLabel.text = "Sunrise"
-                cell.sunriseTimeLabel.text = fiveDayForecast.dailyForecast.first?.sun.sunriseTime
+                cell.sunriseTimeLabel.text = Helper.dateConverter((fiveDayForecast.dailyForecast.first?.sun.sunriseTime)!, Helper.hourFormat)
                 cell.sunsetLabel.text = "Sunset"
-                cell.sunsetTimeLabel.text = fiveDayForecast.dailyForecast.first?.sun.sunsetTime
-                cell.moonIconImage.image = UIImage(named: "moon.png")
+                cell.sunsetTimeLabel.text = Helper.dateConverter((fiveDayForecast.dailyForecast.first?.sun.sunsetTime)!
+            , Helper.hourFormat)
+        cell.moonIconImage.image = UIImage(named: "moon.png")
                 return cell
         default: break
         }

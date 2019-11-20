@@ -75,10 +75,7 @@ struct MinTemperat: Codable {
 
 struct MaxTemperat: Codable {
     var value: Double //in C
-    
-    func intoString(value: Double) -> String {
-        return String(value)
-    }
+
                         private enum CodingKeys: String, CodingKey {
                             case value = "Value"
                         }

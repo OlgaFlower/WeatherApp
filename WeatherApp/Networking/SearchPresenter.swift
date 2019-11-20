@@ -14,12 +14,5 @@ class SearchPresenter {
 
     let searchService = APISearchCityService() //Data
     var searchResult = [SearchResult]() //struct
-
-//    func loadSearchResult(_ query: String, completion: @escaping ([SearchResult]) -> Void) {
-//        searchService.fetchSearchResult(query) { [weak self] result in
-//            self?.searchResult = result
-//            completion(result)
-//        }
-//    }
     
 }

@@ -74,7 +74,21 @@ class MainPresenter {
         }
     }
     
-    
 }
 
 
+
+
+
+
+//let isoDate = "2019-11-23T07:00:00+02:00"
+//
+//let dateFormatter = DateFormatter()
+//dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+//dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+//let formattedDate = dateFormatter.date(from: isoDate)!
+//
+//let calendar = Calendar.current
+//let minutes = calendar.component(.minute, from: formattedDate)
+//let hours = calendar.component(.hour, from: formattedDate)
+//let day = calendar.component(.weekday, from: formattedDate)
