@@ -15,7 +15,7 @@ class MainViewController: UIViewController {
     
     //MARK: - City name and temperature view
     
-    @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var backImage: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var forecastLabel: UILabel!
@@ -44,7 +44,7 @@ class MainViewController: UIViewController {
                 self.forecastLabel.text = oneHour.first?.iconPhrase
             }
         }
-        backgroundImage.image = UIImage(named: "autumn.jpg")
+
         cityNameLabel.text = "Some City"
         
         //Set collection view
