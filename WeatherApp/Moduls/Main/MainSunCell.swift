@@ -9,6 +9,7 @@
 import UIKit
 
 class MainSunCell: UITableViewCell {
+    
     @IBOutlet weak var sunIconImage: UIImageView!
     @IBOutlet weak var moonIconImage: UIImageView!
     @IBOutlet weak var sunriseLabel: UILabel!

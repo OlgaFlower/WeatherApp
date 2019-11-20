@@ -9,10 +9,10 @@
 import UIKit
 
 class MainWeekCell: UITableViewCell {
+    
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var maxLabel: UILabel!
     @IBOutlet weak var minLabel: UILabel!
     
-
 }

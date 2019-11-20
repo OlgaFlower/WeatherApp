@@ -16,7 +16,6 @@
 		843DD704237AC19B00525AF2 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD703237AC19B00525AF2 /* ListTableViewController.swift */; };
 		843DD749237D45B900525AF2 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD748237D45B900525AF2 /* ListPresenter.swift */; };
 		843DD74C237D46A700525AF2 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843DD74B237D46A700525AF2 /* Search.storyboard */; };
-		843F76B9237452B600D4A785 /* MainRowsAndSections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843F76B8237452B600D4A785 /* MainRowsAndSections.swift */; };
 		8456BB84237D65ED00234876 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB83237D65ED00234876 /* Helper.swift */; };
 		8456BB86237D7D3000234876 /* OneHourForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB85237D7D3000234876 /* OneHourForecast.swift */; };
 		8456BB88237D816B00234876 /* APIOneHourService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB87237D816B00234876 /* APIOneHourService.swift */; };
@@ -67,7 +66,6 @@
 		843DD703237AC19B00525AF2 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
 		843DD748237D45B900525AF2 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		843DD74B237D46A700525AF2 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
-		843F76B8237452B600D4A785 /* MainRowsAndSections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRowsAndSections.swift; sourceTree = "<group>"; };
 		8456BB83237D65ED00234876 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		8456BB85237D7D3000234876 /* OneHourForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneHourForecast.swift; sourceTree = "<group>"; };
 		8456BB87237D816B00234876 /* APIOneHourService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOneHourService.swift; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 				843DD6E523774E9C00525AF2 /* MainWeekCell.swift */,
 				843DD6F02378628700525AF2 /* MainSunCell.swift */,
 				8456BB90237DBA8300234876 /* ExtensionToDateFormat.swift */,
-				843F76B8237452B600D4A785 /* MainRowsAndSections.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -409,7 +406,6 @@
 				8484C3DA2384127F00A4BD36 /* SearchPresenter.swift in Sources */,
 				8456BB91237DBA8300234876 /* ExtensionToDateFormat.swift in Sources */,
 				843DD6E623774E9C00525AF2 /* MainWeekCell.swift in Sources */,
-				843F76B9237452B600D4A785 /* MainRowsAndSections.swift in Sources */,
 				843DD6E423774E1D00525AF2 /* MainHourForecastCollectionViewCell.swift in Sources */,
 				8456BB95237E7D1700234876 /* FiveDaysForecast.swift in Sources */,
 				8456BB8F237DAA7900234876 /* APITwelveHoursService.swift in Sources */,

@@ -11,14 +11,14 @@ import Foundation
 class APISearchCityService {
 
     func fetchSearchResult(_ query: String, completion: @escaping ([SearchResult]) -> ()) {
-        guard let url = URL(string: Helper.searchResource + query) else { return }
+        guard let url = URL(string: "\(Helper.searchResource)\(query)") else { return }
 
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
-                print("Error: \(error!.localizedDescription)")
+                print("SearchResultError: \(error!.localizedDescription)")
             }
             guard let data = data else {
-                print("Error: \(error!.localizedDescription)")
+                print("SearchResultError:downloading error, \(error!.localizedDescription)")
                 return
             }
 
@@ -26,7 +26,7 @@ class APISearchCityService {
                 let searchResult = try JSONDecoder().decode([SearchResult].self, from: data)
                 completion(searchResult)
                 } catch {
-                    print("Error: \(error.localizedDescription)")
+                    print("SearchResultError:decoding error, \(error.localizedDescription)")
                 }
         }.resume()
     }

@@ -16,7 +16,6 @@ class MainPresenter {
 //        twelveHourForecasts
 //    }
    
-    //MARK: - Main View Controller properties
     weak var mainView: MainViewController?
     weak var collection: MainHourForecastCollectionViewCell?
     
@@ -26,18 +25,16 @@ class MainPresenter {
     let fiveDaysService = APIFiveDaysService()
 
     //structs
-//    var locationKeys = [LocationKey]()
     var oneHourForecasts: [OneHourForecast]?
     var twelveHourForecasts: [TwelveHoursForecast]?
     var fiveDaysForecast: FiveDaysForecast?
     
     
-    //MARK: - Set table view rows (third view)
+    //Set table view rows
     func rowsNumberInTable(_ section: Int) -> Int {
         var row = 0
         if section == 0 {
-            row = 5
-//            row = (fetchFiveDaysForecast?.dailyForecast.count)!
+            row = fiveDaysForecast?.dailyForecast.count ?? 1
         } else if section == 1 {
             row = 1
         }
@@ -69,17 +66,8 @@ class MainPresenter {
             completion(fiveDays)
         }
     }
-    
-//    //Recieve local key
-//    func loadLocationKey(completion: @escaping ([LocationKey]) -> Void) {
-//        locationKeyService.fetchLocationKey { [weak self] (locationKey) in
-//            self?.locationKeys = locationKey
-//            completion(locationKey)
-//        }
-//    }
-    
 
-    //Safari Link
+    //Open URL
     var safariLink: String {
         get {
             return oneHourForecasts?.first?.mobLink ?? "https://developer.accuweather.com"
@@ -88,6 +76,5 @@ class MainPresenter {
     
     
 }
-
 
 

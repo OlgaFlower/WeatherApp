@@ -14,17 +14,17 @@ class APIFiveDaysService {
         guard let url = URL(string: Helper.fiveDaysResource) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
-                print("Error: \(error!.localizedDescription)")
+                print("FiveDaysError: \(error!.localizedDescription)")
             }
             guard let data = data else {
-                print("Error: \(error!.localizedDescription)")
+                print("FiveDaysError: downloading error, \(error!.localizedDescription)")
                 return
             }
             do {
                 let fiveDaysForecast = try JSONDecoder().decode(FiveDaysForecast.self, from: data)
                 completion(fiveDaysForecast)
                 } catch {
-                    print("Error: \(error.localizedDescription)")
+                    print("FiveDaysError:decoding error, \(error.localizedDescription)")
                 }
         }.resume()
     }

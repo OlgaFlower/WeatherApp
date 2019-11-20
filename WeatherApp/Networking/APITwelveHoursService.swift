@@ -14,10 +14,10 @@ class APITwelveHoursService {
         guard let url = URL(string: Helper.twelveHoursResource) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
-                print("Error: \(error!.localizedDescription)")
+                print("TwelveHoursError: \(error!.localizedDescription)")
             }
             guard let data = data else {
-                print("Error: \(error!.localizedDescription)")
+                print("TwelveHoursError: downloading error, \(error!.localizedDescription)")
                 return
             }
             
@@ -28,7 +28,7 @@ class APITwelveHoursService {
                 let twelveHoursForecast = try decoder.decode([TwelveHoursForecast].self, from: data)
                 completion(twelveHoursForecast)
                 } catch {
-                    print("Error: \(error.localizedDescription)")
+                    print("TwelveHoursError:decoding error, \(error.localizedDescription)")
                 }
         }.resume()
     }

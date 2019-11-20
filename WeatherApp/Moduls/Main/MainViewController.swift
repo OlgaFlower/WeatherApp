@@ -36,12 +36,7 @@ class MainViewController: UIViewController {
         mainCollectionView.delegate = self
         mainTableView.delegate = self
         mainTableView.dataSource = self
- 
 
-//        presenter.loadLocationKey { (data) in
-//            print(data)
-//        }
-        
         //Set current temperature view
         presenter.loadOneHourForecast { (oneHour) in
             DispatchQueue.main.async {
@@ -65,8 +60,6 @@ class MainViewController: UIViewController {
                 self.mainTableView.reloadData()
             }
         }
-        
-        
     }
     
     @IBAction func openLinkButton(_ sender: UIButton) {
@@ -75,31 +68,21 @@ class MainViewController: UIViewController {
 
     @IBAction func openListButton(_ sender: UIButton) { }
     
+    func xdate (dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-mm-ddxhh:mm:ss+zz:zz"
+        dateFormatter.locale = Locale.init(identifier: "ua_UA")
+        
+        let formatedDate = dateFormatter.date(from: dateString)
+        
+        dateFormatter.dateFormat = "dd-mm-yyyy"
+        let newDate = (dateFormatter.string(from: formatedDate!))
+        return newDate
+    }
+    
 }
 
-//"2019-11-16T07:00:00+02:00"
 
-//let dateString = "Thu, 22 Oct 2015 07:45:17 +0000"
-//let dateFormatter = DateFormatter()
-//dateFormatter.dateFormat = "EEE, dd MMM yyyy hh:mm:ss +zzzz"
-//dateFormatter.locale = Locale.init(identifier: "en_GB")
-//
-//let dateObj = dateFormatter.date(from: dateString)
-//
-//dateFormatter.dateFormat = "MM-dd-yyyy"
-//print("Dateobj: \(dateFormatter.string(from: dateObj!))")
-
-func xdate (dateString: String) -> String {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-mm-ddxhh:mm:ss+zz:zz"
-    dateFormatter.locale = Locale.init(identifier: "ua_UA")
-    
-    let formatedDate = dateFormatter.date(from: dateString)
-    
-    dateFormatter.dateFormat = "dd-mm-yyyy"
-    let newDate = (dateFormatter.string(from: formatedDate!))
-    return newDate
-}
 
 
 //MARK: - Main Collection ext.
@@ -172,7 +155,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-//MARK: - open browser ext.
+//MARK: - Open web
 extension MainViewController {
     func openSafari(for url: String) {
         guard let url = URL(string: url) else {

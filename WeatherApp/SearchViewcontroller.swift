@@ -9,12 +9,10 @@
 import UIKit
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    
   
     @IBOutlet weak var tableView: UITableView!
-    let service = APISearchCityService()
     
+    let service = APISearchCityService()
     let presenter = SearchPresenter()
     var resultOfRequest = [SearchResult]() {
         didSet {
@@ -27,14 +25,15 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self //as? UITableViewDataSource
-        tableView.delegate = self //as? UITableViewDelegate
+        
+        tableView.dataSource = self
+        tableView.delegate = self
       
         searchCity.searchResultsUpdater = self
         definesPresentationContext = true
         tableView.tableHeaderView = searchCity.searchBar
         searchCity.searchBar.tintColor = UIColor.white
-        searchCity.searchBar.barTintColor = UIColor.green
+        searchCity.searchBar.barTintColor = UIColor.purple
         
     }
     
@@ -50,16 +49,16 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
-    
 }
 
 extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else {return}
+        
         if text.count >= 3 {
-            presenter.searchService.fetchSearchResult(text) { resultOfRequest in
-            self.resultOfRequest = resultOfRequest
+            presenter.searchService.fetchSearchResult(text) { result in
+            self.resultOfRequest = result
             }
         } else {
             self.resultOfRequest.removeAll()
