@@ -15,6 +15,7 @@ class MainViewController: UIViewController {
     
     //MARK: - City name and temperature view
     
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var backImage: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
@@ -36,6 +37,7 @@ class MainViewController: UIViewController {
         mainCollectionView.delegate = self
         mainTableView.delegate = self
         mainTableView.dataSource = self
+        mainTableView.backgroundColor = UIColor.clear
 
         //Set current temperature view
         presenter.loadOneHourForecast { (oneHour) in
@@ -60,6 +62,8 @@ class MainViewController: UIViewController {
                 self.mainTableView.reloadData()
             }
         }
+        
+        presenter.movingEffect(view: backgroundImage, intensity: 45)
     }
     
     @IBAction func openLinkButton(_ sender: UIButton) {
@@ -85,6 +89,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! MainHourForecastCollectionViewCell
+        
         if indexPath.row == 0 {
             cell.timeLabel.text = "Now"
         } else {
@@ -120,7 +125,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0: let cell = tableView.dequeueReusableCell(withIdentifier: "WeekCell", for: indexPath) as! MainWeekCell
-                //unwrap values in table view cells
+        
+        //unwrap values in table view cells
                 guard let fiveDayForecast = presenter.fiveDaysForecast else { return cell }
         
                 cell.dayLabel.text = Helper.dateConverter(fiveDayForecast.dailyForecast[indexPath.row].date, Helper.weekDayFormat)
