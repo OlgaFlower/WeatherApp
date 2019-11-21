@@ -6,7 +6,7 @@
 //  Copyright © 2019 Flower. All rights reserved.
 //http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=DD88l3LYERLRIDfPjaSGXsMlcG0yWtoK&q=vinn
 
-import Foundation
+import UIKit
 
 class Helper {
     
@@ -41,7 +41,26 @@ class Helper {
         let date: Date? = dateFormatterGet.date(from: inputDate)
         return dateFormatterConvert.string(from: date!)
     }
+    
+    //Moving Effect
+    static func movingEffect(view: UIView, intensity: Double) {
+        let horizontalMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
+        horizontalMotion.minimumRelativeValue = -intensity
+        horizontalMotion.maximumRelativeValue = intensity
+        
+        let verticalMotion = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
+        verticalMotion.minimumRelativeValue = -intensity
+        verticalMotion.maximumRelativeValue = intensity
+        
+        //group x and y motions
+        let movement = UIMotionEffectGroup()
+        movement.motionEffects = [horizontalMotion, verticalMotion]
+        view.addMotionEffect(movement)
+    }
+    
 }
+
+
 
 
 //var someDate = "2019-11-20T11:00:00+02:00"

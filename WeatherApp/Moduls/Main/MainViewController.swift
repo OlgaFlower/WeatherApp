@@ -63,7 +63,7 @@ class MainViewController: UIViewController {
             }
         }
         
-        presenter.movingEffect(view: backgroundImage, intensity: 45)
+        Helper.movingEffect(view: backgroundImage, intensity: 45)
     }
     
     @IBAction func openLinkButton(_ sender: UIButton) {

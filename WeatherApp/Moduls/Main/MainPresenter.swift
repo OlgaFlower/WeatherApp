@@ -74,21 +74,7 @@ class MainPresenter {
         }
     }
     
-    //Moving Effect
-    func movingEffect(view: UIView, intensity: Double) {
-        let horizontalMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
-        horizontalMotion.minimumRelativeValue = -intensity
-        horizontalMotion.maximumRelativeValue = intensity
-        
-        let verticalMotion = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
-        verticalMotion.minimumRelativeValue = -intensity
-        verticalMotion.maximumRelativeValue = intensity
-        
-        //group x and y motions
-        let movement = UIMotionEffectGroup()
-        movement.motionEffects = [horizontalMotion, verticalMotion]
-        view.addMotionEffect(movement)
-    }
+    
     
 }
 
