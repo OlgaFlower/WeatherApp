@@ -362,7 +362,7 @@
         <!--List-->
         <scene sceneID="4Gv-F1-OgM">
             <objects>
-                <viewControllerPlaceholder storyboardName="List" id="T4u-76-yZQ" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="ListViewController" storyboardName="List" id="T4u-76-yZQ" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="2kV-kn-hjR"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pcY-L6-tjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -13,8 +13,6 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var mainView: UIView!
     
-    //MARK: - City name and temperature view
-    
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var backImage: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
@@ -79,7 +77,7 @@ class MainViewController: UIViewController {
 
 
 
-//MARK: - Main Collection ext.
+//MARK: - Main Collection
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     
@@ -106,7 +104,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 
-//MARK: - Main tableView ext.
+//MARK: - Main tableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {

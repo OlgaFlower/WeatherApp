@@ -10,6 +10,10 @@ import UIKit
 
 class Helper {
     
+    static var cityKey = 326175
+    static let degree = "°"
+    
+    //MARK: - Key and data source
     static let apiKey = "o4n8KwKYFRUt7tg9XGCt9pBlE83Esm9J"
     static let apiKey2 = "DD88l3LYERLRIDfPjaSGXsMlcG0yWtoK"
     
@@ -22,12 +26,7 @@ class Helper {
     static var fiveDaysResource = "\(dailyBaseURL)/5day/\(cityKey)?apikey=\(apiKey)&details=true&metric=true"
     static var searchResource = "\(searchBaseURL)\(apiKey)&q="
     
-    static var cityKey = 326175
-    static let degree = "°"
-    
-    
-    
-    
+    //MARK: - Date formatter
     static let weekDayFormat = "EEEE"
     static let hourFormat = "HH:mm"
     
@@ -42,7 +41,7 @@ class Helper {
         return dateFormatterConvert.string(from: date!)
     }
     
-    //Moving Effect
+    //MARK: - Moving Effect
     static func movingEffect(view: UIView, intensity: Double) {
         let horizontalMotion = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
         horizontalMotion.minimumRelativeValue = -intensity
@@ -59,35 +58,3 @@ class Helper {
     }
     
 }
-
-
-
-
-//var someDate = "2019-11-20T11:00:00+02:00"
-//
-//func getFormattedDate(string: String) -> String{
-//    let dateFormatterGet = DateFormatter()
-//    dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-//
-//    let dateFormatterPrint = DateFormatter()
-//    dateFormatterPrint.dateFormat = "EEEE"
-//
-//    let date: Date? = dateFormatterGet.date(from: string)
-//    return dateFormatterPrint.string(from: date!);
-//}
-//
-//print("Today is \(getFormattedDate(string: someDate))")
-//
-
-//FORMATS:
-//
-//Wednesday, Sep 12, 2018           --> EEEE, MMM d, yyyy
-//09/12/2018                        --> MM/dd/yyyy
-//09-12-2018 14:11                  --> MM-dd-yyyy HH:mm
-//Sep 12, 2:11 PM                   --> MMM d, h:mm a
-//September 2018                    --> MMMM yyyy
-//Sep 12, 2018                      --> MMM d, yyyy
-//Wed, 12 Sep 2018 14:11:54 +0000   --> E, d MMM yyyy HH:mm:ss Z
-//2018-09-12T14:11:54+0000          --> yyyy-MM-dd'T'HH:mm:ssZ
-//12.09.18                          --> dd.MM.yy
-//10:41:02.112                      --> HH:mm:ss.SSS
