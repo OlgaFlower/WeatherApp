@@ -10,8 +10,9 @@ import UIKit
 
 class Helper {
     
-    static var cityKey = 326175
+    static var cityKey = "326175"
     static let degree = "°"
+    static var favouriteCities = [Favourite]()
     
     //MARK: - Key and data source
     static let apiKey = "o4n8KwKYFRUt7tg9XGCt9pBlE83Esm9J"

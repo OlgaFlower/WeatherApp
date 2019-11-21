@@ -13,11 +13,16 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     //Outlet
     @IBOutlet weak var tableView: UITableView!
     
+    //Properties
+//    var favouriteCity = 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.clear
+        
+        print(Helper.favouriteCities)
         
     }
     
@@ -36,11 +41,16 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        
+        return Helper.favouriteCities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListCell
+        cell.favouriteCityLabel.text = Helper.favouriteCities[indexPath.row].city
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         return cell
     }
     

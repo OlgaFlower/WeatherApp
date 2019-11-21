@@ -36,7 +36,12 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         searchCity.searchBar.barTintColor = UIColor.purple
         
     }
+    //TODO: - popToRoot
+    @IBAction func goHome(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return resultOfRequest.count
@@ -44,9 +49,14 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let cities = resultOfRequest[indexPath.row]
-        cell.textLabel?.text = cities.cityName
+//        let cities = resultOfRequest[indexPath.row]
+        cell.textLabel?.text = resultOfRequest[indexPath.row].cityName
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        Helper.favouriteCities.append(presenter.addFavourite(indexPath))
+        //TODO: - pop to root
     }
     
 }
