@@ -11,8 +11,6 @@ import SafariServices
 
 class MainViewController: UIViewController {
     
-    @IBOutlet weak var mainView: UIView!
-    
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var backImage: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
