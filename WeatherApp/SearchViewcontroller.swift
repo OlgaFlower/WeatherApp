@@ -8,9 +8,16 @@
 
 import UIKit
 
+protocol DisplayFaviuriteList: class {
+    func addCity(_ city: Favourite)
+}
+
+
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
     @IBOutlet weak var tableView: UITableView!
+    
+    weak var delegate: DisplayFaviuriteList?
     
     let service = APISearchCityService()
     let presenter = SearchPresenter()
@@ -25,7 +32,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        searchCity.obscuresBackgroundDuringPresentation = false //unblock view (search blocks it)
         tableView.dataSource = self
         tableView.delegate = self
       
@@ -49,14 +56,14 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//        let cities = resultOfRequest[indexPath.row]
         cell.textLabel?.text = resultOfRequest[indexPath.row].cityName
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Helper.favouriteCities.append(presenter.addFavourite(indexPath))
-        //TODO: - pop to root
+        let newCity = Favourite(city: resultOfRequest[indexPath.row].cityName, key: resultOfRequest[indexPath.row].key, country: resultOfRequest[indexPath.row].country.name)
+        delegate?.addCity(newCity)
+        navigationController?.popViewController(animated: true)
     }
     
 }

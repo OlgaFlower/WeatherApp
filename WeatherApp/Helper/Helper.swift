@@ -15,7 +15,7 @@ class Helper {
     static var favouriteCities = [Favourite]()
     
     //MARK: - Key and data source
-    static let apiKey = "o4n8KwKYFRUt7tg9XGCt9pBlE83Esm9J"
+    static let apiKey = "T63iCF8KW2fsAtp2aRHGl48JB3PA7dzF"
     static let apiKey2 = "DD88l3LYERLRIDfPjaSGXsMlcG0yWtoK"
     
     static let hourlyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/hourly"

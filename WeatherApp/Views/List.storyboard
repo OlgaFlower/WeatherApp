@@ -85,7 +85,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="47J-pG-dJm">
                             <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="goJ-4U-vS5" kind="presentation" identifier="ShowSearch" id="yAg-Ta-Vwe"/>
+                                <action selector="addCity" destination="8BZ-5C-mBc" id="Iqb-81-nPC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
