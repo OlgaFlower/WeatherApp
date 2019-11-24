@@ -12,7 +12,7 @@ class Helper {
     
     static var cityKey = "326175"
     static let degree = "°"
-    static var favouriteCities = [Favourite]()
+    static let png = ".png"
     
     //MARK: - Key and data source
     static let apiKey = "T63iCF8KW2fsAtp2aRHGl48JB3PA7dzF"

@@ -94,8 +94,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             cell.timeLabel.text = Helper.dateConverter(((presenter.twelveHourForecasts?[indexPath.row].time)!), Helper.hourFormat)
         }
-        cell.iconImage.image = UIImage(named: "muchSnow.png")
         guard let twelveHours = presenter.twelveHourForecasts else { return cell }
+        let icon = "\(twelveHours[indexPath.row].weatherIcon)"
+        cell.iconImage.image = UIImage(named: icon + Helper.png)
         cell.temperatLabel.text = "\(String(Int(twelveHours[indexPath.row].temperat.temperatValue)))" + Helper.degree
         return cell
     }
@@ -128,20 +129,21 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.dayLabel.text = Helper.dateConverter(fiveDayForecast.dailyForecast[indexPath.row].date, Helper.weekDayFormat)
                 cell.maxLabel.text = "\(Int(fiveDayForecast.dailyForecast[indexPath.row].temperat.max.value))" + Helper.degree
                 cell.minLabel.text = "\(Int(fiveDayForecast.dailyForecast[indexPath.row].temperat.min.value))" + Helper.degree
-                cell.iconImage.image = UIImage(named: "sunAndCloud.png")
+                let icon = "\(fiveDayForecast.dailyForecast[indexPath.row].dayIcon.icon)"
+                cell.iconImage.image = UIImage(named: icon + Helper.png)
                 return cell
         
         case 1: let cell = tableView.dequeueReusableCell(withIdentifier: "SunMoonCell", for: indexPath) as! MainSunCell
                 //unwrap values in table view cells
                 guard let fiveDayForecast = presenter.fiveDaysForecast else { return cell}
         
-                cell.sunIconImage.image = UIImage(named: "sun2.png")
+                cell.sunIconImage.image = UIImage(named: "1.png")
                 cell.sunriseLabel.text = "Sunrise"
                 cell.sunriseTimeLabel.text = Helper.dateConverter((fiveDayForecast.dailyForecast.first?.sun.sunriseTime)!, Helper.hourFormat)
                 cell.sunsetLabel.text = "Sunset"
                 cell.sunsetTimeLabel.text = Helper.dateConverter((fiveDayForecast.dailyForecast.first?.sun.sunsetTime)!
             , Helper.hourFormat)
-        cell.moonIconImage.image = UIImage(named: "moon.png")
+        cell.moonIconImage.image = UIImage(named: "33.png")
                 return cell
         default: break
         }
