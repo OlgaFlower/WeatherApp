@@ -25,6 +25,8 @@ class MainViewController: UIViewController {
     
 
     let presenter = MainPresenter()
+    var nowTemperat = ""
+    var nowIcon = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,12 +36,14 @@ class MainViewController: UIViewController {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.backgroundColor = UIColor.clear
-
+        
         //Set current temperature view
         presenter.loadOneHourForecast { (oneHour) in
             DispatchQueue.main.async {
-                self.temperatureLabel.text = "\(Int(oneHour.first!.temperat.temperatValue))" + "\(Helper.degree)"
+                self.temperatureLabel.text = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
                 self.forecastLabel.text = oneHour.first?.iconPhrase
+                self.nowTemperat = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
+                self.nowIcon = "\(oneHour.first!.weatherIcon)"
             }
         }
 
@@ -80,24 +84,23 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter.twelveHourForecasts?.count ?? 1
+        guard let forecast = presenter.twelveHourForecasts else { return 0 }
+        return forecast.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath) as! MainHourForecastCollectionViewCell
-        
+        guard let twelveHours = presenter.twelveHourForecasts else { return cell }
         if indexPath.row == 0 {
             cell.timeLabel.text = "Now"
+            cell.temperatLabel.text = nowTemperat
+            cell.iconImage.image = UIImage(named: nowIcon + Helper.png)
         } else {
-            // FIXME: descriptioklv
-            // cell.timeLabel.text = presenter.twelveHourForecasts?[indexPath.row].time.description
-            
-            cell.timeLabel.text = Helper.dateConverter(((presenter.twelveHourForecasts?[indexPath.row].time)!), Helper.hourFormat)
+            cell.timeLabel.text = Helper.dateConverter(((presenter.twelveHourForecasts?[indexPath.row - 1].time)!), Helper.hourFormat)
+            cell.temperatLabel.text = "\(String(Int(twelveHours[indexPath.row - 1].temperat.temperatValue)))" + Helper.degree
+            let icon = "\(twelveHours[indexPath.row - 1].weatherIcon)"
+            cell.iconImage.image = UIImage(named: icon + Helper.png)
         }
-        guard let twelveHours = presenter.twelveHourForecasts else { return cell }
-        let icon = "\(twelveHours[indexPath.row].weatherIcon)"
-        cell.iconImage.image = UIImage(named: icon + Helper.png)
-        cell.temperatLabel.text = "\(String(Int(twelveHours[indexPath.row].temperat.temperatValue)))" + Helper.degree
         return cell
     }
 }
