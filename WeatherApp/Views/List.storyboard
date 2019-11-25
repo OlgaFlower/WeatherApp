@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xNP-9R-9UC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8BZ-5C-mBc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
@@ -19,7 +19,7 @@
                                 <rect key="frame" x="-50" y="-50" width="514" height="996"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EfX-HN-Wdk">
-                                <rect key="frame" x="20" y="88" width="374" height="774"/>
+                                <rect key="frame" x="20" y="44" width="374" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -96,35 +96,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Czn-NK-HgB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2628.985507246377" y="54.910714285714285"/>
-        </scene>
-        <!--Search-->
-        <scene sceneID="0aa-CA-qpI">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="search" storyboardName="Search" id="goJ-4U-vS5" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="Cbk-aL-g3z"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="n6f-9s-0SD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3189.130434782609" y="54.910714285714285"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="qNN-ka-gqI">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xNP-9R-9UC" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8aS-cq-Qpb">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="8BZ-5C-mBc" kind="relationship" relationship="rootViewController" id="UbZ-sF-E6f"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9OH-kk-1bG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1718.840579710145" y="54.910714285714285"/>
         </scene>
     </scenes>
     <resources>

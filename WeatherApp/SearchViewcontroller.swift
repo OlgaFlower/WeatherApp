@@ -43,6 +43,14 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         searchCity.searchBar.barTintColor = UIColor.purple
         
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    
     //TODO: - popToRoot
     @IBAction func goHome(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
@@ -64,6 +72,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         let newCity = Favourite(city: resultOfRequest[indexPath.row].cityName, key: resultOfRequest[indexPath.row].key, country: resultOfRequest[indexPath.row].country.name)
         delegate?.addCity(newCity)
         navigationController?.popViewController(animated: true)
+//        navigationController?.popToRootViewController(animated: true)
     }
     
 }

@@ -66,6 +66,11 @@ class MainViewController: UIViewController {
         Helper.movingEffect(view: backgroundImage, intensity: 45)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     @IBAction func openLinkButton(_ sender: UIButton) {
         self.openSafari(for: presenter.safariLink)
     }

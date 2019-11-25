@@ -36,21 +36,23 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         print("ListController \(favouriteCities)")
     }
     
+
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Clear the navigation bar background
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
+        navigationController?.isNavigationBarHidden = false
     }
     
     @IBAction func backButton(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return favouriteCities.count
     }
     
