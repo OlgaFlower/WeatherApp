@@ -46,7 +46,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.tableHeaderView = searchCity.searchBar
         searchCity.searchBar.tintColor = .white
         searchCity.searchBar.barTintColor = .clear
-        searchCity.searchBar.isTranslucent = true
+        searchCity.searchBar.searchTextField.backgroundColor = .clear
         let searchTextColor = searchCity.searchBar.value(forKey: "searchField") as? UITextField
         searchTextColor?.textColor = .white
         
