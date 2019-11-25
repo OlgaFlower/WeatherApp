@@ -58,4 +58,12 @@ class Helper {
         view.addMotionEffect(movement)
     }
     
+    //
+    static func blurredView(_ backImage: UIImageView, _ view: UIView) {
+        let blurredView = UIVisualEffectView(effect: UIBlurEffect(style: .dark))
+        blurredView.frame = view.bounds
+        blurredView.alpha = 0.5
+        backImage.addSubview(blurredView)
+    }
+    
 }

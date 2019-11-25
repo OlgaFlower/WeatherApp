@@ -13,7 +13,6 @@
 		843DD6E823774EF800525AF2 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6E723774EF800525AF2 /* MainPresenter.swift */; };
 		843DD6F12378628700525AF2 /* MainSunCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6F02378628700525AF2 /* MainSunCell.swift */; };
 		843DD702237AC13B00525AF2 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843DD701237AC13B00525AF2 /* List.storyboard */; };
-		843DD749237D45B900525AF2 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD748237D45B900525AF2 /* ListPresenter.swift */; };
 		843DD74C237D46A700525AF2 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843DD74B237D46A700525AF2 /* Search.storyboard */; };
 		844CB875238BD19B0053B78B /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CB874238BD19B0053B78B /* LaunchViewController.swift */; };
 		844EB36123868DF100766CE7 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB36023868DF100766CE7 /* ListViewController.swift */; };
@@ -66,7 +65,6 @@
 		843DD6E723774EF800525AF2 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		843DD6F02378628700525AF2 /* MainSunCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSunCell.swift; sourceTree = "<group>"; };
 		843DD701237AC13B00525AF2 /* List.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
-		843DD748237D45B900525AF2 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		843DD74B237D46A700525AF2 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		844CB874238BD19B0053B78B /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		844EB36023868DF100766CE7 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 			children = (
 				844EB36023868DF100766CE7 /* ListViewController.swift */,
 				844EB3622386933000766CE7 /* ListCell.swift */,
-				843DD748237D45B900525AF2 /* ListPresenter.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -431,7 +428,6 @@
 				843DD6E823774EF800525AF2 /* MainPresenter.swift in Sources */,
 				844CB875238BD19B0053B78B /* LaunchViewController.swift in Sources */,
 				843DD6F12378628700525AF2 /* MainSunCell.swift in Sources */,
-				843DD749237D45B900525AF2 /* ListPresenter.swift in Sources */,
 				844EB36123868DF100766CE7 /* ListViewController.swift in Sources */,
 				84F8C0682371EE3D00BC13E6 /* SceneDelegate.swift in Sources */,
 				843DD6E223774B5700525AF2 /* MainViewController.swift in Sources */,

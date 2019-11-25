@@ -12,6 +12,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //Outlet
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backImage: UIImageView!
     
     //Properties
     var favouriteCities = [Favourite]()
@@ -22,6 +23,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.clear
         
+        Helper.blurredView(backImage, self.view)
     }
     
     func addCity(_ city: Favourite) {
