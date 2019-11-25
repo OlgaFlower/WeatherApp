@@ -23,7 +23,7 @@
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f5F-Cg-k0J">
                                 <rect key="frame" x="-50" y="-50" width="514" height="996"/>
-                                <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0954163596" green="0.33389660719999997" blue="0.62459170819999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zqc-RM-R78" userLabel="CityNameContainer">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="362"/>
