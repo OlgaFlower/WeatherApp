@@ -17,10 +17,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var forecastLabel: UILabel!
     
-    //MARK: - 24-hour forecast view
     @IBOutlet weak var mainCollectionView: UICollectionView!
-    
-    //MARK: - Week and sun&moon forecast view
     @IBOutlet weak var mainTableView: UITableView!
     
 
@@ -30,13 +27,13 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //MARK: - Main view delegates
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.backgroundColor = UIColor.clear
+        
+        self.mainCollectionView.showsHorizontalScrollIndicator = false
         
         //Set current temperature view
         presenter.loadOneHourForecast { (oneHour) in

@@ -16,6 +16,7 @@ protocol DisplayFaviuriteList: class {
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backImage: UIImageView!
     
     weak var delegate: DisplayFaviuriteList?
     
@@ -32,6 +33,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Helper.blurredView(backImage, self.view)
+        
         searchCity.obscuresBackgroundDuringPresentation = false //unblock view (search blocks it)
         tableView.dataSource = self
         tableView.delegate = self
@@ -54,6 +57,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
         navigationItem.hidesBackButton = true
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     

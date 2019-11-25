@@ -21,7 +21,7 @@
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UIH-9w-vvL">
                                 <rect key="frame" x="0.0" y="0.0" width="464" height="896"/>
-                                <color key="backgroundColor" red="0.068691045045852661" green="0.17007532715797424" blue="0.24919652938842773" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.087676651775836945" green="0.38159084320068359" blue="0.72008520364761353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EfX-HN-Wdk">
                                 <rect key="frame" x="20" y="44" width="374" height="818"/>
