@@ -22,10 +22,10 @@ class Helper {
     static let dailyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/daily"
     static let searchBaseURL = "https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey="
     
-    static var oneHourResource = "\(hourlyBaseURL)/1hour/\(cityKey)?apikey=\(apiKey2)&details=true&metric=true"
-    static var twelveHoursResource = "\(hourlyBaseURL)/12hour/\(cityKey)?apikey=\(apiKey2)&metric=true"
-    static var fiveDaysResource = "\(dailyBaseURL)/5day/\(cityKey)?apikey=\(apiKey2)&details=true&metric=true"
-    static var searchResource = "\(searchBaseURL)\(apiKey2)&q="
+    static var oneHourResource = "\(hourlyBaseURL)/1hour/\(cityKey)?apikey=\(apiKey)&details=true&metric=true"
+    static var twelveHoursResource = "\(hourlyBaseURL)/12hour/\(cityKey)?apikey=\(apiKey)&metric=true"
+    static var fiveDaysResource = "\(dailyBaseURL)/5day/\(cityKey)?apikey=\(apiKey)&details=true&metric=true"
+    static var searchResource = "\(searchBaseURL)\(apiKey)&q="
     
     //MARK: - Date formatter
     static let weekDayFormat = "EEEE"

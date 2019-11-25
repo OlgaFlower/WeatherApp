@@ -35,12 +35,17 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         searchCity.obscuresBackgroundDuringPresentation = false //unblock view (search blocks it)
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.backgroundColor = UIColor.clear
       
         searchCity.searchResultsUpdater = self
         definesPresentationContext = true
+        tableView.tableHeaderView?.backgroundColor = .clear
         tableView.tableHeaderView = searchCity.searchBar
-        searchCity.searchBar.tintColor = UIColor.white
-        searchCity.searchBar.barTintColor = UIColor.purple
+        searchCity.searchBar.tintColor = .white
+        searchCity.searchBar.barTintColor = .clear
+        searchCity.searchBar.isTranslucent = true
+        let searchTextColor = searchCity.searchBar.value(forKey: "searchField") as? UITextField
+        searchTextColor?.textColor = .white
         
     }
     
@@ -48,22 +53,25 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
+        navigationItem.hidesBackButton = true
     }
     
     
-    //TODO: - popToRoot
-    @IBAction func goHome(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func dismissViewButton(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
     }
+    
     
 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         return resultOfRequest.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.textColor = .white
         cell.textLabel?.text = resultOfRequest[indexPath.row].cityName
         return cell
     }

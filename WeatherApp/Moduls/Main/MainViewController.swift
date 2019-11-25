@@ -30,6 +30,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //MARK: - Main view delegates
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
@@ -119,7 +120,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         return presenter.rowsNumberInTable(section)
     }
     
@@ -171,3 +172,5 @@ extension MainViewController {
         present(safariVC, animated: true)
     }
 }
+
+
