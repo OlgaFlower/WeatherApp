@@ -36,14 +36,15 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         newItem.countryName = city.country
         
         self.saveCityItems() //DB
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        
     }
     
     func saveCityItems() { //DB
         do {
             try context.save()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         } catch {
             print("Error saving context \(error)")
         }
@@ -73,12 +74,12 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         return savedCities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListCell
+        cell.selectionStyle = .none
         cell.favouriteCityLabel.text = savedCities[indexPath.row].cityName
         cell.countryIdLabel.text = savedCities[indexPath.row].countryName
         return cell
@@ -89,6 +90,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        context.delete(savedCities[indexPath.row])
+        savedCities.remove(at: indexPath.row) //delete chosen city
+        saveCityItems()
         
     }
     
