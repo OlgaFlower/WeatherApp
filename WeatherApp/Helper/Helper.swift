@@ -10,7 +10,8 @@ import UIKit
 
 class Helper {
     
-    static var cityKey = "326175"
+    static var cityKey = ""
+    var cityName = ""
     static let degree = "°"
     static let png = ".png"
     

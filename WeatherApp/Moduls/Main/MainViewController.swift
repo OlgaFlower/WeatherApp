@@ -9,7 +9,9 @@
 import UIKit
 import SafariServices
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, DisplayCityName {
+   
+    
     
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var backImage: UIImageView!
@@ -22,6 +24,7 @@ class MainViewController: UIViewController {
     
 
     let presenter = MainPresenter()
+    var helper = Helper()
     var nowTemperat = ""
     var nowIcon = ""
     
@@ -44,8 +47,6 @@ class MainViewController: UIViewController {
                 self.nowIcon = "\(oneHour.first!.weatherIcon)"
             }
         }
-
-        cityNameLabel.text = "Some City"
         
         //Set collection view
         presenter.loadTwelveHoursForecast { (twelveHours) in
@@ -63,6 +64,20 @@ class MainViewController: UIViewController {
         
         Helper.movingEffect(view: backgroundImage, intensity: 45)
     }
+    
+    
+    //-----------------------
+    
+    
+    func displayCity(_ cityName: String) {
+        cityNameLabel.text = cityName
+        self.cityNameLabel.reloadInputViews()
+         }
+    
+    
+   //-----------------------
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

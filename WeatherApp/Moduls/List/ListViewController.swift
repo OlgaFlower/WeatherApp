@@ -6,8 +6,17 @@
 //  Copyright © 2019 Flower. All rights reserved.
 //
 
+
+
+
 import UIKit
 import CoreData
+
+
+protocol DisplayCityName: class {
+    func displayCity(_ cityName: String)
+}
+
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DisplayFaviuriteList {
     
@@ -16,6 +25,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var backImage: UIImageView!
     
     //Properties
+    weak var delegate: DisplayCityName?
+    var helper = Helper()
     var savedCities = [CityItem]() //restore data from DB
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -90,9 +101,21 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        context.delete(savedCities[indexPath.row])
-        savedCities.remove(at: indexPath.row) //delete chosen city
-        saveCityItems()
+        let alert = UIAlertController(title: "\(String(savedCities[indexPath.row].cityName!))\n\(String(savedCities[indexPath.row].countryName!))", message: "", preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "Display", style: UIAlertAction.Style.default, handler: { display in
+            self.delegate?.displayCity(self.savedCities[indexPath.row].cityName!)
+            _ = self.navigationController?.popViewController(animated: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.cancel, handler: { delete in
+            self.context.delete(self.savedCities[indexPath.row]) //delete chosen city from DB
+            self.savedCities.remove(at: indexPath.row) //delete chosen city from list
+            self.saveCityItems()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil))
+        self.present(alert, animated: true, completion: nil)
         
     }
     
@@ -102,6 +125,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             navigationController?.modalPresentationStyle = .fullScreen
             navigationController?.pushViewController(searchVC, animated: true)
         }
+    }
+    
+    func makeChoiceAlert(_ city: String, _ country: String, _ controller: UIViewController) {
+        
     }
     
 }
