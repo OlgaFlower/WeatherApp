@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DisplayFaviuriteList {
     
@@ -15,7 +16,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var backImage: UIImageView!
     
     //Properties
-    var favouriteCities = [Favourite]()
+    var savedCities = [CityItem]() //restore data from DB
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,18 +26,36 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.backgroundColor = UIColor.clear
         
         Helper.blurredView(backImage, self.view)
+        loadCityItems()
     }
     
     func addCity(_ city: Favourite) {
-        favouriteCities.append(city)
+        let newItem = CityItem(context: context) //DB
+        newItem.cityName = city.city
+        newItem.cityKey = city.key
+        newItem.countryName = city.country
+        
+        self.saveCityItems() //DB
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("ListController \(favouriteCities)")
+    func saveCityItems() { //DB
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
+    }
+    
+    func loadCityItems() { //DB
+        let request: NSFetchRequest<CityItem> = CityItem.fetchRequest() //request for an array of CityItem
+        do {
+            savedCities = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,13 +74,13 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        return favouriteCities.count
+        return savedCities.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListCell
-        cell.favouriteCityLabel.text = favouriteCities[indexPath.row].city
-        cell.countryIdLabel.text = favouriteCities[indexPath.row].country
+        cell.favouriteCityLabel.text = savedCities[indexPath.row].cityName
+        cell.countryIdLabel.text = savedCities[indexPath.row].countryName
         return cell
     }
     
@@ -68,6 +88,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 60
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
     @IBAction func addCity() {
         if let searchVC = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController {
             searchVC.delegate = self
