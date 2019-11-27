@@ -23,7 +23,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     //MARK: - SearchVC properties
     weak var delegate: DisplayFaviuriteList?
     let service = APISearchCityService()
-    let presenter = SearchPresenter()
     let searchCity = UISearchController(searchResultsController: nil)
     
     var resultOfRequest = [SearchResult]() {
@@ -98,7 +97,7 @@ extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
         guard let text = searchController.searchBar.text else {return}
         
         if text.count >= 3 {
-            presenter.searchService.fetchSearchResult(text) { result in
+            service.fetchSearchResult(text) { result in
             self.resultOfRequest = result
             }
         } else {

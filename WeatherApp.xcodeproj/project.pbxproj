@@ -30,7 +30,6 @@
 		8484C3CB2381A24A00A4BD36 /* SearchViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3CA2381A24A00A4BD36 /* SearchViewcontroller.swift */; };
 		8484C3D62382F7A500A4BD36 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3D52382F7A500A4BD36 /* SearchResult.swift */; };
 		8484C3D82384115F00A4BD36 /* APISearchCityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3D72384115F00A4BD36 /* APISearchCityService.swift */; };
-		8484C3DA2384127F00A4BD36 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3D92384127F00A4BD36 /* SearchPresenter.swift */; };
 		84F8C0662371EE3D00BC13E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C0652371EE3D00BC13E6 /* AppDelegate.swift */; };
 		84F8C0682371EE3D00BC13E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C0672371EE3D00BC13E6 /* SceneDelegate.swift */; };
 		84F8C06D2371EE3D00BC13E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C06B2371EE3D00BC13E6 /* Main.storyboard */; };
@@ -81,7 +80,6 @@
 		8484C3CA2381A24A00A4BD36 /* SearchViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchViewcontroller.swift; path = WeatherApp/SearchViewcontroller.swift; sourceTree = SOURCE_ROOT; };
 		8484C3D52382F7A500A4BD36 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		8484C3D72384115F00A4BD36 /* APISearchCityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISearchCityService.swift; sourceTree = "<group>"; };
-		8484C3D92384127F00A4BD36 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchPresenter.swift; path = WeatherApp/Networking/SearchPresenter.swift; sourceTree = SOURCE_ROOT; };
 		84F8C0622371EE3C00BC13E6 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F8C0652371EE3D00BC13E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84F8C0672371EE3D00BC13E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				8484C3CA2381A24A00A4BD36 /* SearchViewcontroller.swift */,
-				8484C3D92384127F00A4BD36 /* SearchPresenter.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -421,7 +418,6 @@
 				8456BB88237D816B00234876 /* APIOneHourService.swift in Sources */,
 				84F8C0662371EE3D00BC13E6 /* AppDelegate.swift in Sources */,
 				8456BB93237E7CEE00234876 /* APIFiveDaysService.swift in Sources */,
-				8484C3DA2384127F00A4BD36 /* SearchPresenter.swift in Sources */,
 				844EB3652386B8AC00766CE7 /* Favourite.swift in Sources */,
 				843DD6E623774E9C00525AF2 /* MainWeekCell.swift in Sources */,
 				843DD6E423774E1D00525AF2 /* MainHourForecastCollectionViewCell.swift in Sources */,
