@@ -16,7 +16,6 @@
 		843DD74C237D46A700525AF2 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843DD74B237D46A700525AF2 /* Search.storyboard */; };
 		844CB875238BD19B0053B78B /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CB874238BD19B0053B78B /* LaunchViewController.swift */; };
 		844CB8A8238C58030053B78B /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 844CB8A6238C58030053B78B /* DataModel.xcdatamodeld */; };
-		844CB8AC238D43550053B78B /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CB8AB238D43550053B78B /* ListPresenter.swift */; };
 		844EB36123868DF100766CE7 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB36023868DF100766CE7 /* ListViewController.swift */; };
 		844EB3632386933000766CE7 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB3622386933000766CE7 /* ListCell.swift */; };
 		844EB3652386B8AC00766CE7 /* Favourite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB3642386B8AC00766CE7 /* Favourite.swift */; };
@@ -25,7 +24,6 @@
 		8456BB88237D816B00234876 /* APIOneHourService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB87237D816B00234876 /* APIOneHourService.swift */; };
 		8456BB8D237DAA3300234876 /* TwelveHoursForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB8C237DAA3300234876 /* TwelveHoursForecast.swift */; };
 		8456BB8F237DAA7900234876 /* APITwelveHoursService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB8E237DAA7900234876 /* APITwelveHoursService.swift */; };
-		8456BB91237DBA8300234876 /* ExtensionToDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB90237DBA8300234876 /* ExtensionToDateFormat.swift */; };
 		8456BB93237E7CEE00234876 /* APIFiveDaysService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB92237E7CEE00234876 /* APIFiveDaysService.swift */; };
 		8456BB95237E7D1700234876 /* FiveDaysForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB94237E7D1600234876 /* FiveDaysForecast.swift */; };
 		8484C3C923818F5800A4BD36 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3C823818F5800A4BD36 /* Errors.swift */; };
@@ -69,7 +67,6 @@
 		843DD74B237D46A700525AF2 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		844CB874238BD19B0053B78B /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		844CB8A7238C58030053B78B /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		844CB8AB238D43550053B78B /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		844EB36023868DF100766CE7 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		844EB3622386933000766CE7 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		844EB3642386B8AC00766CE7 /* Favourite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourite.swift; sourceTree = "<group>"; };
@@ -78,7 +75,6 @@
 		8456BB87237D816B00234876 /* APIOneHourService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIOneHourService.swift; sourceTree = "<group>"; };
 		8456BB8C237DAA3300234876 /* TwelveHoursForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwelveHoursForecast.swift; sourceTree = "<group>"; };
 		8456BB8E237DAA7900234876 /* APITwelveHoursService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITwelveHoursService.swift; sourceTree = "<group>"; };
-		8456BB90237DBA8300234876 /* ExtensionToDateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionToDateFormat.swift; sourceTree = "<group>"; };
 		8456BB92237E7CEE00234876 /* APIFiveDaysService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFiveDaysService.swift; sourceTree = "<group>"; };
 		8456BB94237E7D1600234876 /* FiveDaysForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDaysForecast.swift; sourceTree = "<group>"; };
 		8484C3C823818F5800A4BD36 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -143,7 +139,6 @@
 			children = (
 				844EB36023868DF100766CE7 /* ListViewController.swift */,
 				844EB3622386933000766CE7 /* ListCell.swift */,
-				844CB8AB238D43550053B78B /* ListPresenter.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -176,7 +171,6 @@
 				843DD6E323774E1D00525AF2 /* MainHourForecastCollectionViewCell.swift */,
 				843DD6E523774E9C00525AF2 /* MainWeekCell.swift */,
 				843DD6F02378628700525AF2 /* MainSunCell.swift */,
-				8456BB90237DBA8300234876 /* ExtensionToDateFormat.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -429,14 +423,12 @@
 				8456BB93237E7CEE00234876 /* APIFiveDaysService.swift in Sources */,
 				8484C3DA2384127F00A4BD36 /* SearchPresenter.swift in Sources */,
 				844EB3652386B8AC00766CE7 /* Favourite.swift in Sources */,
-				8456BB91237DBA8300234876 /* ExtensionToDateFormat.swift in Sources */,
 				843DD6E623774E9C00525AF2 /* MainWeekCell.swift in Sources */,
 				843DD6E423774E1D00525AF2 /* MainHourForecastCollectionViewCell.swift in Sources */,
 				8456BB95237E7D1700234876 /* FiveDaysForecast.swift in Sources */,
 				8456BB8F237DAA7900234876 /* APITwelveHoursService.swift in Sources */,
 				8484C3C923818F5800A4BD36 /* Errors.swift in Sources */,
 				843DD6E823774EF800525AF2 /* MainPresenter.swift in Sources */,
-				844CB8AC238D43550053B78B /* ListPresenter.swift in Sources */,
 				844CB875238BD19B0053B78B /* LaunchViewController.swift in Sources */,
 				843DD6F12378628700525AF2 /* MainSunCell.swift in Sources */,
 				844EB36123868DF100766CE7 /* ListViewController.swift in Sources */,

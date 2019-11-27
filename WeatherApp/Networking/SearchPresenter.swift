@@ -15,10 +15,10 @@ class SearchPresenter {
     let searchService = APISearchCityService() //Data
     var searchResult = [SearchResult]() //struct
     
-    func addFavourite(_ indexPath: IndexPath) -> Favourite {
-        Helper.cityKey = (searchView?.resultOfRequest[indexPath.row].key)!
-        let add = Favourite(city: (searchView?.resultOfRequest[indexPath.row].cityName)!, key: (searchView?.resultOfRequest[indexPath.row].key)!, country: (searchView?.resultOfRequest[indexPath.row].country.name)!)
-        return add
-    }
+//    func addFavourite(_ indexPath: IndexPath) -> Favourite {
+//        Helper.cityKey = (searchView?.resultOfRequest[indexPath.row].key)!
+//        let add = Favourite(city: (searchView?.resultOfRequest[indexPath.row].cityName)!, key: (searchView?.resultOfRequest[indexPath.row].key)!, country: (searchView?.resultOfRequest[indexPath.row].country.name)!)
+//        return add
+//    }
 }
 

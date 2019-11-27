@@ -10,24 +10,23 @@ import UIKit
 import SafariServices
 
 class MainViewController: UIViewController, DisplayCityName {
-   
     
-    
+    //MARK: - MainVC Outlets
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var backImage: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var forecastLabel: UILabel!
-    
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var mainTableView: UITableView!
     
-
+    //MARK: - MainVC properties
     let presenter = MainPresenter()
     var helper = Helper()
     var nowTemperat = ""
     var nowIcon = ""
     
+    //MARK: - MainVC life cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.isNavigationBarHidden = true
@@ -43,7 +42,7 @@ class MainViewController: UIViewController, DisplayCityName {
         
         self.mainCollectionView.showsHorizontalScrollIndicator = false
         
-        //Set current temperature view
+        //Set city and current temperature view
         presenter.loadOneHourForecast { (oneHour) in
             DispatchQueue.main.async {
                 self.temperatureLabel.text = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
@@ -70,7 +69,7 @@ class MainViewController: UIViewController, DisplayCityName {
         Helper.movingEffect(view: backgroundImage, intensity: 45)
     }
 
-    
+    //MARK: - Set MainVC city name
     func displayCity(_ cityName: String) {
         cityNameLabel.text = cityName
          }

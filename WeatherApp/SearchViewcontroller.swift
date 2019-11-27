@@ -8,6 +8,7 @@
 
 import UIKit
 
+//MARK: - DisplayFaviuriteList protocol
 protocol DisplayFaviuriteList: class {
     func addCity(_ city: Favourite)
 }
@@ -15,13 +16,16 @@ protocol DisplayFaviuriteList: class {
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
+    //MARK: - SearchVC Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backImage: UIImageView!
     
+    //MARK: - SearchVC properties
     weak var delegate: DisplayFaviuriteList?
-    
     let service = APISearchCityService()
     let presenter = SearchPresenter()
+    let searchCity = UISearchController(searchResultsController: nil)
+    
     var resultOfRequest = [SearchResult]() {
         didSet {
             DispatchQueue.main.async {
@@ -29,13 +33,22 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             }
         }
     }
-    let searchCity = UISearchController(searchResultsController: nil)
+    
+    
+    //MARK: - SearchVC life cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+        navigationItem.hidesBackButton = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         Helper.blurredView(backImage, self.view)
         
-        searchCity.obscuresBackgroundDuringPresentation = false //unblock view (search blocks it)
+        searchCity.obscuresBackgroundDuringPresentation = false //unblock view's user interaction
         tableView.dataSource = self
         tableView.delegate = self
         tableView.backgroundColor = UIColor.clear
@@ -49,25 +62,14 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         searchCity.searchBar.searchTextField.backgroundColor = .clear
         let searchTextColor = searchCity.searchBar.value(forKey: "searchField") as? UITextField
         searchTextColor?.textColor = .white
-        
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.isNavigationBarHidden = false
-        navigationItem.hidesBackButton = true
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    
+    //MARK: - SearchVC action
     @IBAction func dismissViewButton(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
     
-    
-
-    
+    //MARK: - Set SearchVC Table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         return resultOfRequest.count
@@ -89,6 +91,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
 }
 
+//MARK: - UISearchBar extension
 extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
     
     func updateSearchResults(for searchController: UISearchController) {

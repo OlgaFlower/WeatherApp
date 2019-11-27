@@ -9,13 +9,14 @@
 import UIKit
 
 class Helper {
-    
+    //MARK: - Helper properties
     static var cityKey = "326175"
     var cityName = ""
+    
     static let degree = "°"
     static let png = ".png"
     
-    //MARK: - Key and data source
+    //MARK: - Helper: key and data sources
     static let apiKey = "7hFt69YdUAlTh72J31CeJ1nrnQs3YtOs"
     static let apiKey2 = "DD88l3LYERLRIDfPjaSGXsMlcG0yWtoK"
     

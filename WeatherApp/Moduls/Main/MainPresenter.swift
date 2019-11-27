@@ -10,21 +10,16 @@ import UIKit
 
 
 class MainPresenter {
-    
-//    init() {
-//        oneHourForecasts
-//        twelveHourForecasts
-//    }
    
     weak var mainView: MainViewController?
     weak var collection: MainHourForecastCollectionViewCell?
     
-    //MARK: - Data
+    //Data
     let hourService = APIOneHourService()
     let twelveHoursService = APITwelveHoursService()
     let fiveDaysService = APIFiveDaysService()
 
-    //structs
+    //Structs
     var oneHourForecasts: [OneHourForecast]?
     var twelveHourForecasts: [TwelveHoursForecast]?
     var fiveDaysForecast: FiveDaysForecast?
@@ -52,6 +47,7 @@ class MainPresenter {
         }
     }
     
+    //Recieve twelve hours forecast
     func loadTwelveHoursForecast(completion: @escaping ([TwelveHoursForecast]) -> Void) {
         twelveHoursService.fetchTwelveHours { [weak self] (twelveHours) in
             self?.twelveHourForecasts = twelveHours

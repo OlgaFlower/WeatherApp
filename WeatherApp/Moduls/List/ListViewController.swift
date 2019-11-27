@@ -12,7 +12,7 @@
 import UIKit
 import CoreData
 
-
+//MARK: - DisplayCityName protocol
 protocol DisplayCityName: class {
     func displayCity(_ cityName: String)
 }
@@ -20,15 +20,25 @@ protocol DisplayCityName: class {
 
 class ListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, DisplayFaviuriteList {
     
-    //Outlet
+    //MARK: - ListVC Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backImage: UIImageView!
     
-    //Properties
+    //MARK: - ListVC Properties
     weak var delegate: DisplayCityName?
     var helper = Helper()
     var savedCities = [CityItem]() //restore data from DB
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    //MARK: - ListVC life cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        // Clear the navigation bar background
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        navigationController?.isNavigationBarHidden = false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +50,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         loadCityItems()
     }
     
+    //MARK: - DB
     func addCity(_ city: Favourite) {
         let newItem = CityItem(context: context) //DB
         newItem.cityName = city.city
@@ -47,7 +58,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         newItem.countryName = city.country
         
         self.saveCityItems() //DB
-        
     }
     
     func saveCityItems() { //DB
@@ -70,20 +80,21 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        // Clear the navigation bar background
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.isNavigationBarHidden = false
-    }
     
+    //MARK: - ListVC actions
     @IBAction func backButton(_ sender: Any) {
         _ = navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func addCity() {
+        if let searchVC = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController {
+            searchVC.delegate = self
+            navigationController?.modalPresentationStyle = .fullScreen
+            navigationController?.pushViewController(searchVC, animated: true)
+        }
+    }
     
+    //MARK: - Set ListVC Table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return savedCities.count
     }
@@ -118,17 +129,5 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.present(alert, animated: true, completion: nil)
         
     }
-    
-    @IBAction func addCity() {
-        if let searchVC = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController {
-            searchVC.delegate = self
-            navigationController?.modalPresentationStyle = .fullScreen
-            navigationController?.pushViewController(searchVC, animated: true)
-        }
-    }
-    
-    func makeChoiceAlert(_ city: String, _ country: String, _ controller: UIViewController) {
-        
-    }
-    
+
 }
