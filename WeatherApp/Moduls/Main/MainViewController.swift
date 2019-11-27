@@ -28,6 +28,11 @@ class MainViewController: UIViewController, DisplayCityName {
     var nowTemperat = ""
     var nowIcon = ""
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mainCollectionView.dataSource = self
@@ -64,40 +69,30 @@ class MainViewController: UIViewController, DisplayCityName {
         
         Helper.movingEffect(view: backgroundImage, intensity: 45)
     }
-    
-    
-    //-----------------------
-    
+
     
     func displayCity(_ cityName: String) {
         cityNameLabel.text = cityName
-        self.cityNameLabel.reloadInputViews()
          }
-    
-    
-   //-----------------------
-    
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.navigationController?.isNavigationBarHidden = true
-    }
-    
+
+    //MARK: - MainVC Actions
     @IBAction func openLinkButton(_ sender: UIButton) {
         self.openSafari(for: presenter.safariLink)
     }
 
-    @IBAction func openListButton(_ sender: UIButton) { }
+    @IBAction func openListButton(_ sender: UIButton) {
+        if let listVC = UIStoryboard(name: "List", bundle: nil).instantiateViewController(withIdentifier: "ListViewController") as? ListViewController {
+        listVC.delegate = self
+        navigationController?.modalPresentationStyle = .fullScreen
+        navigationController?.pushViewController(listVC, animated: true)
 
-    
+        }
+    }
     
 }
 
 
-
-
-//MARK: - Main Collection
+//MARK: - Set MainVC Collection
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     
@@ -124,7 +119,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 
-//MARK: - Main tableView
+//MARK: - Set MainVC tableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -108,13 +108,13 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             _ = self.navigationController?.popViewController(animated: true)
         }))
         
-        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.cancel, handler: { delete in
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { delete in
             self.context.delete(self.savedCities[indexPath.row]) //delete chosen city from DB
             self.savedCities.remove(at: indexPath.row) //delete chosen city from list
             self.saveCityItems()
         }))
         
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
     }

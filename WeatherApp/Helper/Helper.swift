@@ -10,13 +10,13 @@ import UIKit
 
 class Helper {
     
-    static var cityKey = ""
+    static var cityKey = "326175"
     var cityName = ""
     static let degree = "°"
     static let png = ".png"
     
     //MARK: - Key and data source
-    static let apiKey = "T63iCF8KW2fsAtp2aRHGl48JB3PA7dzF"
+    static let apiKey = "7hFt69YdUAlTh72J31CeJ1nrnQs3YtOs"
     static let apiKey2 = "DD88l3LYERLRIDfPjaSGXsMlcG0yWtoK"
     
     static let hourlyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/hourly"
