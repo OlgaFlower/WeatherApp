@@ -10,8 +10,8 @@ import Foundation
 
 class APITwelveHoursService {
     
-    func fetchTwelveHours(completion: @escaping ([TwelveHoursForecast]) -> ()) {
-        guard let url = URL(string: Helper.twelveHoursResource) else { return }
+    func fetchTwelveHours(_ key: String, completion: @escaping ([TwelveHoursForecast]) -> ()) {
+        guard let url = URL(string: Helper.twelveHoursResource(key)) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
                 print("TwelveHoursError: \(error!.localizedDescription)")

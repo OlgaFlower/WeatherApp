@@ -24,10 +24,31 @@ class Helper {
     static let dailyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/daily"
     static let searchBaseURL = "https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey="
     
-    static var oneHourResource = "\(hourlyBaseURL)/1hour/\(cityKey)?apikey=\(apiKey)&details=true&metric=true"
-    static var twelveHoursResource = "\(hourlyBaseURL)/12hour/\(cityKey)?apikey=\(apiKey)&metric=true"
-    static var fiveDaysResource = "\(dailyBaseURL)/5day/\(cityKey)?apikey=\(apiKey)&details=true&metric=true"
+//    static var oneHourResource = "\(hourlyBaseURL)/1hour/\(cityKey)?apikey=\(apiKey)&details=true&metric=true"
+//    static var twelveHoursResource = "\(hourlyBaseURL)/12hour/\(cityKey)?apikey=\(apiKey)&metric=true"
+//    static var fiveDaysResource = "\(dailyBaseURL)/5day/\(cityKey)?apikey=\(apiKey)&details=true&metric=true"
+    
     static var searchResource = "\(searchBaseURL)\(apiKey)&q="
+    
+    
+    static func oneHourResource(_ key: String) -> String {
+        return "\(hourlyBaseURL)/1hour/\(key)?apikey=\(apiKey)&details=true&metric=true"
+    }
+    
+    static func twelveHoursResource(_ key: String) -> String {
+        return "\(hourlyBaseURL)/12hour/\(key)?apikey=\(apiKey)&metric=true"
+    }
+    
+    static func fiveDaysResource(_ key: String) -> String {
+        return "\(dailyBaseURL)/5day/\(key)?apikey=\(apiKey)&details=true&metric=true"
+    }
+    
+    
+    
+    
+    
+    
+    
     
     //MARK: - Date formatter
     static let weekDayFormat = "EEEE"

@@ -10,8 +10,8 @@ import Foundation
 
 class APIFiveDaysService {
     
-    func fetchFiveDays(completion: @escaping (FiveDaysForecast) -> ()) {
-        guard let url = URL(string: Helper.fiveDaysResource) else { return }
+    func fetchFiveDays(_ key: String, completion: @escaping (FiveDaysForecast) -> ()) {
+        guard let url = URL(string: Helper.fiveDaysResource(key)) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
                 print("FiveDaysError: \(error!.localizedDescription)")

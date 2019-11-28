@@ -8,8 +8,9 @@
 
 import UIKit
 import SafariServices
+import CoreData
 
-class MainViewController: UIViewController, DisplayCityName {
+class MainViewController: UIViewController /*DisplayCityName*/ {
     
     //MARK: - MainVC Outlets
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -25,6 +26,8 @@ class MainViewController: UIViewController, DisplayCityName {
     var helper = Helper()
     var nowTemperat = ""
     var nowIcon = ""
+    var dataToDisplay: [DisplayCityForecast]?
+    var vinnitsaKey = "326175"
     
     //MARK: - MainVC life cycle
     override func viewWillAppear(_ animated: Bool) {
@@ -42,25 +45,28 @@ class MainViewController: UIViewController, DisplayCityName {
         
         self.mainCollectionView.showsHorizontalScrollIndicator = false
         
+        loadDataToDisplay()
+        
         //Set city and current temperature view
-        presenter.loadOneHourForecast { (oneHour) in
+        presenter.loadOneHourForecast(dataToDisplay?.last?.key ?? vinnitsaKey) { (oneHour) in
             DispatchQueue.main.async {
                 self.temperatureLabel.text = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
                 self.forecastLabel.text = oneHour.first?.iconPhrase
                 self.nowTemperat = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
                 self.nowIcon = "\(oneHour.first!.weatherIcon)"
+                self.cityNameLabel.text = self.dataToDisplay?.last?.cityToDisplay
             }
         }
         
         //Set collection view
-        presenter.loadTwelveHoursForecast { (twelveHours) in
+        presenter.loadTwelveHoursForecast(dataToDisplay?.last?.key ?? vinnitsaKey) { (twelveHours) in
             DispatchQueue.main.async {
                 self.mainCollectionView.reloadData()
             }
         }
         
         //set table view
-        presenter.loadFiveDaysForecast { (fiveDays) in
+        presenter.loadFiveDaysForecast(dataToDisplay?.last?.key ?? vinnitsaKey) { (fiveDays) in
             DispatchQueue.main.async {
                 self.mainTableView.reloadData()
             }
@@ -69,11 +75,35 @@ class MainViewController: UIViewController, DisplayCityName {
         Helper.movingEffect(view: backgroundImage, intensity: 45)
     }
 
-    //MARK: - Set MainVC city name
-    func displayCity(_ cityName: String) {
-        cityNameLabel.text = cityName
-         }
+//    //MARK: - Set MainVC city name
+//    func displayCity(_ cityName: String) {
+//        cityNameLabel.text = cityName
+//         }
 
+
+    
+    func loadDataToDisplay() { //DB
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
+        do {
+            dataToDisplay = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+        if dataToDisplay == nil {
+            print("ADD ANY CITY!")
+            if let searchVC = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController {
+                searchVC.delegate = self as? DisplayFaviuriteList
+                navigationController?.modalPresentationStyle = .fullScreen
+                navigationController?.pushViewController(searchVC, animated: true)
+            }
+            
+        }
+    }
+    
+    
+    
+    
     //MARK: - MainVC Actions
     @IBAction func openLinkButton(_ sender: UIButton) {
         self.openSafari(for: presenter.safariLink)
@@ -81,7 +111,7 @@ class MainViewController: UIViewController, DisplayCityName {
 
     @IBAction func openListButton(_ sender: UIButton) {
         if let listVC = UIStoryboard(name: "List", bundle: nil).instantiateViewController(withIdentifier: "ListViewController") as? ListViewController {
-        listVC.delegate = self
+            listVC.delegate = self as? DisplayCityName
         navigationController?.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(listVC, animated: true)
 

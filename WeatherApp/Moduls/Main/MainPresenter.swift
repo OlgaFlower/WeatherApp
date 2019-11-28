@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 
 class MainPresenter {
@@ -14,16 +15,14 @@ class MainPresenter {
     weak var mainView: MainViewController?
     weak var collection: MainHourForecastCollectionViewCell?
     
-    //Data
     let hourService = APIOneHourService()
     let twelveHoursService = APITwelveHoursService()
     let fiveDaysService = APIFiveDaysService()
 
-    //Structs
     var oneHourForecasts: [OneHourForecast]?
     var twelveHourForecasts: [TwelveHoursForecast]?
     var fiveDaysForecast: FiveDaysForecast?
-    
+    var chosenCity: [DisplayCityForecast]?
     
     //Set table view rows
     func rowsNumberInTable(_ section: Int) -> Int {
@@ -39,25 +38,45 @@ class MainPresenter {
     
     //MARK: - Networking
     
+    
+//    func loadCityItems() -> [DisplayCityForecast] { //DB
+//        var data = [DisplayCityForecast]()
+//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        let request: NSFetchRequest = DisplayCityForecast.fetchRequest() //request for an array of CityItem
+//        do {
+//            data = try context.fetch(request)
+//        } catch {
+//            print("Error fetching data from context \(error)")
+//        }
+//        return data
+//    }
+    
+    
+    
+    func loadForecasts(_ key: String) {
+    
+     }
+    
     //Recieve one hour forecast
-    func loadOneHourForecast(completion: @escaping ([OneHourForecast]) -> Void) {
-        hourService.fetchOneHour { [weak self] (oneHour) in
+    func loadOneHourForecast(_ key: String, completion: @escaping ([OneHourForecast]) -> Void) {
+        hourService.fetchOneHour(key) { [weak self] (oneHour) in
             self?.oneHourForecasts = oneHour
             completion(oneHour)
         }
     }
     
+    
     //Recieve twelve hours forecast
-    func loadTwelveHoursForecast(completion: @escaping ([TwelveHoursForecast]) -> Void) {
-        twelveHoursService.fetchTwelveHours { [weak self] (twelveHours) in
+    func loadTwelveHoursForecast(_ key: String, completion: @escaping ([TwelveHoursForecast]) -> Void) {
+        twelveHoursService.fetchTwelveHours(key) { [weak self] (twelveHours) in
             self?.twelveHourForecasts = twelveHours
             completion(twelveHours)
         }
     }
     
     //Recieve five days forecast
-    func loadFiveDaysForecast(completion: @escaping (FiveDaysForecast) -> Void) {
-        fiveDaysService.fetchFiveDays { [weak self] (fiveDays) in
+    func loadFiveDaysForecast(_ key: String, completion: @escaping (FiveDaysForecast) -> Void) {
+        fiveDaysService.fetchFiveDays(key) { [weak self] (fiveDays) in
             self?.fiveDaysForecast = fiveDays
             completion(fiveDays)
         }

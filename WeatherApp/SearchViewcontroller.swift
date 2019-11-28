@@ -25,6 +25,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     let service = APISearchCityService()
     let searchCity = UISearchController(searchResultsController: nil)
     
+    
     var resultOfRequest = [SearchResult]() {
         didSet {
             DispatchQueue.main.async {
@@ -84,6 +85,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let newCity = Favourite(city: resultOfRequest[indexPath.row].cityName, key: resultOfRequest[indexPath.row].key, country: resultOfRequest[indexPath.row].country.name)
         delegate?.addCity(newCity)
+        
         
         navigationController?.popToRootViewController(animated: true)
     }
