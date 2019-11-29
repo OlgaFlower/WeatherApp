@@ -86,7 +86,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         let newCity = Favourite(city: resultOfRequest[indexPath.row].cityName, key: resultOfRequest[indexPath.row].key, country: resultOfRequest[indexPath.row].country.name)
         delegate?.addCity(newCity)
         
-        
         navigationController?.popToRootViewController(animated: true)
     }
     

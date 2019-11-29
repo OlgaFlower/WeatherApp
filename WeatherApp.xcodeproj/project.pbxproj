@@ -14,7 +14,6 @@
 		843DD6F12378628700525AF2 /* MainSunCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843DD6F02378628700525AF2 /* MainSunCell.swift */; };
 		843DD702237AC13B00525AF2 /* List.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843DD701237AC13B00525AF2 /* List.storyboard */; };
 		843DD74C237D46A700525AF2 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843DD74B237D46A700525AF2 /* Search.storyboard */; };
-		844CB875238BD19B0053B78B /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844CB874238BD19B0053B78B /* LaunchViewController.swift */; };
 		844CB8A8238C58030053B78B /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 844CB8A6238C58030053B78B /* DataModel.xcdatamodeld */; };
 		844EB36123868DF100766CE7 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB36023868DF100766CE7 /* ListViewController.swift */; };
 		844EB3632386933000766CE7 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844EB3622386933000766CE7 /* ListCell.swift */; };
@@ -65,7 +64,6 @@
 		843DD6F02378628700525AF2 /* MainSunCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSunCell.swift; sourceTree = "<group>"; };
 		843DD701237AC13B00525AF2 /* List.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = List.storyboard; sourceTree = "<group>"; };
 		843DD74B237D46A700525AF2 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
-		844CB874238BD19B0053B78B /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		844CB8A7238C58030053B78B /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		844EB36023868DF100766CE7 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		844EB3622386933000766CE7 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
@@ -174,14 +172,6 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		844CB873238BD1730053B78B /* Launch */ = {
-			isa = PBXGroup;
-			children = (
-				844CB874238BD19B0053B78B /* LaunchViewController.swift */,
-			);
-			path = Launch;
-			sourceTree = "<group>";
-		};
 		844CB8A5238C57E10053B78B /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,7 +216,6 @@
 				843FA6412377268000C5A5EE /* Main */,
 				843DD6FF237AC0BE00525AF2 /* List */,
 				843DD74A237D466700525AF2 /* Search */,
-				844CB873238BD1730053B78B /* Launch */,
 			);
 			path = Moduls;
 			sourceTree = "<group>";
@@ -428,7 +417,6 @@
 				8456BB8F237DAA7900234876 /* APITwelveHoursService.swift in Sources */,
 				8484C3C923818F5800A4BD36 /* Errors.swift in Sources */,
 				843DD6E823774EF800525AF2 /* MainPresenter.swift in Sources */,
-				844CB875238BD19B0053B78B /* LaunchViewController.swift in Sources */,
 				843DD6F12378628700525AF2 /* MainSunCell.swift in Sources */,
 				844EB36123868DF100766CE7 /* ListViewController.swift in Sources */,
 				84B7FFD02390672B009FA21D /* CityForecast.swift in Sources */,

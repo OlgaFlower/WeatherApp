@@ -123,8 +123,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         alert.addAction(UIAlertAction(title: "Display", style: UIAlertAction.Style.default, handler: { display in
             self.delegate?.displayCity(self.savedCities[indexPath.row].cityName!)
-//            self.context.deletedObjects
-//            self.saveCityItems()
             _ = self.navigationController?.popViewController(animated: true)
         }))
         
