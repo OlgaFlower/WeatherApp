@@ -27,6 +27,8 @@ class MainViewController: UIViewController {
     var nowTemperatCollectionView = ""
     var nowIconCollectionView = ""
     var dataToDisplay: [DisplayCityForecast]?
+    var citiesList: [CityItem]?
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //DB
     
     
     //MARK: - MainVC life cycle
@@ -81,8 +83,9 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        showAlertOfEmptyCitiesList()
+        loadDataToDisplay() //restore and display last chosen city
         
-        loadDataToDisplay()
         guard let loadedData = dataToDisplay?.last else { return }
         
         cityNameLabel.text = dataToDisplay?.last?.cityToDisplay
@@ -111,8 +114,7 @@ class MainViewController: UIViewController {
     }
     
     
-    func loadDataToDisplay() { //DB
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    func loadDataToDisplay() { //load from DB
         let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
         do {
             self.dataToDisplay = try context.fetch(request)
@@ -127,19 +129,43 @@ class MainViewController: UIViewController {
     }
     
     
+    func showAlertOfEmptyCitiesList() {
+        let request: NSFetchRequest<CityItem> = CityItem.fetchRequest() //get cities' list from DB
+        do {
+            citiesList = try context.fetch(request)
+            if citiesList == nil {
+                let alert = UIAlertController(title: "Cities' list is empty.", message: "Please, add city.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Add", style: UIAlertAction.Style.default, handler: { add in
+                    self.showListViewController()
+                }))
+            }
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+    }
+    
+    
     //MARK: - MainVC Actions
     @IBAction func openLinkButton(_ sender: UIButton) {
         self.openSafari(for: presenter.safariLink)
     }
     
     @IBAction func openListButton(_ sender: UIButton) {
+        showListViewController()
+    }
+    
+    
+    func showListViewController() {
         if let listVC = UIStoryboard(name: "List", bundle: nil).instantiateViewController(withIdentifier: "ListViewController") as? ListViewController {
             listVC.delegate = self as? DisplayCityName
             navigationController?.modalPresentationStyle = .fullScreen
             navigationController?.pushViewController(listVC, animated: true)
         }
     }
+    
 }
+
+
 
 
 //MARK: - Set MainVC Collection
