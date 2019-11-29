@@ -10,7 +10,7 @@ import UIKit
 import SafariServices
 import CoreData
 
-class MainViewController: UIViewController /*DisplayCityName*/ {
+class MainViewController: UIViewController {
     
     //MARK: - MainVC Outlets
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -24,11 +24,10 @@ class MainViewController: UIViewController /*DisplayCityName*/ {
     //MARK: - MainVC properties
     let presenter = MainPresenter()
     var helper = Helper()
-    var nowTemperat = ""
-    var nowIcon = ""
+    var nowTemperatCollectionView = ""
+    var nowIconCollectionView = ""
     var dataToDisplay: [DisplayCityForecast]?
-    var key = "326175" //started value for test
-
+    
     
     //MARK: - MainVC life cycle
     override func viewDidLoad() {
@@ -41,34 +40,33 @@ class MainViewController: UIViewController /*DisplayCityName*/ {
         
         self.mainCollectionView.showsHorizontalScrollIndicator = false
         
+        guard let forecast = dataToDisplay?.last else { return }
         //Set city and current temperature view
-        presenter.loadOneHourForecast(key) { (oneHour) in
-
+        presenter.loadOneHourForecast(forecast.key!) { (oneHour) in
             DispatchQueue.main.async {
                 self.temperatureLabel.text = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
                 self.forecastLabel.text = oneHour.first?.iconPhrase
-                self.nowTemperat = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
-                self.nowIcon = "\(oneHour.first!.weatherIcon)"
+                self.nowTemperatCollectionView = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
+                self.nowIconCollectionView = "\(oneHour.first!.weatherIcon)"
                 self.cityNameLabel.text = self.dataToDisplay?.last?.cityToDisplay
-                self.view.reloadInputViews()
             }
         }
         
         //Set collection view
-        presenter.loadTwelveHoursForecast(key) { (twelveHours) in
+        presenter.loadTwelveHoursForecast(forecast.key!) { (twelveHours) in
             DispatchQueue.main.async {
                 self.mainCollectionView.reloadData()
             }
         }
         
         //set table view
-        presenter.loadFiveDaysForecast(key) { (fiveDays) in
+        presenter.loadFiveDaysForecast(forecast.key!) { (fiveDays) in
             DispatchQueue.main.async {
                 self.mainTableView.reloadData()
             }
         }
         
-        loadDataToDisplay()
+        
         
     }
     
@@ -76,51 +74,71 @@ class MainViewController: UIViewController /*DisplayCityName*/ {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
         self.navigationController?.isNavigationBarHidden = true
         Helper.movingEffect(view: backgroundImage, intensity: 45)
-        
-        
-       }
-
-//    //MARK: - Set MainVC city name
-//    func displayCity(_ cityName: String) {
-//        cityNameLabel.text = cityName
-//         }
-
+    }
     
-    func loadDataToDisplay() { //DB
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
-            do {
-                self.dataToDisplay = try context.fetch(request)
-                
-            } catch {
-                print("Error fetching data from context \(error)")
-            }
-            if self.dataToDisplay == nil {
-                print("ADD ANY CITY!")
-                
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        loadDataToDisplay()
+        guard let loadedData = dataToDisplay?.last else { return }
+        
+        cityNameLabel.text = dataToDisplay?.last?.cityToDisplay
+        
+        presenter.loadOneHourForecast(loadedData.key!) { oneHour in
+            guard let forecast = oneHour.first else { return }
+            DispatchQueue.main.async {
+                self.temperatureLabel.text = "\(Int(forecast.temperat.temperatValue))" + Helper.degree
+                self.forecastLabel.text = forecast.iconPhrase
+                self.nowTemperatCollectionView = "\(Int(forecast.temperat.temperatValue))" + Helper.degree
+                self.nowIconCollectionView = "\(forecast.weatherIcon)"
             }
         }
         
+        presenter.loadTwelveHoursForecast(loadedData.key!) { twelveHours in
+            DispatchQueue.main.async {
+                self.mainCollectionView.reloadData()
+            }
+        }
+        
+        presenter.loadFiveDaysForecast(loadedData.key!) { fiveDays in
+            DispatchQueue.main.async {
+                self.mainTableView.reloadData()
+            }
+        }
+    }
     
     
+    func loadDataToDisplay() { //DB
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
+        do {
+            self.dataToDisplay = try context.fetch(request)
+            
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+        if self.dataToDisplay == nil {
+            print("ADD ANY CITY!")
+            
+        }
+    }
     
     
     //MARK: - MainVC Actions
     @IBAction func openLinkButton(_ sender: UIButton) {
         self.openSafari(for: presenter.safariLink)
     }
-
+    
     @IBAction func openListButton(_ sender: UIButton) {
         if let listVC = UIStoryboard(name: "List", bundle: nil).instantiateViewController(withIdentifier: "ListViewController") as? ListViewController {
             listVC.delegate = self as? DisplayCityName
-        navigationController?.modalPresentationStyle = .fullScreen
-        navigationController?.pushViewController(listVC, animated: true)
-
+            navigationController?.modalPresentationStyle = .fullScreen
+            navigationController?.pushViewController(listVC, animated: true)
         }
     }
-    
 }
 
 
@@ -138,8 +156,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let twelveHours = presenter.twelveHourForecasts else { return cell }
         if indexPath.row == 0 {
             cell.timeLabel.text = "Now"
-            cell.temperatLabel.text = nowTemperat
-            cell.iconImage.image = UIImage(named: nowIcon + Helper.png)
+            cell.temperatLabel.text = nowTemperatCollectionView
+            cell.iconImage.image = UIImage(named: nowIconCollectionView + Helper.png)
         } else {
             cell.timeLabel.text = Helper.dateConverter(((presenter.twelveHourForecasts?[indexPath.row - 1].time)!), Helper.hourFormat)
             cell.temperatLabel.text = "\(String(Int(twelveHours[indexPath.row - 1].temperat.temperatValue)))" + Helper.degree
@@ -172,27 +190,27 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case 0: let cell = tableView.dequeueReusableCell(withIdentifier: "WeekCell", for: indexPath) as! MainWeekCell
         
         //unwrap values in table view cells
-                guard let fiveDayForecast = presenter.fiveDaysForecast else { return cell }
+        guard let fiveDayForecast = presenter.fiveDaysForecast else { return cell }
         
-                cell.dayLabel.text = Helper.dateConverter(fiveDayForecast.dailyForecast[indexPath.row].date, Helper.weekDayFormat)
-                cell.maxLabel.text = "\(Int(fiveDayForecast.dailyForecast[indexPath.row].temperat.max.value))" + Helper.degree
-                cell.minLabel.text = "\(Int(fiveDayForecast.dailyForecast[indexPath.row].temperat.min.value))" + Helper.degree
-                let icon = "\(fiveDayForecast.dailyForecast[indexPath.row].dayIcon.icon)"
-                cell.iconImage.image = UIImage(named: icon + Helper.png)
-                return cell
-        
+        cell.dayLabel.text = Helper.dateConverter(fiveDayForecast.dailyForecast[indexPath.row].date, Helper.weekDayFormat)
+        cell.maxLabel.text = "\(Int(fiveDayForecast.dailyForecast[indexPath.row].temperat.max.value))" + Helper.degree
+        cell.minLabel.text = "\(Int(fiveDayForecast.dailyForecast[indexPath.row].temperat.min.value))" + Helper.degree
+        let icon = "\(fiveDayForecast.dailyForecast[indexPath.row].dayIcon.icon)"
+        cell.iconImage.image = UIImage(named: icon + Helper.png)
+        return cell
+            
         case 1: let cell = tableView.dequeueReusableCell(withIdentifier: "SunMoonCell", for: indexPath) as! MainSunCell
-                //unwrap values in table view cells
-                guard let fiveDayForecast = presenter.fiveDaysForecast else { return cell}
+        //unwrap values in table view cells
+        guard let fiveDayForecast = presenter.fiveDaysForecast else { return cell}
         
-                cell.sunIconImage.image = UIImage(named: "1.png")
-                cell.sunriseLabel.text = "Sunrise"
-                cell.sunriseTimeLabel.text = Helper.dateConverter((fiveDayForecast.dailyForecast.first?.sun.sunriseTime)!, Helper.hourFormat)
-                cell.sunsetLabel.text = "Sunset"
-                cell.sunsetTimeLabel.text = Helper.dateConverter((fiveDayForecast.dailyForecast.first?.sun.sunsetTime)!
+        cell.sunIconImage.image = UIImage(named: "1.png") //static sun icon
+        cell.sunriseLabel.text = "Sunrise"
+        cell.sunriseTimeLabel.text = Helper.dateConverter((fiveDayForecast.dailyForecast.first?.sun.sunriseTime)!, Helper.hourFormat)
+        cell.sunsetLabel.text = "Sunset"
+        cell.sunsetTimeLabel.text = Helper.dateConverter((fiveDayForecast.dailyForecast.first?.sun.sunsetTime)!
             , Helper.hourFormat)
-        cell.moonIconImage.image = UIImage(named: "33.png")
-                return cell
+        cell.moonIconImage.image = UIImage(named: "33.png") //static moon icon
+        return cell
         default: break
         }
         return UITableViewCell()
