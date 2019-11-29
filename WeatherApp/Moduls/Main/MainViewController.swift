@@ -27,14 +27,10 @@ class MainViewController: UIViewController /*DisplayCityName*/ {
     var nowTemperat = ""
     var nowIcon = ""
     var dataToDisplay: [DisplayCityForecast]?
-    var vinnitsaKey = "326175"
+    var key = "326175" //started value for test
+
     
     //MARK: - MainVC life cycle
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        self.navigationController?.isNavigationBarHidden = true
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         mainCollectionView.dataSource = self
@@ -45,61 +41,68 @@ class MainViewController: UIViewController /*DisplayCityName*/ {
         
         self.mainCollectionView.showsHorizontalScrollIndicator = false
         
-        loadDataToDisplay()
-        
         //Set city and current temperature view
-        presenter.loadOneHourForecast(dataToDisplay?.last?.key ?? vinnitsaKey) { (oneHour) in
+        presenter.loadOneHourForecast(key) { (oneHour) in
+
             DispatchQueue.main.async {
                 self.temperatureLabel.text = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
                 self.forecastLabel.text = oneHour.first?.iconPhrase
                 self.nowTemperat = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
                 self.nowIcon = "\(oneHour.first!.weatherIcon)"
                 self.cityNameLabel.text = self.dataToDisplay?.last?.cityToDisplay
+                self.view.reloadInputViews()
             }
         }
         
         //Set collection view
-        presenter.loadTwelveHoursForecast(dataToDisplay?.last?.key ?? vinnitsaKey) { (twelveHours) in
+        presenter.loadTwelveHoursForecast(key) { (twelveHours) in
             DispatchQueue.main.async {
                 self.mainCollectionView.reloadData()
             }
         }
         
         //set table view
-        presenter.loadFiveDaysForecast(dataToDisplay?.last?.key ?? vinnitsaKey) { (fiveDays) in
+        presenter.loadFiveDaysForecast(key) { (fiveDays) in
             DispatchQueue.main.async {
                 self.mainTableView.reloadData()
             }
         }
         
-        Helper.movingEffect(view: backgroundImage, intensity: 45)
+        loadDataToDisplay()
+        
     }
+    
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.isNavigationBarHidden = true
+        Helper.movingEffect(view: backgroundImage, intensity: 45)
+        
+        
+       }
 
 //    //MARK: - Set MainVC city name
 //    func displayCity(_ cityName: String) {
 //        cityNameLabel.text = cityName
 //         }
 
-
     
     func loadDataToDisplay() { //DB
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
-        do {
-            dataToDisplay = try context.fetch(request)
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
-        if dataToDisplay == nil {
-            print("ADD ANY CITY!")
-            if let searchVC = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController {
-                searchVC.delegate = self as? DisplayFaviuriteList
-                navigationController?.modalPresentationStyle = .fullScreen
-                navigationController?.pushViewController(searchVC, animated: true)
+            let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
+            do {
+                self.dataToDisplay = try context.fetch(request)
+                
+            } catch {
+                print("Error fetching data from context \(error)")
             }
-            
+            if self.dataToDisplay == nil {
+                print("ADD ANY CITY!")
+                
+            }
         }
-    }
+        
     
     
     

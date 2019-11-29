@@ -36,7 +36,7 @@ class MainPresenter {
     }
     
     
-    //MARK: - Networking
+ //   //MARK: - Networking
     
     
 //    func loadCityItems() -> [DisplayCityForecast] { //DB
@@ -53,9 +53,7 @@ class MainPresenter {
     
     
     
-    func loadForecasts(_ key: String) {
-    
-     }
+
     
     //Recieve one hour forecast
     func loadOneHourForecast(_ key: String, completion: @escaping ([OneHourForecast]) -> Void) {
@@ -82,6 +80,18 @@ class MainPresenter {
         }
     }
 
+    func loadAllData(_ key: String) {
+        loadOneHourForecast(key) { oneHour in
+            DispatchQueue.main.async {
+                self.mainView?.temperatureLabel.text = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
+                self.mainView?.forecastLabel.text = oneHour.first?.iconPhrase
+                self.mainView?.nowTemperat = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
+                self.mainView?.nowIcon = "\(oneHour.first!.weatherIcon)"
+                self.mainView?.cityNameLabel.text = self.mainView?.dataToDisplay?.last?.cityToDisplay
+            }
+        }
+    }
+    
     //Open URL
     var safariLink: String {
         get {
