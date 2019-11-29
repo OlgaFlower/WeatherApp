@@ -28,9 +28,8 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     weak var delegate: DisplayCityName?
     var helper = Helper()
     var savedCities = [CityItem]() //restore data from DB
-    var dataToDisplay: [DisplayCityForecast]?
+    var dataToDisplay: [DisplayCityForecast]? //key and name of the chosen city
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//    var chosenCity: CityForecast?
     
     //MARK: - ListVC life cycle
     override func viewWillAppear(_ animated: Bool) {
@@ -122,7 +121,12 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let alert = UIAlertController(title: "\(String(savedCities[indexPath.row].cityName!))\n\(String(savedCities[indexPath.row].countryName!))", message: "", preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: "Display", style: UIAlertAction.Style.default, handler: { display in
-            self.delegate?.displayCity(self.savedCities[indexPath.row].cityName!)
+//            self.delegate?.displayCity(self.savedCities[indexPath.row].cityName!)
+            let chosenCity = DisplayCityForecast(context: self.context)
+            chosenCity.cityToDisplay = self.savedCities[indexPath.row].cityName
+            chosenCity.key = self.savedCities[indexPath.row].cityKey
+            self.saveCityItems() //save to DB
+            
             _ = self.navigationController?.popViewController(animated: true)
         }))
         
