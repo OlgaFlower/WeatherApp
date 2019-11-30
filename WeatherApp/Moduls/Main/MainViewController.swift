@@ -39,9 +39,26 @@ class MainViewController: UIViewController {
         mainTableView.delegate = self
         mainTableView.dataSource = self
         mainTableView.backgroundColor = UIColor.clear
-        
         self.mainCollectionView.showsHorizontalScrollIndicator = false
         
+        fetchDataAndDisplayOnScreen()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.isNavigationBarHidden = true
+        Helper.movingEffect(view: backgroundImage, intensity: 45)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        showAlertOfEmptyCitiesList()
+        loadDataToDisplay() //restore and display last chosen city
+        fetchDataAndDisplayOnScreen()
+    }
+    
+    
+    func fetchDataAndDisplayOnScreen() {
         guard let forecast = dataToDisplay?.last else { return }
         //Set city and current temperature view
         presenter.loadOneHourForecast(forecast.key!) { (oneHour) in
@@ -67,52 +84,7 @@ class MainViewController: UIViewController {
                 self.mainTableView.reloadData()
             }
         }
-        
-        
-        
     }
-    
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        self.navigationController?.isNavigationBarHidden = true
-        Helper.movingEffect(view: backgroundImage, intensity: 45)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        showAlertOfEmptyCitiesList()
-        loadDataToDisplay() //restore and display last chosen city
-        
-        guard let loadedData = dataToDisplay?.last else { return }
-        
-        cityNameLabel.text = dataToDisplay?.last?.cityToDisplay
-        
-        presenter.loadOneHourForecast(loadedData.key!) { oneHour in
-            guard let forecast = oneHour.first else { return }
-            DispatchQueue.main.async {
-                self.temperatureLabel.text = "\(Int(forecast.temperat.temperatValue))" + Helper.degree
-                self.forecastLabel.text = forecast.iconPhrase
-                self.nowTemperatCollectionView = "\(Int(forecast.temperat.temperatValue))" + Helper.degree
-                self.nowIconCollectionView = "\(forecast.weatherIcon)"
-            }
-        }
-        
-        presenter.loadTwelveHoursForecast(loadedData.key!) { twelveHours in
-            DispatchQueue.main.async {
-                self.mainCollectionView.reloadData()
-            }
-        }
-        
-        presenter.loadFiveDaysForecast(loadedData.key!) { fiveDays in
-            DispatchQueue.main.async {
-                self.mainTableView.reloadData()
-            }
-        }
-    }
-    
     
     func loadDataToDisplay() { //load from DB
         let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
@@ -121,10 +93,6 @@ class MainViewController: UIViewController {
             
         } catch {
             print("Error fetching data from context \(error)")
-        }
-        if self.dataToDisplay == nil {
-            print("ADD ANY CITY!")
-            
         }
     }
     
