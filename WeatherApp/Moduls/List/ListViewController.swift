@@ -51,6 +51,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         loadCityItems()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        loadCityItems()
+    }
     //MARK: - DB
     func addCity(_ city: Favourite) {
         let newItem = CityItem(context: context) //DB
@@ -80,6 +84,13 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let request: NSFetchRequest<CityItem> = CityItem.fetchRequest() //request for an array of CityItem
         do {
             savedCities = try context.fetch(request)
+            if savedCities.isEmpty {
+                self.navigationItem.leftBarButtonItem?.isEnabled = false
+                self.navigationItem.leftBarButtonItem?.tintColor = UIColor.clear
+            } else {
+                self.navigationItem.leftBarButtonItem?.isEnabled = true
+                self.navigationItem.leftBarButtonItem?.tintColor = UIColor.lightGray
+            }
         } catch {
             print("Error fetching data from context \(error)")
         }
@@ -134,6 +145,11 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.context.delete(self.savedCities[indexPath.row]) //delete chosen city from DB
             self.savedCities.remove(at: indexPath.row) //delete chosen city from list
             self.saveCityItems()
+            if self.savedCities.isEmpty {
+                self.navigationItem.leftBarButtonItem?.isEnabled = false
+                self.navigationItem.leftBarButtonItem?.tintColor = UIColor.clear
+            }
+         
         }))
         
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))

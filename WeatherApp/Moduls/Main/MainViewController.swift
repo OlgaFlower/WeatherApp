@@ -52,10 +52,10 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        showAlertOfEmptyCitiesList()
         loadDataToDisplay() //restore and display last chosen city
         fetchDataAndDisplayOnScreen()
     }
+    
     
     
     func fetchDataAndDisplayOnScreen() {
@@ -90,22 +90,19 @@ class MainViewController: UIViewController {
         let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
         do {
             self.dataToDisplay = try context.fetch(request)
-            
+
         } catch {
             print("Error fetching data from context \(error)")
         }
     }
     
     
-    func showAlertOfEmptyCitiesList() {
+    func startWithListViewController() {
         let request: NSFetchRequest<CityItem> = CityItem.fetchRequest() //get cities' list from DB
         do {
             citiesList = try context.fetch(request)
-            if citiesList == nil {
-                let alert = UIAlertController(title: "Cities' list is empty.", message: "Please, add city.", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Add", style: UIAlertAction.Style.default, handler: { add in
-                    self.showListViewController()
-                }))
+            if citiesList!.isEmpty {
+                showListViewController()
             }
         } catch {
             print("Error fetching data from context \(error)")
@@ -130,6 +127,8 @@ class MainViewController: UIViewController {
             navigationController?.pushViewController(listVC, animated: true)
         }
     }
+    
+
     
 }
 
