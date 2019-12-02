@@ -132,7 +132,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let alert = UIAlertController(title: "\(String(savedCities[indexPath.row].cityName!))\n\(String(savedCities[indexPath.row].countryName!))", message: "", preferredStyle: UIAlertController.Style.alert)
         
         alert.addAction(UIAlertAction(title: "Display", style: UIAlertAction.Style.default, handler: { display in
-//            self.delegate?.displayCity(self.savedCities[indexPath.row].cityName!)
+            self.removeOldDisplayedItem()
             let chosenCity = DisplayCityForecast(context: self.context)
             chosenCity.cityToDisplay = self.savedCities[indexPath.row].cityName
             chosenCity.key = self.savedCities[indexPath.row].cityKey
@@ -146,6 +146,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.savedCities.remove(at: indexPath.row) //delete chosen city from list
             self.saveCityItems()
             if self.savedCities.isEmpty {
+                self.removeOldDisplayedItem()
                 self.navigationItem.leftBarButtonItem?.isEnabled = false
                 self.navigationItem.leftBarButtonItem?.tintColor = UIColor.clear
             }
@@ -155,6 +156,20 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
+    }
+    
+    func removeOldDisplayedItem() { //load from DB
+        let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
+        do {
+            let items = try context.fetch(request)
+            for el in 0 ..< items.count - 1 {
+                self.context.delete(items[el])
+                saveCityItems()
+            }
+            
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
     }
 
 }

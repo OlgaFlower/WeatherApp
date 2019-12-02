@@ -14,7 +14,7 @@ class Helper {
     static let png = ".png"
     
     //MARK: - Helper: key and data sources
-    static let apiKey = "XoxxIQYPXTAJA6Y6SXcRHrt7VbZVCRcx"
+    static let apiKey = "podLVwdYT6xDtfVHAnHoc9zwbQlwcGfG"
     
     static let hourlyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/hourly"
     static let dailyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/daily"
@@ -40,14 +40,21 @@ class Helper {
     static let hourFormat = "HH:mm"
     
     static func dateConverter(_ inputDate: String, _ convertTo: String) -> String {
+        var calendar = Calendar.current
+        if let timeZone = TimeZone(abbreviation: "UTC") {
+            calendar.timeZone = timeZone
+        }
+        
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" //input format
         
         let dateFormatterConvert = DateFormatter()
         dateFormatterConvert.dateFormat = convertTo
         
+        
         let date: Date? = dateFormatterGet.date(from: inputDate)
         return dateFormatterConvert.string(from: date!)
+        
     }
     
     

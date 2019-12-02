@@ -34,6 +34,8 @@ class MainViewController: UIViewController {
     //MARK: - MainVC life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
         mainTableView.delegate = self
@@ -52,17 +54,17 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        loadDataToDisplay() //restore and display last chosen city
-        fetchDataAndDisplayOnScreen()
+        displayViewController()
     }
     
     
     
     func fetchDataAndDisplayOnScreen() {
         guard let forecast = dataToDisplay?.last else { return }
-        //Set city and current temperature view
+        
         presenter.loadOneHourForecast(forecast.key!) { (oneHour) in
             DispatchQueue.main.async {
+                print("ONE HOUR DISPATCH key \(String(describing: forecast.key))")
                 self.temperatureLabel.text = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
                 self.forecastLabel.text = oneHour.first?.iconPhrase
                 self.nowTemperatCollectionView = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
@@ -74,6 +76,7 @@ class MainViewController: UIViewController {
         //Set collection view
         presenter.loadTwelveHoursForecast(forecast.key!) { (twelveHours) in
             DispatchQueue.main.async {
+                print("12 HOURS DISPATCH key \(String(describing: forecast.key))")
                 self.mainCollectionView.reloadData()
             }
         }
@@ -81,31 +84,71 @@ class MainViewController: UIViewController {
         //set table view
         presenter.loadFiveDaysForecast(forecast.key!) { (fiveDays) in
             DispatchQueue.main.async {
+                print("5 DAYS DISPATCH key \(String(describing: forecast.key))")
                 self.mainTableView.reloadData()
             }
         }
     }
     
-    func loadDataToDisplay() { //load from DB
-        let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
+    
+    
+    
+    func displayViewController() {
+        let request: NSFetchRequest<CityItem> = CityItem.fetchRequest() //get cities' list from DB
         do {
-            self.dataToDisplay = try context.fetch(request)
-
+            citiesList = try context.fetch(request)
+            print("displayViewController(): citiesList \(String(describing: citiesList))")
+            if citiesList!.isEmpty {
+                removeOldDisplayedItem()
+                showListViewController()
+            } else {
+                loadDataToDisplay()
+                fetchDataAndDisplayOnScreen()
+                print("after deleting \(String(describing: citiesList))")
+            }
         } catch {
             print("Error fetching data from context \(error)")
         }
     }
     
     
-    func startWithListViewController() {
-        let request: NSFetchRequest<CityItem> = CityItem.fetchRequest() //get cities' list from DB
+    
+    //MARK: - Data Base
+    //LOAD
+    func loadDataToDisplay() { //load from DB
+        let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
         do {
-            citiesList = try context.fetch(request)
-            if citiesList!.isEmpty {
-                showListViewController()
-            }
+            self.dataToDisplay = try context.fetch(request)
         } catch {
             print("Error fetching data from context \(error)")
+        }
+    }
+    
+    
+    //REMOVE
+    func removeOldDisplayedItem() { //load from DB
+        let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
+        do {
+            let items = try context.fetch(request)
+            for el in 0 ..< items.count - 1 {
+                self.context.delete(items[el])
+                saveCityItems()
+            }
+            
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+    }
+    
+    //SAVE
+    func saveCityItems() { //DB
+        do {
+            try context.save()
+            DispatchQueue.main.async {
+                self.mainTableView.reloadData()
+            }
+        } catch {
+            print("Error saving context \(error)")
         }
     }
     
