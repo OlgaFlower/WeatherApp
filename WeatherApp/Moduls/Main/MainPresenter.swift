@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 
 class MainPresenter {
     
-    weak var mainView: MainViewController?
-    weak var collection: MainHourForecastCollectionViewCell?
+//    weak var mainView: MainViewController?
+//    weak var collection: MainHourForecastCollectionViewCell?
     
     let hourService = APIOneHourService()
     let twelveHoursService = APITwelveHoursService()

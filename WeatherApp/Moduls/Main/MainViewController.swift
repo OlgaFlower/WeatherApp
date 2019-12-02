@@ -8,7 +8,7 @@
 
 import UIKit
 import SafariServices
-import CoreData
+import RealmSwift
 
 class MainViewController: UIViewController {
     
@@ -26,9 +26,9 @@ class MainViewController: UIViewController {
     var helper = Helper()
     var nowTemperatCollectionView = ""
     var nowIconCollectionView = ""
-    var dataToDisplay: [DisplayCityForecast]?
+    var chosenCities: Results<DisplayCityForecast>!
     var citiesList: [CityItem]?
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //DB
+    let realm = try! Realm()
     
     
     //MARK: - MainVC life cycle
@@ -61,7 +61,7 @@ class MainViewController: UIViewController {
     func fetchDataAndDisplayOnScreen() {
         guard let forecast = dataToDisplay?.last else { return }
         //Set city and current temperature view
-        presenter.loadOneHourForecast(forecast.key!) { (oneHour) in
+        presenter.loadOneHourForecast(forecast.key) { (oneHour) in
             DispatchQueue.main.async {
                 self.temperatureLabel.text = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
                 self.forecastLabel.text = oneHour.first?.iconPhrase
@@ -72,14 +72,14 @@ class MainViewController: UIViewController {
         }
         
         //Set collection view
-        presenter.loadTwelveHoursForecast(forecast.key!) { (twelveHours) in
+        presenter.loadTwelveHoursForecast(forecast.key) { (twelveHours) in
             DispatchQueue.main.async {
                 self.mainCollectionView.reloadData()
             }
         }
         
         //set table view
-        presenter.loadFiveDaysForecast(forecast.key!) { (fiveDays) in
+        presenter.loadFiveDaysForecast(forecast.key) { (fiveDays) in
             DispatchQueue.main.async {
                 self.mainTableView.reloadData()
             }
@@ -87,26 +87,21 @@ class MainViewController: UIViewController {
     }
     
     func loadDataToDisplay() { //load from DB
-        let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
-        do {
-            self.dataToDisplay = try context.fetch(request)
-
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
+        let cities = realm.objects(ChosenCityList.self)
+        mainTableView.reloadData()
     }
     
     
     func startWithListViewController() {
-        let request: NSFetchRequest<CityItem> = CityItem.fetchRequest() //get cities' list from DB
-        do {
-            citiesList = try context.fetch(request)
-            if citiesList!.isEmpty {
-                showListViewController()
-            }
-        } catch {
-            print("Error fetching data from context \(error)")
-        }
+//        let request: NSFetchRequest<CityItem> = CityItem.fetchRequest() //get cities' list from DB
+//        do {
+//            citiesList = try context.fetch(request)
+//            if citiesList!.isEmpty {
+//                showListViewController()
+//            }
+//        } catch {
+//            print("Error fetching data from context \(error)")
+//        }
     }
     
     
