@@ -42,8 +42,6 @@ class MainViewController: UIViewController {
         mainTableView.dataSource = self
         mainTableView.backgroundColor = UIColor.clear
         self.mainCollectionView.showsHorizontalScrollIndicator = false
-        
-        fetchDataAndDisplayOnScreen()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +68,7 @@ class MainViewController: UIViewController {
                 self.nowTemperatCollectionView = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
                 self.nowIconCollectionView = "\(oneHour.first!.weatherIcon)"
                 self.cityNameLabel.text = self.dataToDisplay?.last?.cityToDisplay
+                self.mainCollectionView.reloadData()
             }
         }
         
