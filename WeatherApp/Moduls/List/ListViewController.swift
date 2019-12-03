@@ -33,7 +33,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: - ListVC life cycle
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         // Clear the navigation bar background
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
@@ -52,7 +52,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         loadCityItems()
     }
     //MARK: - DB

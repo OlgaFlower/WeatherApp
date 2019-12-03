@@ -4,7 +4,7 @@
 //
 //  Created by Admin on 14.11.2019.
 //  Copyright © 2019 Flower. All rights reserved.
-//http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=DD88l3LYERLRIDfPjaSGXsMlcG0yWtoK&q=vinn
+//http://dataservice.accuweather.com/locations/v1/1593794?apikey=mEECFoncHJmdzuK925tGFk9tYJA5wgG7&details=true
 
 import UIKit
 
@@ -14,11 +14,12 @@ class Helper {
     static let png = ".png"
     
     //MARK: - Helper: key and data sources
-    static let apiKey = "podLVwdYT6xDtfVHAnHoc9zwbQlwcGfG"
+    static let apiKey = "mEECFoncHJmdzuK925tGFk9tYJA5wgG7"
     
     static let hourlyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/hourly"
     static let dailyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/daily"
     static let searchBaseURL = "https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey="
+    static let timeZoneCodeURL = "https://dataservice.accuweather.com/locations/v1/"
     
     static var searchResource = "\(searchBaseURL)\(apiKey)&q="
     
@@ -34,6 +35,9 @@ class Helper {
         return "\(dailyBaseURL)/5day/\(key)?apikey=\(apiKey)&details=true&metric=true"
     }
     
+    static func timeZoneCodeResource(_ key: String) -> String {
+        return "\(timeZoneCodeURL)\(key)?apikey=\(apiKey)&details=true"
+    }
     
     //MARK: - Date formatter
     static let weekDayFormat = "EEEE"

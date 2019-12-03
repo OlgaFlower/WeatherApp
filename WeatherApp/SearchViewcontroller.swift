@@ -57,11 +57,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         definesPresentationContext = true
         tableView.tableHeaderView?.backgroundColor = .clear
         tableView.tableHeaderView = searchCity.searchBar
-        searchCity.searchBar.tintColor = .white
-        searchCity.searchBar.barTintColor = .clear
-        searchCity.searchBar.searchTextField.backgroundColor = .clear
-        let searchTextColor = searchCity.searchBar.value(forKey: "searchField") as? UITextField
-        searchTextColor?.textColor = .white
+        
+        searchCity.searchBar.tintColor = .gray
+ 
+        searchCity.searchBar.barTintColor = .clear //.orange
+        searchCity.searchBar.searchTextField.backgroundColor = .clear //.green
+        searchCity.hidesNavigationBarDuringPresentation = false
+        searchCity.searchBar.backgroundColor = .clear //.red
     }
     
     //MARK: - SearchVC action

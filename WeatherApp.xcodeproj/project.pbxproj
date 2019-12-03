@@ -25,6 +25,8 @@
 		8456BB8F237DAA7900234876 /* APITwelveHoursService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB8E237DAA7900234876 /* APITwelveHoursService.swift */; };
 		8456BB93237E7CEE00234876 /* APIFiveDaysService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB92237E7CEE00234876 /* APIFiveDaysService.swift */; };
 		8456BB95237E7D1700234876 /* FiveDaysForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB94237E7D1600234876 /* FiveDaysForecast.swift */; };
+		8462F05F2396907B0094B5E7 /* TimeZoneForSunsriseAndSunset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462F05E2396907B0094B5E7 /* TimeZoneForSunsriseAndSunset.swift */; };
+		8462F0612396C4570094B5E7 /* APITimeZoneForSunriseAndSunsetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462F0602396C4570094B5E7 /* APITimeZoneForSunriseAndSunsetService.swift */; };
 		8484C3C923818F5800A4BD36 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3C823818F5800A4BD36 /* Errors.swift */; };
 		8484C3CB2381A24A00A4BD36 /* SearchViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3CA2381A24A00A4BD36 /* SearchViewcontroller.swift */; };
 		8484C3D62382F7A500A4BD36 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3D52382F7A500A4BD36 /* SearchResult.swift */; };
@@ -75,6 +77,8 @@
 		8456BB8E237DAA7900234876 /* APITwelveHoursService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITwelveHoursService.swift; sourceTree = "<group>"; };
 		8456BB92237E7CEE00234876 /* APIFiveDaysService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIFiveDaysService.swift; sourceTree = "<group>"; };
 		8456BB94237E7D1600234876 /* FiveDaysForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDaysForecast.swift; sourceTree = "<group>"; };
+		8462F05E2396907B0094B5E7 /* TimeZoneForSunsriseAndSunset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneForSunsriseAndSunset.swift; sourceTree = "<group>"; };
+		8462F0602396C4570094B5E7 /* APITimeZoneForSunriseAndSunsetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITimeZoneForSunriseAndSunsetService.swift; sourceTree = "<group>"; };
 		8484C3C823818F5800A4BD36 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		8484C3CA2381A24A00A4BD36 /* SearchViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchViewcontroller.swift; path = WeatherApp/SearchViewcontroller.swift; sourceTree = SOURCE_ROOT; };
 		8484C3D52382F7A500A4BD36 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				8456BB8E237DAA7900234876 /* APITwelveHoursService.swift */,
 				8456BB92237E7CEE00234876 /* APIFiveDaysService.swift */,
 				8484C3D72384115F00A4BD36 /* APISearchCityService.swift */,
+				8462F0602396C4570094B5E7 /* APITimeZoneForSunriseAndSunsetService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -197,6 +202,7 @@
 				8484C3D52382F7A500A4BD36 /* SearchResult.swift */,
 				844EB3642386B8AC00766CE7 /* Favourite.swift */,
 				84B7FFCF2390672B009FA21D /* CityForecast.swift */,
+				8462F05E2396907B0094B5E7 /* TimeZoneForSunsriseAndSunset.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8462F05F2396907B0094B5E7 /* TimeZoneForSunsriseAndSunset.swift in Sources */,
 				8456BB88237D816B00234876 /* APIOneHourService.swift in Sources */,
 				84F8C0662371EE3D00BC13E6 /* AppDelegate.swift in Sources */,
 				8456BB93237E7CEE00234876 /* APIFiveDaysService.swift in Sources */,
@@ -414,6 +421,7 @@
 				843DD6E623774E9C00525AF2 /* MainWeekCell.swift in Sources */,
 				843DD6E423774E1D00525AF2 /* MainHourForecastCollectionViewCell.swift in Sources */,
 				8456BB95237E7D1700234876 /* FiveDaysForecast.swift in Sources */,
+				8462F0612396C4570094B5E7 /* APITimeZoneForSunriseAndSunsetService.swift in Sources */,
 				8456BB8F237DAA7900234876 /* APITwelveHoursService.swift in Sources */,
 				8484C3C923818F5800A4BD36 /* Errors.swift in Sources */,
 				843DD6E823774EF800525AF2 /* MainPresenter.swift in Sources */,

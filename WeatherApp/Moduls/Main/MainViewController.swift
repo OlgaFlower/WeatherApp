@@ -45,13 +45,13 @@ class MainViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         Helper.movingEffect(view: backgroundImage, intensity: 45)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         displayViewController()
     }
     
@@ -129,7 +129,7 @@ class MainViewController: UIViewController {
         let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
         do {
             let items = try context.fetch(request)
-            for el in 0 ..< items.count - 1 {
+            for el in 0 ..< items.count {
                 self.context.delete(items[el])
                 saveCityItems()
             }
