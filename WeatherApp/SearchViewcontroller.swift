@@ -55,15 +55,15 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
       
         searchCity.searchResultsUpdater = self
         definesPresentationContext = true
-        tableView.tableHeaderView?.backgroundColor = .clear
+//        tableView.tableHeaderView?.backgroundColor = .clear
         tableView.tableHeaderView = searchCity.searchBar
         
-        searchCity.searchBar.tintColor = .gray
+        searchCity.searchBar.tintColor = .gray //"Cancel" color
  
-        searchCity.searchBar.barTintColor = .clear //.orange
-        searchCity.searchBar.searchTextField.backgroundColor = .clear //.green
+        searchCity.searchBar.barTintColor = #colorLiteral(red: 0.06511645217, green: 0.1596652318, blue: 0.2661897083, alpha: 1)
+        searchCity.searchBar.searchTextField.backgroundColor = .clear
         searchCity.hidesNavigationBarDuringPresentation = false
-        searchCity.searchBar.backgroundColor = .clear //.red
+        searchCity.searchBar.backgroundColor = .clear
     }
     
     //MARK: - SearchVC action
