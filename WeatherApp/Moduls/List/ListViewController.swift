@@ -134,6 +134,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         alert.addAction(UIAlertAction(title: "Display", style: UIAlertAction.Style.default, handler: { display in
             self.removeOldDisplayedItem()
             let chosenCity = DisplayCityForecast(context: self.context)
+            
             chosenCity.cityToDisplay = self.savedCities[indexPath.row].cityName
             chosenCity.key = self.savedCities[indexPath.row].cityKey
             self.saveCityItems() //save to DB

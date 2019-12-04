@@ -22,6 +22,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     //MARK: - SearchVC properties
     weak var delegate: DisplayFaviuriteList?
+//    let presenter = SearchPresenter()
     let service = APISearchCityService()
     let searchCity = UISearchController(searchResultsController: nil)
     

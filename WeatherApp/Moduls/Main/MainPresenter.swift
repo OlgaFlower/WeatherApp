@@ -18,11 +18,13 @@ class MainPresenter {
     let hourService = APIOneHourService()
     let twelveHoursService = APITwelveHoursService()
     let fiveDaysService = APIFiveDaysService()
+    let timeZoneService = APITimeZoneForSunriseAndSunsetService()
     
     var oneHourForecasts: [OneHourForecast]?
     var twelveHourForecasts: [TwelveHoursForecast]?
     var fiveDaysForecast: FiveDaysForecast?
     var chosenCity: [DisplayCityForecast]?
+    var timeZoneCode: String? = nil
     
     //MARK: - Set Main table view rows
     func rowsNumberInTable(_ section: Int) -> Int {
@@ -39,7 +41,7 @@ class MainPresenter {
     //MARK: - Networking
     //Recieve one hour forecast
     func loadOneHourForecast(_ key: String, completion: @escaping ([OneHourForecast]) -> Void) {
-        hourService.fetchOneHour(key) { [weak self] (oneHour) in
+        hourService.fetchOneHour(key) { [weak self] oneHour in
             self?.oneHourForecasts = oneHour
             completion(oneHour)
         }
@@ -48,7 +50,7 @@ class MainPresenter {
     
     //Recieve twelve hours forecast
     func loadTwelveHoursForecast(_ key: String, completion: @escaping ([TwelveHoursForecast]) -> Void) {
-        twelveHoursService.fetchTwelveHours(key) { [weak self] (twelveHours) in
+        twelveHoursService.fetchTwelveHours(key) { [weak self] twelveHours in
             self?.twelveHourForecasts = twelveHours
             completion(twelveHours)
         }
@@ -56,9 +58,16 @@ class MainPresenter {
     
     //Recieve five days forecast
     func loadFiveDaysForecast(_ key: String, completion: @escaping (FiveDaysForecast) -> Void) {
-        fiveDaysService.fetchFiveDays(key) { [weak self] (fiveDays) in
+        fiveDaysService.fetchFiveDays(key) { [weak self] fiveDays in
             self?.fiveDaysForecast = fiveDays
             completion(fiveDays)
+        }
+    }
+    
+    func loadTimeZoneCode(_ key: String, completion: @escaping (TimeZoneForSunriseAndSunset) -> Void) {
+        timeZoneService.fetchTimeZoneCode(key) { code in
+            self.timeZoneCode = code.timeZone.code
+            completion(code)
         }
     }
     

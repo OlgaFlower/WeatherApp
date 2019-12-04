@@ -8,9 +8,10 @@
     <entity name="DisplayCityForecast" representedClassName=".DisplayCityForecast" syncable="YES" codeGenerationType="class">
         <attribute name="cityToDisplay" attributeType="String"/>
         <attribute name="key" attributeType="String"/>
+        <attribute name="timeZoneCode" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="CityItem" positionX="-54" positionY="-9" width="128" height="88"/>
-        <element name="DisplayCityForecast" positionX="-54" positionY="18" width="128" height="73"/>
+        <element name="DisplayCityForecast" positionX="-54" positionY="18" width="128" height="88"/>
     </elements>
 </model>

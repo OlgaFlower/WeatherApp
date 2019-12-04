@@ -14,7 +14,7 @@ class Helper {
     static let png = ".png"
     
     //MARK: - Helper: key and data sources
-    static let apiKey = "mEECFoncHJmdzuK925tGFk9tYJA5wgG7"
+    static let apiKey = "tB0eXrGEz238UXRN77eGLP68HabUbwku"
     
     static let hourlyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/hourly"
     static let dailyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/daily"
@@ -43,23 +43,38 @@ class Helper {
     static let weekDayFormat = "EEEE"
     static let hourFormat = "HH:mm"
     
+    //FORMAT
     static func dateConverter(_ inputDate: String, _ convertTo: String) -> String {
-        var calendar = Calendar.current
-        if let timeZone = TimeZone(abbreviation: "UTC") {
-            calendar.timeZone = timeZone
-        }
         
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" //input format
         
         let dateFormatterConvert = DateFormatter()
         dateFormatterConvert.dateFormat = convertTo
-        
-        
+
         let date: Date? = dateFormatterGet.date(from: inputDate)
+        
         return dateFormatterConvert.string(from: date!)
         
     }
+    
+    
+    //TIMEZONE
+    static func timeZoneConverter(_ inputDate: String, _ timeZone: String) -> String {
+        
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" //input format
+        
+        let dateFormatterConvert = DateFormatter()
+        dateFormatterConvert.dateFormat = self.hourFormat
+        dateFormatterConvert.timeZone = TimeZone(identifier: timeZone)
+        
+        let date: Date? = dateFormatterGet.date(from: inputDate)
+        
+        return dateFormatterConvert.string(from: date!)
+        
+        }
+    
     
     
     //MARK: - Moving Effect

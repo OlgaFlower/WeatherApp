@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
     var dataToDisplay: [DisplayCityForecast]?
     var citiesList: [CityItem]?
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //DB
-    
+    var timeZoneCode: String? = nil
     
     //MARK: - MainVC life cycle
     override func viewDidLoad() {
@@ -62,7 +62,7 @@ class MainViewController: UIViewController {
         
         presenter.loadOneHourForecast(forecast.key!) { (oneHour) in
             DispatchQueue.main.async {
-                print("ONE HOUR DISPATCH key \(String(describing: forecast.key))")
+//                print("ONE HOUR DISPATCH key \(String(describing: forecast.key))")
                 self.temperatureLabel.text = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
                 self.forecastLabel.text = oneHour.first?.iconPhrase
                 self.nowTemperatCollectionView = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
@@ -75,7 +75,7 @@ class MainViewController: UIViewController {
         //Set collection view
         presenter.loadTwelveHoursForecast(forecast.key!) { (twelveHours) in
             DispatchQueue.main.async {
-                print("12 HOURS DISPATCH key \(String(describing: forecast.key))")
+//                print("12 HOURS DISPATCH key \(String(describing: forecast.key))")
                 self.mainCollectionView.reloadData()
             }
         }
@@ -83,9 +83,14 @@ class MainViewController: UIViewController {
         //set table view
         presenter.loadFiveDaysForecast(forecast.key!) { (fiveDays) in
             DispatchQueue.main.async {
-                print("5 DAYS DISPATCH key \(String(describing: forecast.key))")
+//                print("5 DAYS DISPATCH key \(String(describing: forecast.key))")
                 self.mainTableView.reloadData()
             }
+        }
+        
+        presenter.loadTimeZoneCode(forecast.key!) { (code) in
+            print("TOMEZONECODE *** \(code.timeZone.code)")
+            self.timeZoneCode = code.timeZone.code
         }
     }
     
@@ -226,7 +231,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         //unwrap values in table view cells
         guard let fiveDayForecast = presenter.fiveDaysForecast else { return cell }
-        
         cell.dayLabel.text = Helper.dateConverter(fiveDayForecast.dailyForecast[indexPath.row].date, Helper.weekDayFormat)
         cell.maxLabel.text = "\(Int(fiveDayForecast.dailyForecast[indexPath.row].temperat.max.value))" + Helper.degree
         cell.minLabel.text = "\(Int(fiveDayForecast.dailyForecast[indexPath.row].temperat.min.value))" + Helper.degree
@@ -240,10 +244,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.sunIconImage.image = UIImage(named: "1.png") //static sun icon
         cell.sunriseLabel.text = "Sunrise"
-        cell.sunriseTimeLabel.text = Helper.dateConverter((fiveDayForecast.dailyForecast.first?.sun.sunriseTime)!, Helper.hourFormat)
+        cell.sunriseTimeLabel.text = Helper.timeZoneConverter((fiveDayForecast.dailyForecast.first?.sun.sunriseTime)!, timeZoneCode!) //------------------
         cell.sunsetLabel.text = "Sunset"
-        cell.sunsetTimeLabel.text = Helper.dateConverter((fiveDayForecast.dailyForecast.first?.sun.sunsetTime)!
-            , Helper.hourFormat)
+        cell.sunsetTimeLabel.text = Helper.timeZoneConverter((fiveDayForecast.dailyForecast.first?.sun.sunsetTime)!, timeZoneCode!) //--------------------------
         cell.moonIconImage.image = UIImage(named: "33.png") //static moon icon
         return cell
         default: break

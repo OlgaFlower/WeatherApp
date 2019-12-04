@@ -9,7 +9,7 @@
 
 import Foundation
 
-struct CityForecast {
-    var city: String
-    var key: String
-}
+//struct CityForecast {
+//    var city: String
+//    var key: String
+//}

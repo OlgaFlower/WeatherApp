@@ -31,6 +31,8 @@
 		8484C3CB2381A24A00A4BD36 /* SearchViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3CA2381A24A00A4BD36 /* SearchViewcontroller.swift */; };
 		8484C3D62382F7A500A4BD36 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3D52382F7A500A4BD36 /* SearchResult.swift */; };
 		8484C3D82384115F00A4BD36 /* APISearchCityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3D72384115F00A4BD36 /* APISearchCityService.swift */; };
+		84B0DAD323978B1B00798306 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0DAD223978B1B00798306 /* SearchPresenter.swift */; };
+		84B0DAD523978F0000798306 /* ListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0DAD423978F0000798306 /* ListPresenter.swift */; };
 		84B7FFD02390672B009FA21D /* CityForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7FFCF2390672B009FA21D /* CityForecast.swift */; };
 		84F8C0662371EE3D00BC13E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C0652371EE3D00BC13E6 /* AppDelegate.swift */; };
 		84F8C0682371EE3D00BC13E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C0672371EE3D00BC13E6 /* SceneDelegate.swift */; };
@@ -83,6 +85,8 @@
 		8484C3CA2381A24A00A4BD36 /* SearchViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchViewcontroller.swift; path = WeatherApp/SearchViewcontroller.swift; sourceTree = SOURCE_ROOT; };
 		8484C3D52382F7A500A4BD36 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		8484C3D72384115F00A4BD36 /* APISearchCityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISearchCityService.swift; sourceTree = "<group>"; };
+		84B0DAD223978B1B00798306 /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = SOURCE_ROOT; };
+		84B0DAD423978F0000798306 /* ListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPresenter.swift; sourceTree = "<group>"; };
 		84B7FFCF2390672B009FA21D /* CityForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityForecast.swift; sourceTree = "<group>"; };
 		84F8C0622371EE3C00BC13E6 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F8C0652371EE3D00BC13E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				844EB36023868DF100766CE7 /* ListViewController.swift */,
+				84B0DAD423978F0000798306 /* ListPresenter.swift */,
 				844EB3622386933000766CE7 /* ListCell.swift */,
 			);
 			path = List;
@@ -161,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				8484C3CA2381A24A00A4BD36 /* SearchViewcontroller.swift */,
+				84B0DAD223978B1B00798306 /* SearchPresenter.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -423,6 +429,7 @@
 				8456BB95237E7D1700234876 /* FiveDaysForecast.swift in Sources */,
 				8462F0612396C4570094B5E7 /* APITimeZoneForSunriseAndSunsetService.swift in Sources */,
 				8456BB8F237DAA7900234876 /* APITwelveHoursService.swift in Sources */,
+				84B0DAD523978F0000798306 /* ListPresenter.swift in Sources */,
 				8484C3C923818F5800A4BD36 /* Errors.swift in Sources */,
 				843DD6E823774EF800525AF2 /* MainPresenter.swift in Sources */,
 				843DD6F12378628700525AF2 /* MainSunCell.swift in Sources */,
@@ -435,6 +442,7 @@
 				8456BB8D237DAA3300234876 /* TwelveHoursForecast.swift in Sources */,
 				8456BB86237D7D3000234876 /* OneHourForecast.swift in Sources */,
 				844CB8A8238C58030053B78B /* DataModel.xcdatamodeld in Sources */,
+				84B0DAD323978B1B00798306 /* SearchPresenter.swift in Sources */,
 				844EB3632386933000766CE7 /* ListCell.swift in Sources */,
 				8484C3D82384115F00A4BD36 /* APISearchCityService.swift in Sources */,
 				8484C3D62382F7A500A4BD36 /* SearchResult.swift in Sources */,
