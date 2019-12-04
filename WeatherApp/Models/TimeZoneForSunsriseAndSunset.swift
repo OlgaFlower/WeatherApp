@@ -9,17 +9,17 @@
 import Foundation
 
 struct TimeZoneForSunriseAndSunset: Codable {
-    var timeZone: Code
+    var timeZoneName: ZoneName
     
                     private enum CodingKeys: String, CodingKey {
-                        case timeZone = "TimeZone"
+                        case timeZoneName = "TimeZone"
                     }
 }
 
-struct Code: Codable {
-    var code: String
+struct ZoneName: Codable {
+    var name: String
     
                     private enum CodingKeys: String, CodingKey {
-                        case code = "Code"
+                        case name = "Name"
                     }
 }

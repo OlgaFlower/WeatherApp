@@ -26,9 +26,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: - ListVC Properties
     weak var delegate: DisplayCityName?
-    var helper = Helper()
+//    var helper = Helper()
     var savedCities = [CityItem]() //restore data from DB
-    var dataToDisplay: [DisplayCityForecast]? //key and name of the chosen city
+//    var dataToDisplay: [DisplayCityForecast]? //key and name of the chosen city
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //MARK: - ListVC life cycle
