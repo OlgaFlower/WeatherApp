@@ -14,7 +14,7 @@ class Helper {
     static let png = ".png"
     
     //MARK: - Helper: key and data sources
-    static let apiKey = "PMNwFGdOY0bm2TYmSVTVeoC9yI2R3Qni"
+    static let apiKey = "TSGMoN6Oosm2QcM0dOCAb2rMVsD1d5Uy"
     
     static let hourlyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/hourly"
     static let dailyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/daily"
