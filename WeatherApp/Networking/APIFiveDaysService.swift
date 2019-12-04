@@ -4,7 +4,7 @@
 //
 //  Created by Admin on 15.11.2019.
 //  Copyright © 2019 Flower. All rights reserved.
-//http://dataservice.accuweather.com/forecasts/v1/daily/5day/326175?apikey=DD88l3LYERLRIDfPjaSGXsMlcG0yWtoK&details=true&metric=true
+//
 
 import Foundation
 

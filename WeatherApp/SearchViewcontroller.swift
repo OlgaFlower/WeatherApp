@@ -22,10 +22,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     //MARK: - SearchVC properties
     weak var delegate: DisplayFaviuriteList?
-//    let presenter = SearchPresenter()
     let service = APISearchCityService()
     let searchCity = UISearchController(searchResultsController: nil)
-    
     
     var resultOfRequest = [SearchResult]() {
         didSet {
@@ -56,7 +54,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
       
         searchCity.searchResultsUpdater = self
         definesPresentationContext = true
-//        tableView.tableHeaderView?.backgroundColor = .clear
         tableView.tableHeaderView = searchCity.searchBar
         
         searchCity.searchBar.tintColor = .gray //"Cancel" color
@@ -86,7 +83,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let newCity = Favourite(city: resultOfRequest[indexPath.row].cityName, key: resultOfRequest[indexPath.row].key, country: resultOfRequest[indexPath.row].country.name)
+        let newCity = Favourite(city: resultOfRequest[indexPath.row].cityName,
+                                key: resultOfRequest[indexPath.row].key,
+                                country: resultOfRequest[indexPath.row].country.name)
         delegate?.addCity(newCity)
         
         navigationController?.popToRootViewController(animated: true)

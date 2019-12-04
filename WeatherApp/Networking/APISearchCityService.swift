@@ -4,7 +4,7 @@
 //
 //  Created by Admin on 19.11.2019.
 //  Copyright © 2019 Flower. All rights reserved.
-//http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=DD88l3LYERLRIDfPjaSGXsMlcG0yWtoK&q=vinn
+//
 
 import Foundation
 

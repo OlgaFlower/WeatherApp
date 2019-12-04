@@ -56,7 +56,6 @@ class MainViewController: UIViewController {
     }
     
     
-    
     func fetchDataAndDisplayOnScreen() {
         guard let forecast = dataToDisplay?.last else { return }
         
@@ -87,7 +86,6 @@ class MainViewController: UIViewController {
         
         //Set timeZone
         presenter.loadTimeZoneCode(forecast.key!) { (code) in
-            print("TOMEZONECODE *** \(code.timeZoneName.name)")
             self.timeZone = code.timeZoneName.name
         }
     }
@@ -120,7 +118,7 @@ class MainViewController: UIViewController {
     
     //MARK: - Data Base
     //LOAD
-    func loadDataToDisplay() { //load from DB
+    func loadDataToDisplay() {
         let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
         do {
             self.dataToDisplay = try context.fetch(request)
@@ -131,7 +129,7 @@ class MainViewController: UIViewController {
     
     
     //REMOVE
-    func removeOldDisplayedItem() { //load from DB
+    func removeOldDisplayedItem() {
         let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
         do {
             let items = try context.fetch(request)
@@ -146,7 +144,7 @@ class MainViewController: UIViewController {
     }
     
     //SAVE
-    func saveCityItems() { //DB
+    func saveCityItems() {
         do {
             try context.save()
             DispatchQueue.main.async {
@@ -188,7 +186,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.temperatLabel.text = nowTemperatCollectionView
             cell.iconImage.image = UIImage(named: nowIconCollectionView + Helper.png)
         } else {
-            cell.timeLabel.text = Helper.dateConverter(((presenter.twelveHourForecasts?[indexPath.row - 1].time)!), Helper.hourFormat, timeZone!)
+            cell.timeLabel.text = Helper.dateConverter(((presenter.twelveHourForecasts?[indexPath.row - 1].time)!),
+                                                       Helper.hourFormat,
+                                                       timeZone!)
             cell.temperatLabel.text = "\(String(Int(twelveHours[indexPath.row - 1].temperat.temperatValue)))" + Helper.degree
             let icon = "\(twelveHours[indexPath.row - 1].weatherIcon)"
             cell.iconImage.image = UIImage(named: icon + Helper.png)

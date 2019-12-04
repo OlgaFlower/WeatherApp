@@ -26,9 +26,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: - ListVC Properties
     weak var delegate: DisplayCityName?
-//    var helper = Helper()
     var savedCities = [CityItem]() //restore data from DB
-//    var dataToDisplay: [DisplayCityForecast]? //key and name of the chosen city
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //MARK: - ListVC life cycle
@@ -144,7 +142,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { delete in
             self.context.delete(self.savedCities[indexPath.row]) //delete chosen city from DB
-            self.savedCities.remove(at: indexPath.row) //delete chosen city from list
+            self.savedCities.remove(at: indexPath.row) //delete chosen city from VC list
             self.saveCityItems()
             if self.savedCities.isEmpty {
                 self.removeOldDisplayedItem()
@@ -163,11 +161,10 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
         do {
             let items = try context.fetch(request)
-            for el in 0 ..< items.count - 1 {
+            for el in 0 ..< items.count {
                 self.context.delete(items[el])
                 saveCityItems()
             }
-            
         } catch {
             print("Error fetching data from context \(error)")
         }

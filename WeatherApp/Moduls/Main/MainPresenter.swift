@@ -23,7 +23,6 @@ class MainPresenter {
     var oneHourForecasts: [OneHourForecast]?
     var twelveHourForecasts: [TwelveHoursForecast]?
     var fiveDaysForecast: FiveDaysForecast?
-//    var chosenCity: [DisplayCityForecast]?
     var timeZoneName: String? = nil
     
     //MARK: - Set Main table view rows

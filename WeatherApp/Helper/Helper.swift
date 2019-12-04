@@ -4,7 +4,7 @@
 //
 //  Created by Admin on 14.11.2019.
 //  Copyright © 2019 Flower. All rights reserved.
-//http://dataservice.accuweather.com/locations/v1/1593794?apikey=mEECFoncHJmdzuK925tGFk9tYJA5wgG7&details=true
+//
 
 import UIKit
 
@@ -14,7 +14,7 @@ class Helper {
     static let png = ".png"
     
     //MARK: - Helper: key and data sources
-    static let apiKey = "pGoJd0dA2VkwkAlj7lBdSRKh2yVHubC3"
+    static let apiKey = "PMNwFGdOY0bm2TYmSVTVeoC9yI2R3Qni"
     
     static let hourlyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/hourly"
     static let dailyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/daily"

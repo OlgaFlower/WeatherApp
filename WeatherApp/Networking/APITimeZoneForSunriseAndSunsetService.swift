@@ -4,7 +4,7 @@
 //
 //  Created by Admin on 03.12.2019.
 //  Copyright © 2019 Flower. All rights reserved.
-//http://dataservice.accuweather.com/locations/v1/1593794?apikey=mEECFoncHJmdzuK925tGFk9tYJA5wgG7&details=true
+//
 
 import Foundation
 
