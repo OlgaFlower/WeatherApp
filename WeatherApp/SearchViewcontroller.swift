@@ -91,21 +91,27 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         timeZoneService.fetchTimeZoneCode(resultOfRequest[indexPath.row].key) { (zone) in
-                   let newItem = CityItem(context: Helper.context)
-                   newItem.cityKey = self.resultOfRequest[indexPath.row].key
-                   newItem.cityName = self.resultOfRequest[indexPath.row].cityName
-                   newItem.countryName = self.resultOfRequest[indexPath.row].country.name
-                   newItem.timeZone = zone.timeZoneName.name
-                   
-                   print("NewItem: \(newItem)")
-                   
-                   do {
-                           try Helper.context.save()
-                       } catch {
-                           print("Error saving context \(error)")
-                       }
-                   }
-                   
+            let newItem = CityItem(context: Helper.context)
+            newItem.cityKey = self.resultOfRequest[indexPath.row].key
+            newItem.cityName = self.resultOfRequest[indexPath.row].cityName
+            newItem.countryName = self.resultOfRequest[indexPath.row].country.name
+            newItem.timeZone = zone.timeZoneName.name
+            
+            let chosenCity = DisplayCityForecast(context: Helper.context)
+            chosenCity.key = self.resultOfRequest[indexPath.row].key
+            chosenCity.city = self.resultOfRequest[indexPath.row].cityName
+            chosenCity.country = self.resultOfRequest[indexPath.row].country.name
+            chosenCity.timeZone = zone.timeZoneName.name
+            
+            print("NewItem: \(newItem)")
+            
+            do {
+                try Helper.context.save()
+            } catch {
+                print("Error saving context \(error)")
+            }
+        }
+        
         
         
         navigationController?.popToRootViewController(animated: true)

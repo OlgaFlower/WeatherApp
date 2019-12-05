@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
     var dataToDisplay: [DisplayCityForecast]?
     var citiesList: [CityItem]?
     
-    var timeZone: String? = nil
+//    var timeZone: String? = nil
     
     //MARK: - MainVC life cycle
     override func viewDidLoad() {
@@ -84,10 +84,10 @@ class MainViewController: UIViewController {
             }
         }
         
-        //Set timeZone
-        presenter.loadTimeZoneCode(forecast.key!) { (code) in
-            self.timeZone = code.timeZoneName.name
-        }
+//        //Set timeZone
+//        presenter.loadTimeZoneCode(forecast.key!) { (code) in
+//            self.timeZone = code.timeZoneName.name
+//        }
     }
     
     
@@ -147,9 +147,9 @@ class MainViewController: UIViewController {
     func saveCityItems() {
         do {
             try Helper.context.save()
-            DispatchQueue.main.async {
-                self.mainTableView.reloadData()
-            }
+//            DispatchQueue.main.async {
+//                self.mainTableView.reloadData()
+//            }
         } catch {
             print("Error saving context \(error)")
         }
@@ -188,7 +188,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else {
             cell.timeLabel.text = Helper.dateConverter(((presenter.twelveHourForecasts?[indexPath.row - 1].time)!),
                                                        Helper.hourFormat,
-                                                       timeZone!)
+                                                       (dataToDisplay?.last!.timeZone)!)
             cell.temperatLabel.text = "\(String(Int(twelveHours[indexPath.row - 1].temperat.temperatValue)))" + Helper.degree
             let icon = "\(twelveHours[indexPath.row - 1].weatherIcon)"
             cell.iconImage.image = UIImage(named: icon + Helper.png)
@@ -220,7 +220,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         //unwrap values in table view cells
         guard let fiveDayForecast = presenter.fiveDaysForecast else { return cell }
-        cell.dayLabel.text = Helper.dateConverter(fiveDayForecast.dailyForecast[indexPath.row].date, Helper.weekDayFormat, timeZone!)
+        cell.dayLabel.text = Helper.dateConverter(fiveDayForecast.dailyForecast[indexPath.row].date, Helper.weekDayFormat, (dataToDisplay?.last!.timeZone)!)
         cell.maxLabel.text = "\(Int(fiveDayForecast.dailyForecast[indexPath.row].temperat.max.value))" + Helper.degree
         cell.minLabel.text = "\(Int(fiveDayForecast.dailyForecast[indexPath.row].temperat.min.value))" + Helper.degree
         let icon = "\(fiveDayForecast.dailyForecast[indexPath.row].dayIcon.icon)"
@@ -233,9 +233,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.sunIconImage.image = UIImage(named: "1.png") //static sun icon
         cell.sunriseLabel.text = "Sunrise"
-        cell.sunriseTimeLabel.text = Helper.dateConverter((fiveDayForecast.dailyForecast.first?.sun.sunriseTime)!, Helper.hourFormat, timeZone!)
+        cell.sunriseTimeLabel.text = Helper.dateConverter((fiveDayForecast.dailyForecast.first?.sun.sunriseTime)!, Helper.hourFormat, (dataToDisplay?.last!.timeZone)!)
         cell.sunsetLabel.text = "Sunset"
-        cell.sunsetTimeLabel.text = Helper.dateConverter((fiveDayForecast.dailyForecast.first?.sun.sunsetTime)!, Helper.hourFormat, timeZone!)
+        cell.sunsetTimeLabel.text = Helper.dateConverter((fiveDayForecast.dailyForecast.first?.sun.sunsetTime)!, Helper.hourFormat, (dataToDisplay?.last!.timeZone)!)
         cell.moonIconImage.image = UIImage(named: "33.png") //static moon icon
         return cell
         default: break

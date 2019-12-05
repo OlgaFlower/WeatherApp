@@ -55,24 +55,22 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     //MARK: - DB
     func addCity(_ city: Favourite) {
-        let newItem = CityItem(context: context) //DB
-        newItem.cityName = city.city
-        newItem.cityKey = city.key
-        newItem.countryName = city.country
-        
-        let chosenCity = DisplayCityForecast(context: context)
-        chosenCity.city = city.city
-        chosenCity.key = city.key
-        
-        self.saveCityItems() //DB
+//        let newItem = CityItem(context: context) //DB
+//        newItem.cityName = city.city
+//        newItem.cityKey = city.key
+//        newItem.countryName = city.country
+//        
+//        let chosenCity = DisplayCityForecast(context: context)
+//        chosenCity.city = city.city
+//        chosenCity.key = city.key
+//        
+//        self.saveCityItems() //DB
     }
     
     func saveCityItems() { //DB
         do {
             try context.save()
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            
         } catch {
             print("Error saving context \(error)")
         }
@@ -134,7 +132,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             let chosenCity = DisplayCityForecast(context: self.context)
             
             chosenCity.city = self.savedCities[indexPath.row].cityName
+            chosenCity.country = self.savedCities[indexPath.row].countryName
             chosenCity.key = self.savedCities[indexPath.row].cityKey
+            chosenCity.timeZone = self.savedCities[indexPath.row].timeZone
             self.saveCityItems() //save to DB
             
             _ = self.navigationController?.popViewController(animated: true)
@@ -144,6 +144,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.context.delete(self.savedCities[indexPath.row]) //delete chosen city from DB
             self.savedCities.remove(at: indexPath.row) //delete chosen city from VC list
             self.saveCityItems()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
             if self.savedCities.isEmpty {
                 self.removeOldDisplayedItem()
                 self.navigationItem.leftBarButtonItem?.isEnabled = false
