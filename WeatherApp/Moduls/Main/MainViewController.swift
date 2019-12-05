@@ -205,9 +205,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "WeekCell", for: indexPath) as! MainWeekCell
+            
+            //make cell image tranparent
+            cell.iconImage.alpha = 0.2
             
             //unwrap values in table view cells
             guard let fiveDayForecast = presenter.fiveDaysForecast else { return cell }
@@ -217,10 +221,22 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             cell.minLabel.text = "\(Int(dailyForecast.temperat.min.value))" + Helper.degree
             let icon = "\(dailyForecast.dayIcon.icon)"
             cell.iconImage.image = UIImage(named: icon + Helper.png)
+            
+            //animate cell appearence
+            UIView.animate(withDuration: 0.5) {
+                cell.iconImage.alpha = 1.0
+            }
+
+            
             return cell
             
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SunMoonCell", for: indexPath) as! MainSunCell
+            
+            //make cell image tranparent
+            cell.sunIconImage.alpha = 0.2
+            cell.moonIconImage.alpha = 0.2
+            
             //unwrap values in table view cells
             guard let fiveDayForecast = presenter.fiveDaysForecast, let sunriseTime = fiveDayForecast.dailyForecast.first?.sun.sunriseTime, let sunsetTime = fiveDayForecast.dailyForecast.first?.sun.sunsetTime, let timeZone = dataToDisplay?.last?.timeZone else {
                 
@@ -233,10 +249,17 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             cell.sunsetLabel.text = "Sunset"
             cell.sunsetTimeLabel.text = Helper.dateConverter(sunsetTime, .hourFormat, timeZone)
             cell.moonIconImage.image = UIImage(named: "33.png") //static moon icon
+            
+            //animate cell appearence
+            UIView.animate(withDuration: 0.5) {
+                cell.sunIconImage.alpha = 1.0
+                cell.moonIconImage.alpha = 1.0
+            }
             return cell
         default:
             break
         }
+        
         return UITableViewCell()
     }
     
