@@ -22,7 +22,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     //MARK: - SearchVC properties
     weak var delegate: DisplayFaviuriteList?
-    let service = APISearchCityService()
+    let searchService = APISearchCityService()
+    var timeZoneService = APITimeZoneForSunriseAndSunsetService()
     let searchCity = UISearchController(searchResultsController: nil)
     
     var resultOfRequest = [SearchResult]() {
@@ -83,10 +84,29 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let newCity = Favourite(city: resultOfRequest[indexPath.row].cityName,
-                                key: resultOfRequest[indexPath.row].key,
-                                country: resultOfRequest[indexPath.row].country.name)
-        delegate?.addCity(newCity)
+//        let newCity = Favourite(city: resultOfRequest[indexPath.row].cityName,
+//                                key: resultOfRequest[indexPath.row].key,
+//                                country: resultOfRequest[indexPath.row].country.name)
+//        delegate?.addCity(newCity)
+        
+        
+        timeZoneService.fetchTimeZoneCode(resultOfRequest[indexPath.row].key) { (zone) in
+                   let newItem = CityItem(context: Helper.context)
+                   newItem.cityKey = self.resultOfRequest[indexPath.row].key
+                   newItem.cityName = self.resultOfRequest[indexPath.row].cityName
+                   newItem.countryName = self.resultOfRequest[indexPath.row].country.name
+                   newItem.timeZone = zone.timeZoneName.name
+                   
+                   print("NewItem: \(newItem)")
+                   
+                   do {
+                           try Helper.context.save()
+                       } catch {
+                           print("Error saving context \(error)")
+                       }
+                   }
+                   
+        
         
         navigationController?.popToRootViewController(animated: true)
     }
@@ -100,7 +120,7 @@ extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
         guard let text = searchController.searchBar.text else {return}
         
         if text.count >= 3 {
-            service.fetchSearchResult(text) { result in
+            searchService.fetchSearchResult(text) { result in
             self.resultOfRequest = result
             }
         } else {

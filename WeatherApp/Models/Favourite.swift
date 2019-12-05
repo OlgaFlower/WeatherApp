@@ -12,4 +12,5 @@ struct Favourite {
     var city: String
     var key: String
     var country: String
+    var timeZone: String
 }

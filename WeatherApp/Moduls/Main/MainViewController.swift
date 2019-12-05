@@ -28,7 +28,7 @@ class MainViewController: UIViewController {
     var nowIconCollectionView = ""
     var dataToDisplay: [DisplayCityForecast]?
     var citiesList: [CityItem]?
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //DB
+    
     var timeZone: String? = nil
     
     //MARK: - MainVC life cycle
@@ -65,7 +65,7 @@ class MainViewController: UIViewController {
                 self.forecastLabel.text = oneHour.first?.iconPhrase
                 self.nowTemperatCollectionView = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
                 self.nowIconCollectionView = "\(oneHour.first!.weatherIcon)"
-                self.cityNameLabel.text = self.dataToDisplay?.last?.cityToDisplay
+                self.cityNameLabel.text = self.dataToDisplay?.last?.city
                 self.mainCollectionView.reloadData()
             }
         }
@@ -94,7 +94,7 @@ class MainViewController: UIViewController {
     func displayViewController() {
         let request: NSFetchRequest<CityItem> = CityItem.fetchRequest() //get cities' list from DB
         do {
-            citiesList = try context.fetch(request)
+            citiesList = try Helper.context.fetch(request)
             if citiesList!.isEmpty {
                 removeOldDisplayedItem()
                 showListViewController()
@@ -121,7 +121,7 @@ class MainViewController: UIViewController {
     func loadDataToDisplay() {
         let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
         do {
-            self.dataToDisplay = try context.fetch(request)
+            self.dataToDisplay = try Helper.context.fetch(request)
         } catch {
             print("Error fetching data from context \(error)")
         }
@@ -132,9 +132,9 @@ class MainViewController: UIViewController {
     func removeOldDisplayedItem() {
         let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
         do {
-            let items = try context.fetch(request)
+            let items = try Helper.context.fetch(request)
             for el in 0 ..< items.count {
-                self.context.delete(items[el])
+                Helper.context.delete(items[el])
                 saveCityItems()
             }
             
@@ -146,7 +146,7 @@ class MainViewController: UIViewController {
     //SAVE
     func saveCityItems() {
         do {
-            try context.save()
+            try Helper.context.save()
             DispatchQueue.main.async {
                 self.mainTableView.reloadData()
             }

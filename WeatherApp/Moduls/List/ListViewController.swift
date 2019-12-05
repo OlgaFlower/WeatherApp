@@ -61,7 +61,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         newItem.countryName = city.country
         
         let chosenCity = DisplayCityForecast(context: context)
-        chosenCity.cityToDisplay = city.city
+        chosenCity.city = city.city
         chosenCity.key = city.key
         
         self.saveCityItems() //DB
@@ -133,7 +133,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.removeOldDisplayedItem()
             let chosenCity = DisplayCityForecast(context: self.context)
             
-            chosenCity.cityToDisplay = self.savedCities[indexPath.row].cityName
+            chosenCity.city = self.savedCities[indexPath.row].cityName
             chosenCity.key = self.savedCities[indexPath.row].cityKey
             self.saveCityItems() //save to DB
             
