@@ -15,7 +15,7 @@ class Helper {
     static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //DB
     
     //MARK: - Helper: key and data sources
-    static let apiKey = "Fm4qTRYTnu1KoHfeiuMNnxcPwrY8GleR"
+    static let apiKey = "eZlSuEJ6ST2yLaWb35c1EGTkUgOYpYxZ"
     
     static let hourlyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/hourly"
     static let dailyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/daily"
@@ -40,17 +40,29 @@ class Helper {
         return "\(timeZoneCodeURL)\(key)?apikey=\(apiKey)&details=true"
     }
     
-    //MARK: - Date formatter
-    static let weekDayFormat = "EEEE"
-    static let hourFormat = "HH:mm"
+    //MARK: - Save to DB
+    static func saveCityItems() {
+        do {
+            try self.context.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
+    }
     
-    static func dateConverter(_ inputDate: String, _ format: String, _ timeZone: String) -> String {
+    
+    //MARK: - Date formatter
+    enum DateFormat: String {
+        case weekDayFormat = "EEEE"
+        case hourFormat = "HH:mm"
+    }
+    
+    static func dateConverter(_ inputDate: String, _ format: DateFormat, _ timeZone: String) -> String {
         
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" //input format
         
         let dateFormatterConvert = DateFormatter()
-        dateFormatterConvert.dateFormat = format
+        dateFormatterConvert.dateFormat = format.rawValue
         dateFormatterConvert.timeZone = TimeZone(identifier: timeZone)
 
         let date: Date? = dateFormatterGet.date(from: inputDate)

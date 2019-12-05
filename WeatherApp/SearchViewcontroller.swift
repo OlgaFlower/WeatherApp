@@ -84,26 +84,21 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let newCity = Favourite(city: resultOfRequest[indexPath.row].cityName,
-//                                key: resultOfRequest[indexPath.row].key,
-//                                country: resultOfRequest[indexPath.row].country.name)
-//        delegate?.addCity(newCity)
-        
-        
         timeZoneService.fetchTimeZoneCode(resultOfRequest[indexPath.row].key) { (zone) in
+            
+            //add new city to favourite list
             let newItem = CityItem(context: Helper.context)
             newItem.cityKey = self.resultOfRequest[indexPath.row].key
             newItem.cityName = self.resultOfRequest[indexPath.row].cityName
             newItem.countryName = self.resultOfRequest[indexPath.row].country.name
             newItem.timeZone = zone.timeZoneName.name
             
+            //add chosen sity to DB
             let chosenCity = DisplayCityForecast(context: Helper.context)
             chosenCity.key = self.resultOfRequest[indexPath.row].key
             chosenCity.city = self.resultOfRequest[indexPath.row].cityName
             chosenCity.country = self.resultOfRequest[indexPath.row].country.name
             chosenCity.timeZone = zone.timeZoneName.name
-            
-            print("NewItem: \(newItem)")
             
             do {
                 try Helper.context.save()
@@ -111,9 +106,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 print("Error saving context \(error)")
             }
         }
-        
-        
-        
         navigationController?.popToRootViewController(animated: true)
     }
     

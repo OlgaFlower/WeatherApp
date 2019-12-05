@@ -75,10 +75,10 @@ struct MinTemperat: Codable {
 
 struct MaxTemperat: Codable {
     var value: Double //in C
-
-                        private enum CodingKeys: String, CodingKey {
-                            case value = "Value"
-                        }
+    
+    private enum CodingKeys: String, CodingKey {
+        case value = "Value"
+    }
 }
 
 

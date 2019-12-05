@@ -27,7 +27,9 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - ListVC Properties
     weak var delegate: DisplayCityName?
     var savedCities = [CityItem]() //restore data from DB
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    
+    var dataToDisplay: [DisplayCityForecast]?
     
     //MARK: - ListVC life cycle
     override func viewWillAppear(_ animated: Bool) {
@@ -47,39 +49,63 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         Helper.blurredView(backImage, self.view)
         loadCityItems()
+//        loadDataToDisplay()
+//        
+//        
+//        let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
+//        let requestItem: NSFetchRequest = CityItem.fetchRequest()
+//        do {
+//            let items = try Helper.context.fetch(request)
+//            let itemCity = try Helper.context.fetch(requestItem)
+//            Helper.context.delete(items[0])
+//            Helper.context.delete(items[1])
+//            Helper.context.delete(itemCity[0])
+//            Helper.context.delete(itemCity[1])
+//                Helper.saveCityItems()
+//            
+//        } catch {
+//            print("Error fetching data from context \(error)")
+//        }
+
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadCityItems()
     }
-    //MARK: - DB
-    func addCity(_ city: Favourite) {
-//        let newItem = CityItem(context: context) //DB
-//        newItem.cityName = city.city
-//        newItem.cityKey = city.key
-//        newItem.countryName = city.country
-//        
-//        let chosenCity = DisplayCityForecast(context: context)
-//        chosenCity.city = city.city
-//        chosenCity.key = city.key
-//        
-//        self.saveCityItems() //DB
+    
+    
+    
+    
+    
+    func loadDataToDisplay() {
+        let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
+        do {
+            self.dataToDisplay = try Helper.context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
     }
     
-    func saveCityItems() { //DB
-        do {
-            try context.save()
-            
-        } catch {
-            print("Error saving context \(error)")
-        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //MARK: - DB
+    func addCity(_ city: Favourite) {
+        
     }
     
     func loadCityItems() { //DB
         let request: NSFetchRequest<CityItem> = CityItem.fetchRequest() //request for an array of CityItem
         do {
-            savedCities = try context.fetch(request)
+            savedCities = try Helper.context.fetch(request)
             if savedCities.isEmpty {
                 self.navigationItem.leftBarButtonItem?.isEnabled = false
                 self.navigationItem.leftBarButtonItem?.tintColor = UIColor.clear
@@ -129,23 +155,23 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         alert.addAction(UIAlertAction(title: "Display", style: UIAlertAction.Style.default, handler: { display in
             self.removeOldDisplayedItem()
-            let chosenCity = DisplayCityForecast(context: self.context)
+            let chosenCity = DisplayCityForecast(context: Helper.context)
             
             chosenCity.city = self.savedCities[indexPath.row].cityName
             chosenCity.country = self.savedCities[indexPath.row].countryName
             chosenCity.key = self.savedCities[indexPath.row].cityKey
             chosenCity.timeZone = self.savedCities[indexPath.row].timeZone
-            self.saveCityItems() //save to DB
+            Helper.saveCityItems() //save to DB
             
             _ = self.navigationController?.popViewController(animated: true)
         }))
         
         alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { delete in
-            self.context.delete(self.savedCities[indexPath.row]) //delete chosen city from DB
+            Helper.context.delete(self.savedCities[indexPath.row]) //delete chosen city from DB
             self.savedCities.remove(at: indexPath.row) //delete chosen city from VC list
-            self.saveCityItems()
+            Helper.saveCityItems()
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
             }
             if self.savedCities.isEmpty {
                 self.removeOldDisplayedItem()
@@ -160,13 +186,29 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            Helper.context.delete(self.savedCities[indexPath.row]) //delete chosen city from DB
+            self.savedCities.remove(at: indexPath.row) //delete chosen city from VC list
+            Helper.saveCityItems()
+            DispatchQueue.main.async {
+                self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+            }
+            if self.savedCities.isEmpty {
+                self.removeOldDisplayedItem()
+                self.navigationItem.leftBarButtonItem?.isEnabled = false
+                self.navigationItem.leftBarButtonItem?.tintColor = UIColor.clear
+            }
+        }
+    }
+    
     func removeOldDisplayedItem() { //load from DB
         let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
         do {
-            let items = try context.fetch(request)
+            let items = try Helper.context.fetch(request)
             for el in 0 ..< items.count {
-                self.context.delete(items[el])
-                saveCityItems()
+                Helper.context.delete(items[el])
+                Helper.saveCityItems()
             }
         } catch {
             print("Error fetching data from context \(error)")

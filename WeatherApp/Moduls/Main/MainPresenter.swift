@@ -23,7 +23,6 @@ class MainPresenter {
     var oneHourForecasts: [OneHourForecast]?
     var twelveHourForecasts: [TwelveHoursForecast]?
     var fiveDaysForecast: FiveDaysForecast?
-    var timeZoneName: String? = nil
     
     //MARK: - Set Main table view rows
     func rowsNumberInTable(_ section: Int) -> Int {
@@ -62,14 +61,6 @@ class MainPresenter {
             completion(fiveDays)
         }
     }
-    
-    func loadTimeZoneCode(_ key: String, completion: @escaping (TimeZoneForSunriseAndSunset) -> Void) {
-        timeZoneService.fetchTimeZoneCode(key) { code in
-            self.timeZoneName = code.timeZoneName.name
-            completion(code)
-        }
-    }
-    
     
     //Open URL
     var safariLink: String {

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CityItem" representedClassName="CityItem" syncable="YES" codeGenerationType="class">
+        <attribute name="cityKey" optional="YES" attributeType="String"/>
+        <attribute name="cityName" attributeType="String"/>
+        <attribute name="countryName" attributeType="String"/>
+        <attribute name="timeZone" attributeType="String"/>
+    </entity>
+    <entity name="DisplayCityForecast" representedClassName="DisplayCityForecast" syncable="YES" codeGenerationType="class">
+        <attribute name="city" attributeType="String"/>
+        <attribute name="country" attributeType="String"/>
+        <attribute name="key" attributeType="String"/>
+        <attribute name="timeZone" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="CityItem" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="DisplayCityForecast" positionX="-54" positionY="-9" width="128" height="103"/>
+    </elements>
+</model>
