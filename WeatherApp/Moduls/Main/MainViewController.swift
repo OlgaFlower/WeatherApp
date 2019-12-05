@@ -16,6 +16,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var backImage: UIImageView!
     @IBOutlet weak var cityNameLabel: UILabel!
+    @IBOutlet weak var countryNameLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var forecastLabel: UILabel!
     @IBOutlet weak var mainCollectionView: UICollectionView!
@@ -66,6 +67,7 @@ class MainViewController: UIViewController {
                 self.nowTemperatCollectionView = "\(Int(oneHour.first!.temperat.temperatValue))" + Helper.degree
                 self.nowIconCollectionView = "\(oneHour.first!.weatherIcon)"
                 self.cityNameLabel.text = self.dataToDisplay?.last?.city
+                self.countryNameLabel.text = self.dataToDisplay?.last?.country
                 self.mainCollectionView.reloadData()
             }
         }
@@ -217,7 +219,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             guard let fiveDayForecast = presenter.fiveDaysForecast else { return cell }
             let dailyForecast = fiveDayForecast.dailyForecast[indexPath.row]
             cell.dayLabel.text = Helper.dateConverter(dailyForecast.date, .weekDayFormat, (dataToDisplay?.last!.timeZone)!)
-            cell.maxLabel.text = "\(dailyForecast.temperat.max.value.rounded())" + Helper.degree
+            cell.maxLabel.text = "\(Int(dailyForecast.temperat.max.value))" + Helper.degree
             cell.minLabel.text = "\(Int(dailyForecast.temperat.min.value))" + Helper.degree
             let icon = "\(dailyForecast.dayIcon.icon)"
             cell.iconImage.image = UIImage(named: icon + Helper.png)

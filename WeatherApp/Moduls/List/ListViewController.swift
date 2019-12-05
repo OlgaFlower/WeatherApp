@@ -49,23 +49,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         Helper.blurredView(backImage, self.view)
         loadCityItems()
-//        loadDataToDisplay()
-//        
-//        
-//        let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
-//        let requestItem: NSFetchRequest = CityItem.fetchRequest()
-//        do {
-//            let items = try Helper.context.fetch(request)
-//            let itemCity = try Helper.context.fetch(requestItem)
-//            Helper.context.delete(items[0])
-//            Helper.context.delete(items[1])
-//            Helper.context.delete(itemCity[0])
-//            Helper.context.delete(itemCity[1])
-//                Helper.saveCityItems()
-//            
-//        } catch {
-//            print("Error fetching data from context \(error)")
-//        }
 
         
     }
@@ -76,9 +59,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    
-    
-    
     func loadDataToDisplay() {
         let request: NSFetchRequest = DisplayCityForecast.fetchRequest()
         do {
@@ -87,14 +67,6 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
             print("Error fetching data from context \(error)")
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     //MARK: - DB
