@@ -123,38 +123,16 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alert = UIAlertController(title: "\(String(savedCities[indexPath.row].cityName!))\n\(String(savedCities[indexPath.row].countryName!))", message: "", preferredStyle: UIAlertController.Style.alert)
+        removeOldDisplayedItem()
+        let chosenCity = DisplayCityForecast(context: Helper.context)
         
-        alert.addAction(UIAlertAction(title: "Display", style: UIAlertAction.Style.default, handler: { display in
-            self.removeOldDisplayedItem()
-            let chosenCity = DisplayCityForecast(context: Helper.context)
-            
-            chosenCity.city = self.savedCities[indexPath.row].cityName
-            chosenCity.country = self.savedCities[indexPath.row].countryName
-            chosenCity.key = self.savedCities[indexPath.row].cityKey
-            chosenCity.timeZone = self.savedCities[indexPath.row].timeZone
-            Helper.saveCityItems() //save to DB
-            
-            _ = self.navigationController?.popViewController(animated: true)
-        }))
+        chosenCity.city = self.savedCities[indexPath.row].cityName
+        chosenCity.country = self.savedCities[indexPath.row].countryName
+        chosenCity.key = self.savedCities[indexPath.row].cityKey
+        chosenCity.timeZone = self.savedCities[indexPath.row].timeZone
+        Helper.saveCityItems() //save to DB
         
-        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { delete in
-            Helper.context.delete(self.savedCities[indexPath.row]) //delete chosen city from DB
-            self.savedCities.remove(at: indexPath.row) //delete chosen city from VC list
-            Helper.saveCityItems()
-            DispatchQueue.main.async {
-                self.tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
-            }
-            if self.savedCities.isEmpty {
-                self.removeOldDisplayedItem()
-                self.navigationItem.leftBarButtonItem?.isEnabled = false
-                self.navigationItem.leftBarButtonItem?.tintColor = UIColor.clear
-            }
-         
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        _ = self.navigationController?.popViewController(animated: true)
         
     }
     
