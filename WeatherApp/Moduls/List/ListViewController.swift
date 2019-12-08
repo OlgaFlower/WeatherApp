@@ -64,7 +64,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         do {
             self.dataToDisplay = try Helper.context.fetch(request)
         } catch {
-            print("Error fetching data from context \(error)")
+            print("\(Errors.fetchError) \(error)")
         }
     }
     
@@ -86,7 +86,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
                 self.navigationItem.leftBarButtonItem?.tintColor = UIColor.lightGray
             }
         } catch {
-            print("Error fetching data from context \(error)")
+            print("\(Errors.fetchError) \(error)")
         }
     }
     
@@ -161,7 +161,7 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
                 Helper.saveCityItems()
             }
         } catch {
-            print("Error fetching data from context \(error)")
+            print("\(Errors.fetchError) \(error)")
         }
     }
 

@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
        
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                fatalError("\(Errors.unresolvedError) \(error), \(error.userInfo)")
             }
         })
         return container
@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } catch {
 
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                fatalError("\(Errors.unresolvedError) \(nserror), \(nserror.userInfo)")
             }
         }
     }

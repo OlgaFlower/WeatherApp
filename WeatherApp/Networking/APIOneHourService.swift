@@ -14,17 +14,17 @@ class APIOneHourService {
         guard let url = URL(string: Helper.oneHourResource(key)) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
-                print("OneHourError: \(error!.localizedDescription)")
+                print("OneHour API Error: \(error!.localizedDescription)")
             }
             guard let data = data else {
-                print("OneHourError: downloading error,\(error!.localizedDescription)")
+                print("OneHour API Error: \(Errors.downloadError)")
                 return
             }
             do {
                 let oneHourforecast = try JSONDecoder().decode([OneHourForecast].self, from: data)
                 completion(oneHourforecast)
                 } catch {
-                    print("OneHourError: decoding error<\(error.localizedDescription)>")
+                    print("OneHour API Error: \(Errors.decodeError)")
                 }
         }.resume()
     }

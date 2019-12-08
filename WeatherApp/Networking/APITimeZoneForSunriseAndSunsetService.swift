@@ -14,17 +14,17 @@ class APITimeZoneForSunriseAndSunsetService {
         guard let url = URL(string: Helper.timeZoneCodeResource(key)) else { return }
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
-                print("TimeZoneError: \(error!.localizedDescription)")
+                print("TimeZone API Error: \(error!.localizedDescription)")
             }
             guard let data = data else {
-                print("TimeZoneError: downloading error, \(error!.localizedDescription)")
+                print("TimeZone API Error: \(Errors.downloadError)")
                 return
             }
             do {
                 let zoneCode = try JSONDecoder().decode(TimeZoneForSunriseAndSunset.self, from: data)
                 completion(zoneCode)
                 } catch {
-                    print("TimeZoneError: decoding error, \(error.localizedDescription)")
+                    print("TimeZone API Error: \(Errors.decodeError)")
                 }
         }.resume()
     }

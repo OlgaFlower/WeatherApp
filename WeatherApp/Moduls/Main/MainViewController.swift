@@ -30,8 +30,6 @@ class MainViewController: UIViewController {
     var dataToDisplay: [DisplayCityForecast]?
     var citiesList: [CityItem]?
     
-//    var timeZone: String? = nil
-    
     //MARK: - MainVC life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,7 +98,7 @@ class MainViewController: UIViewController {
                 fetchDataAndDisplayOnScreen()
             }
         } catch {
-            print("Error fetching data from context \(error)")
+            print("\(Errors.fetchError), \(error)")
         }
     }
     
@@ -120,7 +118,7 @@ class MainViewController: UIViewController {
         do {
             self.dataToDisplay = try Helper.context.fetch(request)
         } catch {
-            print("Error fetching data from context \(error)")
+            print("\(Errors.fetchError), \(error)")
         }
     }
     
@@ -135,7 +133,7 @@ class MainViewController: UIViewController {
                 Helper.saveCityItems()
             }
         } catch {
-            print("Error fetching data from context \(error)")
+            print("\(Errors.fetchError), \(error)")
         }
     }
 

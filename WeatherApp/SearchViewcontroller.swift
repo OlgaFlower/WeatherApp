@@ -103,7 +103,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             do {
                 try Helper.context.save()
             } catch {
-                print("Error saving context \(error)")
+                print("\(Errors.savingError) \(error)")
             }
         }
         navigationController?.popToRootViewController(animated: true)

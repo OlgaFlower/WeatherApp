@@ -27,7 +27,6 @@
 		8456BB95237E7D1700234876 /* FiveDaysForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8456BB94237E7D1600234876 /* FiveDaysForecast.swift */; };
 		8462F05F2396907B0094B5E7 /* TimeZoneForSunsriseAndSunset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462F05E2396907B0094B5E7 /* TimeZoneForSunsriseAndSunset.swift */; };
 		8462F0612396C4570094B5E7 /* APITimeZoneForSunriseAndSunsetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462F0602396C4570094B5E7 /* APITimeZoneForSunriseAndSunsetService.swift */; };
-		8484C3C923818F5800A4BD36 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3C823818F5800A4BD36 /* Errors.swift */; };
 		8484C3CB2381A24A00A4BD36 /* SearchViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3CA2381A24A00A4BD36 /* SearchViewcontroller.swift */; };
 		8484C3D62382F7A500A4BD36 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3D52382F7A500A4BD36 /* SearchResult.swift */; };
 		8484C3D82384115F00A4BD36 /* APISearchCityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484C3D72384115F00A4BD36 /* APISearchCityService.swift */; };
@@ -38,6 +37,7 @@
 		84F8C0722371EE4100BC13E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C0702371EE4100BC13E6 /* LaunchScreen.storyboard */; };
 		84F8C07D2371EE4100BC13E6 /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C07C2371EE4100BC13E6 /* WeatherAppTests.swift */; };
 		84F8C0882371EE4100BC13E6 /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C0872371EE4100BC13E6 /* WeatherAppUITests.swift */; };
+		84F9B397239D6CEC001EBF3F /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9B396239D6CEC001EBF3F /* Errors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +78,6 @@
 		8456BB94237E7D1600234876 /* FiveDaysForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveDaysForecast.swift; sourceTree = "<group>"; };
 		8462F05E2396907B0094B5E7 /* TimeZoneForSunsriseAndSunset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeZoneForSunsriseAndSunset.swift; sourceTree = "<group>"; };
 		8462F0602396C4570094B5E7 /* APITimeZoneForSunriseAndSunsetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITimeZoneForSunriseAndSunsetService.swift; sourceTree = "<group>"; };
-		8484C3C823818F5800A4BD36 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		8484C3CA2381A24A00A4BD36 /* SearchViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchViewcontroller.swift; path = WeatherApp/SearchViewcontroller.swift; sourceTree = SOURCE_ROOT; };
 		8484C3D52382F7A500A4BD36 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		8484C3D72384115F00A4BD36 /* APISearchCityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISearchCityService.swift; sourceTree = "<group>"; };
@@ -95,6 +94,7 @@
 		84F8C0832371EE4100BC13E6 /* WeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F8C0872371EE4100BC13E6 /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		84F8C0892371EE4100BC13E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84F9B396239D6CEC001EBF3F /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,7 +125,6 @@
 		843DD6F8237979E000525AF2 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				8484C3C823818F5800A4BD36 /* Errors.swift */,
 				8456BB87237D816B00234876 /* APIOneHourService.swift */,
 				8456BB8E237DAA7900234876 /* APITwelveHoursService.swift */,
 				8456BB92237E7CEE00234876 /* APIFiveDaysService.swift */,
@@ -187,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				8456BB83237D65ED00234876 /* Helper.swift */,
+				84F9B396239D6CEC001EBF3F /* Errors.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -420,12 +420,12 @@
 				8456BB95237E7D1700234876 /* FiveDaysForecast.swift in Sources */,
 				8462F0612396C4570094B5E7 /* APITimeZoneForSunriseAndSunsetService.swift in Sources */,
 				8456BB8F237DAA7900234876 /* APITwelveHoursService.swift in Sources */,
-				8484C3C923818F5800A4BD36 /* Errors.swift in Sources */,
 				843DD6E823774EF800525AF2 /* MainPresenter.swift in Sources */,
 				843DD6F12378628700525AF2 /* MainSunCell.swift in Sources */,
 				844EB36123868DF100766CE7 /* ListViewController.swift in Sources */,
 				84F8C0682371EE3D00BC13E6 /* SceneDelegate.swift in Sources */,
 				843DD6E223774B5700525AF2 /* MainViewController.swift in Sources */,
+				84F9B397239D6CEC001EBF3F /* Errors.swift in Sources */,
 				8456BB84237D65ED00234876 /* Helper.swift in Sources */,
 				8484C3CB2381A24A00A4BD36 /* SearchViewcontroller.swift in Sources */,
 				8456BB8D237DAA3300234876 /* TwelveHoursForecast.swift in Sources */,

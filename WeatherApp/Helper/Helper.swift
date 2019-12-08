@@ -45,7 +45,7 @@ class Helper {
         do {
             try self.context.save()
         } catch {
-            print("Error saving context \(error)")
+            print("\(Errors.savingError) \(error)")
         }
     }
     
