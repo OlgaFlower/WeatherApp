@@ -15,10 +15,10 @@ class APISearchCityService {
 
         URLSession.shared.dataTask(with: url) { data, response, error in
             if error != nil {
-                print("SearchResult API Error: \(error!.localizedDescription)")
+                print("SearchResult API: \(error!.localizedDescription)")
             }
             guard let data = data else {
-                print("SearchResult API Error: \(Errors.downloadError)")
+                print("SearchResult API: " + Errors.downloadError.rawValue)
                 return
             }
 
@@ -26,7 +26,7 @@ class APISearchCityService {
                 let searchResult = try JSONDecoder().decode([SearchResult].self, from: data)
                 completion(searchResult)
                 } catch {
-                    print("SearchResult API Error: \(Errors.decodeError)")
+                    print("SearchResult API: " + Errors.decodeError.rawValue)
                 }
         }.resume()
     }

@@ -38,6 +38,7 @@
 		84F8C07D2371EE4100BC13E6 /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C07C2371EE4100BC13E6 /* WeatherAppTests.swift */; };
 		84F8C0882371EE4100BC13E6 /* WeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C0872371EE4100BC13E6 /* WeatherAppUITests.swift */; };
 		84F9B397239D6CEC001EBF3F /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9B396239D6CEC001EBF3F /* Errors.swift */; };
+		84F9B399239E7458001EBF3F /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F9B398239E7458001EBF3F /* Spinner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		84F8C0872371EE4100BC13E6 /* WeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppUITests.swift; sourceTree = "<group>"; };
 		84F8C0892371EE4100BC13E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84F9B396239D6CEC001EBF3F /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		84F9B398239E7458001EBF3F /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				8456BB83237D65ED00234876 /* Helper.swift */,
+				84F9B398239E7458001EBF3F /* Spinner.swift */,
 				84F9B396239D6CEC001EBF3F /* Errors.swift */,
 			);
 			path = Helper;
@@ -429,6 +432,7 @@
 				8456BB84237D65ED00234876 /* Helper.swift in Sources */,
 				8484C3CB2381A24A00A4BD36 /* SearchViewcontroller.swift in Sources */,
 				8456BB8D237DAA3300234876 /* TwelveHoursForecast.swift in Sources */,
+				84F9B399239E7458001EBF3F /* Spinner.swift in Sources */,
 				8428C88023995E1300D89FF9 /* WeatherData.xcdatamodeld in Sources */,
 				8456BB86237D7D3000234876 /* OneHourForecast.swift in Sources */,
 				844EB3632386933000766CE7 /* ListCell.swift in Sources */,

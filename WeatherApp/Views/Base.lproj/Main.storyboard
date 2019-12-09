@@ -359,6 +359,10 @@
                                     <outlet property="delegate" destination="9ss-XI-BfI" id="LZl-mV-6tU"/>
                                 </connections>
                             </collectionView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UwA-5y-Hww">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="498"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="f5F-Cg-k0J" firstAttribute="top" secondItem="7OC-5d-tCd" secondAttribute="top" constant="-50" id="2h7-lC-kie"/>
@@ -368,13 +372,17 @@
                             <constraint firstItem="7GA-ut-vte" firstAttribute="top" secondItem="vYk-ry-soN" secondAttribute="bottom" constant="5" id="Ncl-0a-uCT"/>
                             <constraint firstAttribute="bottom" secondItem="ATE-u4-EQ0" secondAttribute="bottom" constant="-50" id="U9J-QG-yWb"/>
                             <constraint firstItem="7GA-ut-vte" firstAttribute="leading" secondItem="YLk-EE-gkQ" secondAttribute="leading" id="YQs-U1-blE"/>
+                            <constraint firstItem="UwA-5y-Hww" firstAttribute="trailing" secondItem="YLk-EE-gkQ" secondAttribute="trailing" id="Yvs-hI-Y7p"/>
                             <constraint firstItem="WJd-Wo-2P1" firstAttribute="trailing" secondItem="YLk-EE-gkQ" secondAttribute="trailing" id="e3I-OX-OCy"/>
+                            <constraint firstItem="UwA-5y-Hww" firstAttribute="leading" secondItem="YLk-EE-gkQ" secondAttribute="leading" id="fTE-KY-NU8"/>
                             <constraint firstItem="ATE-u4-EQ0" firstAttribute="top" secondItem="7OC-5d-tCd" secondAttribute="top" constant="-50" id="jZi-rZ-blh"/>
                             <constraint firstItem="Zqc-RM-R78" firstAttribute="leading" secondItem="YLk-EE-gkQ" secondAttribute="leading" id="l47-uh-ieL"/>
                             <constraint firstItem="WJd-Wo-2P1" firstAttribute="bottom" secondItem="YLk-EE-gkQ" secondAttribute="bottom" id="lem-M5-TfR"/>
                             <constraint firstAttribute="bottom" secondItem="f5F-Cg-k0J" secondAttribute="bottom" constant="-50" id="mAO-3K-USy"/>
                             <constraint firstItem="WJd-Wo-2P1" firstAttribute="top" secondItem="7GA-ut-vte" secondAttribute="bottom" id="oCS-C4-W19"/>
                             <constraint firstItem="ATE-u4-EQ0" firstAttribute="leading" secondItem="7OC-5d-tCd" secondAttribute="leading" constant="-50" id="oSG-eN-WED"/>
+                            <constraint firstItem="UwA-5y-Hww" firstAttribute="top" secondItem="7OC-5d-tCd" secondAttribute="top" id="pUz-13-Pim"/>
+                            <constraint firstItem="WJd-Wo-2P1" firstAttribute="top" secondItem="UwA-5y-Hww" secondAttribute="bottom" id="ptv-ds-nft"/>
                             <constraint firstItem="WJd-Wo-2P1" firstAttribute="leading" secondItem="YLk-EE-gkQ" secondAttribute="leading" id="q7I-pj-WWZ"/>
                             <constraint firstItem="Zqc-RM-R78" firstAttribute="trailing" secondItem="YLk-EE-gkQ" secondAttribute="trailing" id="qes-P4-GfI"/>
                             <constraint firstAttribute="trailing" secondItem="f5F-Cg-k0J" secondAttribute="trailing" constant="-50" id="vOt-Kv-hGE"/>
@@ -395,6 +403,7 @@
                         <outlet property="forecastLabel" destination="vTo-fd-KH4" id="eSU-fh-DqY"/>
                         <outlet property="mainCollectionView" destination="vYk-ry-soN" id="knD-ff-mvJ"/>
                         <outlet property="mainTableView" destination="u9H-JX-dic" id="Gy0-9m-sxz"/>
+                        <outlet property="spinnerBackImageView" destination="UwA-5y-Hww" id="iyM-R7-g4R"/>
                         <outlet property="temperatureLabel" destination="Ste-Il-lF4" id="ok7-81-v9G"/>
                     </connections>
                 </viewController>

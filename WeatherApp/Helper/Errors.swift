@@ -8,39 +8,14 @@
 
 import Foundation
 
-enum Errors: Error {
+enum Errors: String {
     //API Errors
-    case downloadError
-    case decodeError
+    case downloadError = "Error data downloading"
+    case decodeError = "Error JSON decoding or API key is expired"
     
     //CoreData Errors
-    case fetchError
-    case unresolvedError
-    case savingError
+    case fetchError = "Error fetching data from context"
+    case unresolvedError = "Unresolved error with Core Data NSPersistentContainer"
+    case savingError = "Error saving context to Core Data"
 }
 
-
-extension Errors: LocalizedError {
-    var errorDescription: String? {
-        switch self {
-        case .downloadError:
-            return NSLocalizedString(
-                "Error data downloading", comment: ""
-            )
-        case .decodeError:
-            return NSLocalizedString(
-                "Error JSON decoding", comment: ""
-            )
-        case .fetchError:
-            return NSLocalizedString(
-            "Error fetching data from context", comment: ""
-            )
-        case .unresolvedError:
-            return NSLocalizedString("Unresolved error with Core Data NSPersistentContainer", comment: "")
-        case.savingError:
-            return NSLocalizedString(
-                "Error saving context to Core Data", comment: ""
-            )
-        }
-    }
-}

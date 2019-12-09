@@ -15,7 +15,7 @@ class Helper {
     static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //DB
     
     //MARK: - Helper: key and data sources
-    static let apiKey = "eZlSuEJ6ST2yLaWb35c1EGTkUgOYpYxZ"
+    static let apiKey = "qJhcPBPmAMjh6PY2NAEljHcu1dOyktiT"
     
     static let hourlyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/hourly"
     static let dailyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/daily"

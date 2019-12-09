@@ -21,6 +21,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var forecastLabel: UILabel!
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var mainTableView: UITableView!
+    @IBOutlet weak var spinnerBackImageView: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - MainVC properties
     let presenter = MainPresenter()
@@ -41,12 +43,15 @@ class MainViewController: UIViewController {
         mainTableView.dataSource = self
         mainTableView.backgroundColor = UIColor.clear
         self.mainCollectionView.showsHorizontalScrollIndicator = false
+        
+        Spinner.showActivityIndicatory(uiView: spinnerBackImageView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
         Helper.movingEffect(view: backgroundImage, intensity: 45)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -81,8 +86,11 @@ class MainViewController: UIViewController {
         presenter.loadFiveDaysForecast(forecast.key!) { (fiveDays) in
             DispatchQueue.main.async {
                 self.mainTableView.reloadData()
+                
             }
         }
+        
+       Spinner.actInd.stopAnimating()
     }
     
     
