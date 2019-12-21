@@ -13,4 +13,5 @@ class ListCell: UITableViewCell {
     @IBOutlet weak var favouriteCityLabel: UILabel!
     @IBOutlet weak var countryIdLabel: UILabel!
     
+    
 }

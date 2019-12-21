@@ -29,20 +29,23 @@
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="age-gY-urt" customClass="ListCell" customModule="WeatherApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="age-gY-urt" id="bTk-v9-1IZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH4-PF-TdQ">
-                                                    <rect key="frame" x="20" y="12" width="8.5" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aH4-PF-TdQ">
+                                                    <rect key="frame" x="20" y="12" width="241" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVu-aU-Vp0">
-                                                    <rect key="frame" x="385.5" y="12" width="8.5" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVu-aU-Vp0">
+                                                    <rect key="frame" x="269" y="12" width="125" height="20.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="125" id="hAW-bW-Y0P"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                     <color key="textColor" red="0.70317493828104427" green="0.70696767349244138" blue="0.76801083808017867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -56,6 +59,8 @@
                                                 <constraint firstItem="aH4-PF-TdQ" firstAttribute="centerY" secondItem="bTk-v9-1IZ" secondAttribute="centerY" id="dF2-0R-V34"/>
                                                 <constraint firstItem="aH4-PF-TdQ" firstAttribute="top" secondItem="bTk-v9-1IZ" secondAttribute="topMargin" constant="1" id="eHV-Zj-Akh"/>
                                                 <constraint firstItem="RVu-aU-Vp0" firstAttribute="trailing" secondItem="bTk-v9-1IZ" secondAttribute="trailingMargin" id="o8c-EY-xvA"/>
+                                                <constraint firstItem="RVu-aU-Vp0" firstAttribute="leading" relation="lessThanOrEqual" secondItem="bTk-v9-1IZ" secondAttribute="leadingMargin" constant="249" id="orU-Mv-Yl7"/>
+                                                <constraint firstItem="RVu-aU-Vp0" firstAttribute="leading" secondItem="aH4-PF-TdQ" secondAttribute="trailing" constant="8" id="pug-Kz-7DM"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
