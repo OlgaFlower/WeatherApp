@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2nW-xk-Rgd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2nW-xk-Rgd">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -47,10 +47,10 @@
                             <constraint firstItem="74X-zc-YwS" firstAttribute="trailing" secondItem="cFC-D6-06m" secondAttribute="trailing" id="CQ4-Wl-dhf"/>
                             <constraint firstItem="EOR-0w-RnD" firstAttribute="trailing" secondItem="cFC-D6-06m" secondAttribute="trailing" id="eMf-XV-nvE"/>
                             <constraint firstItem="EOR-0w-RnD" firstAttribute="bottom" secondItem="cFC-D6-06m" secondAttribute="bottom" id="f8Q-z4-0HE"/>
-                            <constraint firstItem="EOR-0w-RnD" firstAttribute="top" secondItem="kNB-YC-aV5" secondAttribute="top" id="nUo-rB-AOX"/>
                             <constraint firstAttribute="bottom" secondItem="74X-zc-YwS" secondAttribute="bottom" id="o7w-6S-VJ4"/>
                             <constraint firstItem="EOR-0w-RnD" firstAttribute="leading" secondItem="cFC-D6-06m" secondAttribute="leading" id="r6z-2G-Brb"/>
                             <constraint firstItem="74X-zc-YwS" firstAttribute="top" secondItem="kNB-YC-aV5" secondAttribute="top" constant="-3" id="sLS-jz-cYZ"/>
+                            <constraint firstItem="EOR-0w-RnD" firstAttribute="top" secondItem="kNB-YC-aV5" secondAttribute="top" id="zmb-gL-R6k"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cFC-D6-06m"/>
                     </view>
