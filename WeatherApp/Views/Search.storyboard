@@ -55,7 +55,7 @@
                         <viewLayoutGuide key="safeArea" id="cFC-D6-06m"/>
                     </view>
                     <navigationItem key="navigationItem" id="Dpq-VA-arp">
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="eoO-s3-mSj">
+                        <barButtonItem key="rightBarButtonItem" title="Item" style="done" id="eoO-s3-mSj">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7am-Wh-naj">
                                 <rect key="frame" x="376" y="11" width="18" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
