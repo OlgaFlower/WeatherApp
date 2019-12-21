@@ -12,10 +12,10 @@ class Helper {
     //MARK: - Helper properties
     static let degree = "°"
     static let png = ".png"
-    static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext //DB
+    static let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     //MARK: - Helper: key and data sources
-    static let apiKey = "U4rV7Vra1zIZXOptOyhuLLNJIloYvKvG"
+    static let apiKey = "IADy2EFT8gxq7Ysh7ZkFulvhcvO1TYqe"
     
     static let hourlyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/hourly"
     static let dailyBaseURL = "https://dataservice.accuweather.com/forecasts/v1/daily"
