@@ -48,9 +48,11 @@ class ListViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.backgroundColor = UIColor.clear
         
         Helper.blurredView(backImage, self.view)
-        loadCityItems()
-
         
+        tableView.estimatedRowHeight = 55
+        tableView.rowHeight = UITableView.automaticDimension
+        
+        loadCityItems()
     }
     
     override func viewDidAppear(_ animated: Bool) {
