@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gID-wh-MHc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gID-wh-MHc">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -403,7 +403,7 @@
                         <outlet property="forecastLabel" destination="vTo-fd-KH4" id="eSU-fh-DqY"/>
                         <outlet property="mainCollectionView" destination="vYk-ry-soN" id="knD-ff-mvJ"/>
                         <outlet property="mainTableView" destination="u9H-JX-dic" id="Gy0-9m-sxz"/>
-                        <outlet property="spinnerBackImageView" destination="UwA-5y-Hww" id="iyM-R7-g4R"/>
+                        <outlet property="spinnerImageView" destination="UwA-5y-Hww" id="dOg-ai-waY"/>
                         <outlet property="temperatureLabel" destination="Ste-Il-lF4" id="ok7-81-v9G"/>
                     </connections>
                 </viewController>

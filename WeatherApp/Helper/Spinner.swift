@@ -12,8 +12,6 @@ class Spinner {
     static let actInd: UIActivityIndicatorView = UIActivityIndicatorView()
     
     static func showActivityIndicatory(uiView: UIView) {
-        
-//        actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0)
         actInd.center = uiView.center
         actInd.hidesWhenStopped = true
         actInd.style =
