@@ -2,7 +2,7 @@
 Weather Application - to be able receive updated weather forecast you should register any named app on 
 https://developer.accuweather.com/ (for free) and insert APIkey into Helper/Helper.swift
 
-![Demo Video] (https://user-images.githubusercontent.com/44554910/81451439-2e371700-918d-11ea-80ee-479e08675189.gif)]
+<img src="https://user-images.githubusercontent.com/44554910/81451439-2e371700-918d-11ea-80ee-479e08675189.gif" width="400">
 
 <img src="https://user-images.githubusercontent.com/44554910/81448344-e7deb980-9186-11ea-99b0-f971f7752f33.png" width="400">
 
