@@ -1,5 +1,5 @@
 # WeatherApp
-Weather Application - to be able receive updated weather forecast you should register any named app on 
+Weather Application - to be able to receive updated weather forecast you should register any named app on 
 https://developer.accuweather.com/ (for free) and insert APIkey into Helper/Helper.swift
 
 <img src="https://user-images.githubusercontent.com/44554910/81451439-2e371700-918d-11ea-80ee-479e08675189.gif" width="400">
